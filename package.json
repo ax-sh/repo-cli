@@ -25,7 +25,7 @@
     "lint": "eslint",
     "lint:fix": "nr lint --fix",
     "lintt": "nr lint --format=pretty",
-    "format": "eslint --fix && prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
+    "format": "prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
     "test": "vitest run",
     "watch": "vitest",
     "snapupdate": "vitest --update",

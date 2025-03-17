@@ -21,7 +21,7 @@
     //    import React from "react";
     //    instead of:
     //    import * as React from "react";
-//    Enabling esModuleInterop will also enable allowSyntheticDefaultImports.
+    //    Enabling esModuleInterop will also enable allowSyntheticDefaultImports.
     "esModuleInterop": true
   },
   "include": ["src/**/*"],

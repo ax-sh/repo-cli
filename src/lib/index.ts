@@ -1,6 +1,12 @@
-import * as appRootPath from 'app-root-path'
+import appRootPath from 'app-root-path'
 
 export { appRootPath }
+
+export async function appRootPathLazy() {
+  const appRootPathModule = await import('app-root-path')
+  return appRootPathModule.default
+}
+
 export function enableConsoleDepth() {
   // eslint-disable-next-line no-console
   globalThis.console = new console.Console({

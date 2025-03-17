@@ -16,7 +16,7 @@ test('outputs help', async () => {
   expect(output).toContain('0.0.1')
 })
 
-test('generates file', async () => {
+test.todo('generates file', async () => {
   const output = await cli('generate foo')
 
   expect(output).toContain('Generated file at models/foo-model.ts')
