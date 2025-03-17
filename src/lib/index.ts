@@ -2,6 +2,11 @@ import appRootPath from 'app-root-path'
 
 export { appRootPath }
 
+export async function execa() {
+  const { execa } = await import('execa')
+  return execa
+}
+
 export function generateNewCmdPath(name: string) {
   return {
     command: appRootPath.resolve(`src/commands/${name}.ts`),

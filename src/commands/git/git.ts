@@ -4,12 +4,10 @@ import type { ExtendedToolbox } from '../../types'
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'git',
   run: async (toolbox) => {
-    const { print, parameters, system } = toolbox
-    const name = parameters.first
+    const { print } = toolbox
     const root = await import('../../services/git.service')
-    await root.run()
-    print.highlight(`Todo git ${name}`)
-    await system.run('echo ni -D husky')
+    const url = await root.getRepoUrl()
+    print.highlight(`Github url ${url}`)
   },
 }
 
