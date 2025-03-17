@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.10.1",
-    "@ax-sh/ts-morph-kit": "0.2.0",
+    "@ax-sh/ts-morph-kit": "0.4.0",
     "@types/app-root-path": "^1.2.8",
     "app-root-path": "^3.1.0",
     "execa": "^9.5.2",
