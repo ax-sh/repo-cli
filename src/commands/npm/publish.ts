@@ -8,7 +8,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
 
     const root = await import('../../services/npm.service')
     await root.publishToGithubPrivateRegistry()
-    print.highlight(`Todo npm`)
+    print.highlight('executed publish to github')
   },
 }
 
