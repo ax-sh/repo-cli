@@ -4,6 +4,17 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ## [unreleased]
 
+### 🚀 Features
+
+- *(git)* Add tag command and bumped version service function [`5c09b51`](https://github.com/ax-sh/ax-sh.github.io/commit/5c09b514ed34ad9a09baea572c828ad023a14ccb)
+
+### ⚙️ Miscellaneous Tasks
+
+- Format files before release [`f8490de`](https://github.com/ax-sh/ax-sh.github.io/commit/f8490de15cfb9f59c5dc642dc9aec0980dad52d2)
+
+## [[0.3.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.3.0)
+
+
 ### 🚜 Refactor
 
 - *(gh-pages)* Simplify command parameters handling [`491532f`](https://github.com/ax-sh/ax-sh.github.io/commit/491532fae240a534535cd84e424453e867731f12)
@@ -14,6 +25,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 - *(release)* Update changelog command for unreleased entries [`8b3dd85`](https://github.com/ax-sh/ax-sh.github.io/commit/8b3dd85f9e8c05d25cd5a5c36b97a29f753eb0ef)
 - *(release-it)* Update changelog command in config [`7a7f0c7`](https://github.com/ax-sh/ax-sh.github.io/commit/7a7f0c7274cc6bc99719160eaa26f416878c82b0)
 - Format files before release [`2b512b6`](https://github.com/ax-sh/ax-sh.github.io/commit/2b512b67dbe41fdc762fb206e4e5bd50fdda33d6)
+- Add CHANGELOG [`530868b`](https://github.com/ax-sh/ax-sh.github.io/commit/530868b15a9eae9d0402a15ec6b19cf24f148612)
 
 ## [[0.2.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.2.0)
 
