@@ -29,7 +29,8 @@
     "test": "vitest run",
     "watch": "vitest",
     "snapupdate": "vitest --update",
-    "coverage": "vitest --coverage"
+    "coverage": "vitest --coverage",
+    "knip": "knip"
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.10.1",

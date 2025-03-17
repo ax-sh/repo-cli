@@ -20,7 +20,7 @@ describe('lib test', () => {
 
     const resolveSpy = vi
       .spyOn(appRootPath, 'resolve')
-      .mockImplementation(path => path)
+      .mockImplementation((path: string) => path)
 
     const result = generateNewCmdPath(name)
 
