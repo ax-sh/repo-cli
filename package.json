@@ -34,7 +34,9 @@
     "knip": "knip",
     "release": "dotenv -v DEBUG=1 release-it -- minor --no-git.push --no-git.requireUpstream --ci",
     "changelog:latest": "nr git-cliff -l",
-    "upp": "bunx npm-check-updates -i"
+    "upp": "bunx npm-check-updates -i",
+    "tag": "bun exec 'VERSION=$(git cliff --bumped-version) && git tag $VERSION && git push origin $VERSION && git cliff -l -s all | gh release create $VERSION --notes-file -' && npm pkg fix",
+
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.10.1",
