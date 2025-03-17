@@ -29,4 +29,29 @@ describe('lib test', () => {
     expect(resolveSpy).toHaveBeenCalledWith(expectedCommand)
     expect(resolveSpy).toHaveBeenCalledWith(expectedService)
   })
+  it('should handle complex names with special characters', () => {
+    const name = 'create-user_v2';
+    const expectedCommand = 'src/commands/create-user_v2.ts';
+    const expectedService = 'src/services/create-user_v2.service.ts';
+
+    const resolveSpy = vi.spyOn(appRootPath, 'resolve').mockImplementation(path => path);
+
+    const result = generateNewCmdPath(name);
+
+    expect(result.command).toBe(expectedCommand);
+    expect(result.service).toBe(expectedService);
+    expect(resolveSpy).toHaveBeenCalledWith(expectedCommand);
+    expect(resolveSpy).toHaveBeenCalledWith(expectedService);
+  });
+
+  it('should validate multiple path calls with correct arguments', () => {
+    const name = 'auth';
+    const mockResolve = vi.spyOn(appRootPath, 'resolve').mockImplementation(path => path);
+
+    generateNewCmdPath(name);
+
+    expect(mockResolve).toHaveBeenCalledTimes(2);
+    expect(mockResolve).toHaveBeenNthCalledWith(1, 'src/commands/auth.ts');
+    expect(mockResolve).toHaveBeenNthCalledWith(2, 'src/services/auth.service.ts');
+  });
 })
