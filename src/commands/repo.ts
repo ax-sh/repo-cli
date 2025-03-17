@@ -6,6 +6,7 @@ const command: GluegunCommand = {
     const { print } = toolbox
 
     print.printHelp(toolbox)
+    print.highlight('USE repo --compiled-build TO USE BUILT VERSION')
   },
 }
 
