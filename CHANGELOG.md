@@ -4,6 +4,20 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ## [unreleased]
 
+### 🚜 Refactor
+
+- *(gh-pages)* Simplify command parameters handling [`491532f`](https://github.com/ax-sh/ax-sh.github.io/commit/491532fae240a534535cd84e424453e867731f12)
+
+### ⚙️ Miscellaneous Tasks
+
+- Format files before release [`47e2e36`](https://github.com/ax-sh/ax-sh.github.io/commit/47e2e36fe9d1e5ff7b495cf28d3eac6d91c020ae)
+- *(release)* Update changelog command for unreleased entries [`8b3dd85`](https://github.com/ax-sh/ax-sh.github.io/commit/8b3dd85f9e8c05d25cd5a5c36b97a29f753eb0ef)
+- *(release-it)* Update changelog command in config [`7a7f0c7`](https://github.com/ax-sh/ax-sh.github.io/commit/7a7f0c7274cc6bc99719160eaa26f416878c82b0)
+- Format files before release [`2b512b6`](https://github.com/ax-sh/ax-sh.github.io/commit/2b512b67dbe41fdc762fb206e4e5bd50fdda33d6)
+
+## [[0.2.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.2.0)
+
+
 ### 🚀 Features
 
 - Add release-it bumper plugin and update tests [`e81af5d`](https://github.com/ax-sh/ax-sh.github.io/commit/e81af5dbb1c1592aad8362b4ac707f18f2030ebd)
@@ -17,6 +31,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 - Update changelog configuration and content [`f9bd8a4`](https://github.com/ax-sh/ax-sh.github.io/commit/f9bd8a454a356b5945f501cd4ced2bf8bb96848a)
 - Update eslint ignore list to include cliff.toml [`a95e301`](https://github.com/ax-sh/ax-sh.github.io/commit/a95e301073115c609439660fa5ac828b3f57a2c7)
 - Format files before release [`7037183`](https://github.com/ax-sh/ax-sh.github.io/commit/70371839534db99ad8b579265f433be1efb94b3a)
+- Add CHANGELOG [`2c67a75`](https://github.com/ax-sh/ax-sh.github.io/commit/2c67a752fdb464406d696746bb6bff79b7edafd0)
 
 ## [[0.1.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.1.0)
 
