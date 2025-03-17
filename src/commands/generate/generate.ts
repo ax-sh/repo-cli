@@ -3,9 +3,9 @@ import type { ExtendedToolbox } from '../../types'
 import { KnownError } from '../../errors'
 
 const command: GluegunCommand<ExtendedToolbox> = {
-  name: 'add',
-  alias: ['g'],
-  description: 'Add new command to this repo',
+  name: 'generate',
+  alias: ['g', 'gen'],
+  description: 'Generate and Add new command to this repo',
   run: async (toolbox) => {
     const { parameters, print, lib, system, template } = toolbox
 
