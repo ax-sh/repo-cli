@@ -4,10 +4,36 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ## [unreleased]
 
+### 🚀 Features
+
+- *(npm)* Implement publish to GitHub private registry [`e52c14a`](https://github.com/ax-sh/ax-sh.github.io/commit/e52c14a8b5d37dc5e27aa8fc994f11e0af2659a5)
+
+### 🚜 Refactor
+
+- *(gh-pages)* Organize file structure and imports [`f7f7ad9`](https://github.com/ax-sh/ax-sh.github.io/commit/f7f7ad92b318e036d0095dfab74eb6e26353f87c)
+
+### 🎨 Styling
+
+- *(eslint)* Update no-console rule to allow more methods [`825bd13`](https://github.com/ax-sh/ax-sh.github.io/commit/825bd132d3c0a109283059c876d3f5c57f0ec598)
+
+### 🧪 Testing
+
+- *(gh-pages)* Add initial test for gh-pages module [`c69ef59`](https://github.com/ax-sh/ax-sh.github.io/commit/c69ef5983ee68ddacca192a082c6bf33ae503b0a)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update knip config and package dependencies [`1f1355a`](https://github.com/ax-sh/ax-sh.github.io/commit/1f1355aee6bb5afffd45462e2a7d778f31bc1a7d)
+- Update ts-morph-kit version and modify test description [`c725862`](https://github.com/ax-sh/ax-sh.github.io/commit/c725862f06dd2436f261b20878b386c0b7af37e0)
+- Format files before release [`b5e979c`](https://github.com/ax-sh/ax-sh.github.io/commit/b5e979c98cf2ec76904a6dc97751386e1c3e331a)
+
+## [[0.5.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.5.0)
+
+
 ### ⚙️ Miscellaneous Tasks
 
 - Update tag command in package.json [`72a724b`](https://github.com/ax-sh/ax-sh.github.io/commit/72a724bf1a361a99b753ad9e43d6b7aa8e1d287a)
 - Format files before release [`ad98d54`](https://github.com/ax-sh/ax-sh.github.io/commit/ad98d5466a86e05771859cec54f577db6b42b37c)
+- Add CHANGELOG [`650e691`](https://github.com/ax-sh/ax-sh.github.io/commit/650e69135f4615c9fc972a997374fbaa254fad39)
 
 ### Build
 
