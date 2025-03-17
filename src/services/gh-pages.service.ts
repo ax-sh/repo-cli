@@ -11,6 +11,7 @@ export async function checkIfPushedToRemote() {
   catch (e) {
     throw new KnownError([
       'Repo doesnt have associated github repo online',
+      // eslint-disable-next-line ts/no-unsafe-member-access
       e.stderr,
     ])
   }
