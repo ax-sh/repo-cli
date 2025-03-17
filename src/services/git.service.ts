@@ -4,5 +4,5 @@ async function wait(ms: number) {
 }
 export async function run() {
   await wait(1000)
-  console.log('doing')
+  console.debug('doing')
 }

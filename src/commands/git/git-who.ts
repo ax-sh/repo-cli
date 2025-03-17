@@ -8,7 +8,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const { print, system } = toolbox
     const out = await system.run('git shortlog -sne --all')
     print.success('Git Contributors')
-    print.highlight(out);
+    print.highlight(out)
   },
 }
 
