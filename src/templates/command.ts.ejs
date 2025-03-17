@@ -8,7 +8,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
         const name = parameters.first
         const root = await import('../services/<%= props.name %>.service')
         await root.run();
-        print.info(`Todo <%= props.name %> ${name}`)
+        print.highlight(`Todo <%= props.name %> ${name}`)
         await system.run('echo ni -D husky')
     },
 }
