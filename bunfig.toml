@@ -1,0 +1,4 @@
+[install.scopes]
+"@ax-sh" = { token = "$NPM_TOKEN", url = "https://npm.pkg.github.com" }
+
+# https://bun.sh/guides/install/registry-scope
