@@ -7,7 +7,7 @@ export default antfu(
     stylistic: { semi: false },
     test: false,
     // ignore files
-    ignores: ['vitest.config.ts', 'build/**', 'knip.config.ts'],
+    ignores: ['vitest.config.ts', 'build/**', 'knip.config.ts', 'cliff.toml'],
   },
   //
   // Below is the eslint flat config
