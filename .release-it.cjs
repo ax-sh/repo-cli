@@ -16,7 +16,7 @@ module.exports = {
   },
   git: {
     // changelog: 'git log --pretty=format:"* %s (%h)" ${from}...${to}',
-    changelog: 'nr git-cliff --unreleased --strip all',
+    changelog: 'nr git-cliff --unreleased --strip all | sed "1d" ',
     requireCleanWorkingDir: true,
     requireBranch: false,
     requireUpstream: true,
