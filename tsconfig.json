@@ -6,6 +6,11 @@
     "experimentalDecorators": true,
     "module": "commonjs",
     "moduleResolution": "node",
+    "types": [
+      "vitest/globals"
+      //      not needed for now
+      //      "@testing-library/jest-dom"
+    ],
     "strict": false,
     "strictNullChecks": true,
     "noImplicitAny": false,
