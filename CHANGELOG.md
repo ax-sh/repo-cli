@@ -4,6 +4,18 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ## [unreleased]
 
+### ⚙️ Miscellaneous Tasks
+
+- Update tag command in package.json [`72a724b`](https://github.com/ax-sh/ax-sh.github.io/commit/72a724bf1a361a99b753ad9e43d6b7aa8e1d287a)
+- Format files before release [`ad98d54`](https://github.com/ax-sh/ax-sh.github.io/commit/ad98d5466a86e05771859cec54f577db6b42b37c)
+
+### Build
+
+- Add tag command to package.json scripts [`f8724ee`](https://github.com/ax-sh/ax-sh.github.io/commit/f8724eea0d4325b95b74a2fc65bf8fb18763b424)
+
+## [[0.4.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.4.0)
+
+
 ### 🚀 Features
 
 - *(git)* Add tag command and bumped version service function [`5c09b51`](https://github.com/ax-sh/ax-sh.github.io/commit/5c09b514ed34ad9a09baea572c828ad023a14ccb)
@@ -11,6 +23,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 ### ⚙️ Miscellaneous Tasks
 
 - Format files before release [`f8490de`](https://github.com/ax-sh/ax-sh.github.io/commit/f8490de15cfb9f59c5dc642dc9aec0980dad52d2)
+- Add CHANGELOG [`3aa15ac`](https://github.com/ax-sh/ax-sh.github.io/commit/3aa15acb02b75c59e8900a052910b1e418c9f31c)
 
 ## [[0.3.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.3.0)
 

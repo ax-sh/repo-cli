@@ -1,6 +1,6 @@
 {
   "name": "@ax-sh/repo-cli",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "packageManager": "bun@1.2.5",
   "description": "repo CLI for ",
@@ -36,7 +36,6 @@
     "changelog:latest": "nr git-cliff -l",
     "upp": "bunx npm-check-updates -i",
     "tag": "bun exec 'VERSION=$(git cliff --bumped-version) && git tag $VERSION && git push origin $VERSION && git cliff -l -s all | gh release create $VERSION --notes-file -' && npm pkg fix"
-
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.10.1",
