@@ -1,29 +1,35 @@
 import * as path from 'node:path';
-import antfu from '@antfu/eslint-config'
+import antfu from '@antfu/eslint-config';
 
-export default antfu({ typescript: { tsconfigPath: 'tsconfig.json' }, stylistic: { semi: false }, test: false,
-  // ignore files
-  ignores: ['vitest.config.ts', 'build/**', 'knip.config.ts'] },
-// Below is the eslint flat config
-{
-  // Without `files`, they are general rules for all files
-  rules: {
-    'style/semi': ['off', 'never'],
-    'ts/no-misused-promises': ['off'],
-    'no-console': ['warn', { allow: ['table', 'debug'] }],
+export default antfu(
+  {
+    typescript: { tsconfigPath: 'tsconfig.json' },
+    stylistic: { semi: false },
+    test: false,
+    // ignore files
+    ignores: ['vitest.config.ts', 'build/**', 'knip.config.ts'],
   },
-},
-// test specific config
-{
-  languageOptions: {
-    parserOptions: {
-      projectService: {
-        allowDefaultProject: ['*.m?ts', '__tests__/cli-integration.test.ts'],
+  //
+  // Below is the eslint flat config
+  {
+    // Without `files`, they are general rules for all files
+    rules: {
+      'style/semi': ['off', 'never'],
+      'ts/no-misused-promises': ['off'],
+      'no-console': ['warn', { allow: ['table', 'debug'] }],
+    },
+  }, // test specific config
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ['*.m?ts', '__tests__/cli-integration.test.ts'],
+        },
+        project: path.resolve('tsconfig.tests.json'),
       },
-      project: path.resolve('tsconfig.tests.json'),
     },
   },
-})
+);
 // /**
 //  * @type {import("eslint").Linter.Config}
 //  */

@@ -30,20 +30,24 @@
     "watch": "vitest",
     "snapupdate": "vitest --update",
     "coverage": "vitest --coverage",
-    "knip": "knip"
+    "knip": "knip",
+    "release": "dotenv -v DEBUG=1 release-it -- minor --no-git.push --no-git.requireUpstream --ci",
+    "changelog:latest": "nr git-cliff -l"
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.10.1",
     "@types/app-root-path": "^1.2.8",
     "app-root-path": "^3.1.0",
-    "gluegun": "latest",
-    "execa": "^9.5.2"
+    "execa": "^9.5.2",
+    "gluegun": "latest"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "^10.0.0",
     "@types/node": "latest",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
     "copyfiles": "^2.4.1",
+    "dotenv-cli": "^8.0.0",
     "eslint": "^9.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-formatter-pretty": "6",
@@ -54,6 +58,7 @@
     "knip": "^5.46.0",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
+    "release-it": "^18.1.2",
     "tsx": "^4.19.3",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",

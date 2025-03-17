@@ -58,7 +58,7 @@ describe('lib test', () => {
     expect(mockResolve).toHaveBeenNthCalledWith(1, 'src/commands/auth.ts')
     expect(mockResolve).toHaveBeenNthCalledWith(
       2,
-      'src/services/auth.service.ts'
+      'src/services/auth.service.ts',
     )
   })
 })

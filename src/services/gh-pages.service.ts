@@ -7,7 +7,8 @@ export async function checkIfPushedToRemote() {
       trim: true,
     })
     print.highlight({ checkIfPushedToRemote })
-  } catch (e) {
+  }
+  catch (e) {
     throw new KnownError([
       'Repo doesnt have associated github repo online',
       e.stderr,
