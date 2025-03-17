@@ -64,4 +64,10 @@ module.exports = {
       // 'git push origin refs/heads/develop:develop',
     ],
   },
+  plugins: {
+    '@release-it/bumper': {
+      in: 'CURRENT_VERSION.txt',
+      out: 'CURRENT_VERSION.txt',
+    },
+  },
 };
