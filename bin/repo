@@ -12,10 +12,13 @@ if (wantsCompiled || !devMode) {
   require(`${__dirname}/../build/cli`).run(process.argv)
 } else {
   // this runs from the typescript source (for dev only)
-  // hook into ts-node so we can run typescript on the fly
-  require('ts-node').register({ project: `${__dirname}/../tsconfig.json` })
-  // run the CLI with the current process arguments
-  require(`${__dirname}/../src/cli`).run(process.argv)
+  // hook into tsx faster than ts-node so we can run typescript on the fly
+  (async () => {
+    const tsx = await import('tsx');
+    tsx.initialize({ project: `${__dirname}/../tsconfig.json` });
+    const { default: cli } = await import('../src/cli');
+    await cli.run(process.argv);
+  })();
 }
 console.timeEnd('RUN');
 

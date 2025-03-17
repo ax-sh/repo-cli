@@ -1,12 +1,12 @@
-import { GluegunCommand } from "gluegun";
+import type { GluegunCommand } from 'gluegun'
 
 const command: GluegunCommand = {
-  name: "repo",
-  run: async (toolbox) => {
-    const { print } = toolbox;
+  name: 'repo',
+  run: (toolbox) => {
+    const { print } = toolbox
 
-    print.info("Welcome to your CLI");
+    print.highlight('Welcome to your CLI')
   },
-};
+}
 
-module.exports = command;
+export default command

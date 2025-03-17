@@ -1,28 +1,29 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": false,
+    "target": "es5",
+    "lib": ["es2022", "scripthost", "dom"],
+    "moduleDetection": "force",
     "experimentalDecorators": true,
-    "lib": [
-      "es2015",
-      "scripthost",
-      "es2015.promise",
-      "es2015.generator",
-      "es2015.iterable",
-      "dom"
-    ],
     "module": "commonjs",
     "moduleResolution": "node",
+    "strict": false,
+    "strictNullChecks": true,
     "noImplicitAny": false,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "build/types",
+    // For production builds, it's generally recommended to disable source maps to optimize file size and load times.
+    // "sourceMap": true,
     "inlineSourceMap": true,
     "outDir": "build",
-    "strict": false,
-    "target": "es5",
-    "declaration": true,
-    "declarationDir": "build/types"
+    //    When allowSyntheticDefaultImports: true allows you to write an import like:
+    //    import React from "react";
+    //    instead of:
+    //    import * as React from "react";
+//    Enabling esModuleInterop will also enable allowSyntheticDefaultImports.
+    "esModuleInterop": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "build"]
 }
