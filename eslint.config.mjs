@@ -16,7 +16,7 @@ export default antfu(
     rules: {
       'style/semi': ['off', 'never'],
       'ts/no-misused-promises': ['off'],
-      'no-console': ['warn', { allow: ['table', 'debug'] }],
+      'no-console': ['warn', { allow: ['table', 'debug', 'warn', 'error'] }],
     },
   }, // test specific config
   {
