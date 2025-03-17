@@ -2,6 +2,22 @@
 
 All notable changes to ax-sh webpage will be documented in this file.
 
+## [unreleased]
+
+### 🚀 Features
+
+- Add release-it bumper plugin and update tests [`e81af5d`](https://github.com/ax-sh/ax-sh.github.io/commit/e81af5dbb1c1592aad8362b4ac707f18f2030ebd)
+
+### 🧪 Testing
+
+- Update version checks in integration tests [`eac205a`](https://github.com/ax-sh/ax-sh.github.io/commit/eac205a98253598f40b78cbb9ec264eda822a47b)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update changelog configuration and content [`f9bd8a4`](https://github.com/ax-sh/ax-sh.github.io/commit/f9bd8a454a356b5945f501cd4ced2bf8bb96848a)
+- Update eslint ignore list to include cliff.toml [`a95e301`](https://github.com/ax-sh/ax-sh.github.io/commit/a95e301073115c609439660fa5ac828b3f57a2c7)
+- Format files before release [`7037183`](https://github.com/ax-sh/ax-sh.github.io/commit/70371839534db99ad8b579265f433be1efb94b3a)
+
 ## [[0.1.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.1.0)
 
 
