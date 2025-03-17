@@ -1,5 +1,5 @@
 import { print, system } from 'gluegun'
-import { KnownError } from '../errors'
+import { KnownError } from '../../errors'
 
 export async function checkIfPushedToRemote() {
   try {

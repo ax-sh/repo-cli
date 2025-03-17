@@ -7,7 +7,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
   run: async (toolbox) => {
     const { print, system } = toolbox
 
-    const root = await import('../../services/gh-pages.service')
+    const root = await import('../../services/gh-pages/gh-pages.service')
     await root.checkIfPushedToRemote()
     const spinner = print.spin('Adding gh-pages')
     await system.run('ni -D rimraf gh-pages')

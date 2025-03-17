@@ -40,11 +40,11 @@
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.10.1",
+    "@ax-sh/ts-morph-kit": "0.2.0",
     "@types/app-root-path": "^1.2.8",
     "app-root-path": "^3.1.0",
     "execa": "^9.5.2",
-    "gluegun": "latest",
-    "@ax-sh/ts-morph-kit": "0.2.0"
+    "gluegun": "latest"
   },
   "devDependencies": {
     "@release-it/bumper": "^7.0.2",
