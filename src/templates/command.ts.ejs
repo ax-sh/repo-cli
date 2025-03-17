@@ -6,11 +6,11 @@ const command: GluegunCommand<ExtendedToolbox> = {
     run: async (toolbox) => {
         const { print, parameters, system } = toolbox
         const name = parameters.first
-        const root = await import('../services/<%= props.name %>')
+        const root = await import('../services/<%= props.name %>.service')
         await root.run();
         print.info(`Todo <%= props.name %> ${name}`)
         await system.run('echo ni -D husky')
     },
 }
 
-module.exports = command;
+export default command;
