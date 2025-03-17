@@ -35,6 +35,7 @@
     "release": "dotenv -v DEBUG=1 release-it -- minor --no-git.push --no-git.requireUpstream --ci",
     "changelog:latest": "nr git-cliff -l",
     "upp": "bunx npm-check-updates -i",
+    "ox": "nr oxlint",
     "tag": "bun exec 'VERSION=$(git cliff --bumped-version) && git tag $VERSION && git push origin $VERSION && git cliff -l -s all | gh release create $VERSION --notes-file -' && npm pkg fix"
   },
   "dependencies": {
@@ -42,7 +43,8 @@
     "@types/app-root-path": "^1.2.8",
     "app-root-path": "^3.1.0",
     "execa": "^9.5.2",
-    "gluegun": "latest"
+    "gluegun": "latest",
+    "@ax-sh/ts-morph-kit": "0.2.0"
   },
   "devDependencies": {
     "@release-it/bumper": "^7.0.2",
@@ -60,6 +62,7 @@
     "husky": "^9.1.7",
     "is-ci": "^4.1.0",
     "knip": "^5.46.0",
+    "oxlint": "^0.16.0",
     "prettier": "^3.5.3",
     "pretty-quick": "^4.1.1",
     "release-it": "^18.1.2",

@@ -12,6 +12,7 @@ const config: KnipConfig = {
     'eslint-.*',
     'git-cliff',
     'is-ci',
+    '@release-it/conventional-changelog',
 
     'tsx',
   ],
@@ -22,7 +23,7 @@ const config: KnipConfig = {
     ],
     entry: ['**/*.{bench,test,test-d,spec}.?(c|m)[jt]s?(x)'],
   },
-  ignoreBinaries: ['rimraf', 'nr'],
+  ignoreBinaries: ['rimraf', 'nr', 'gh'],
   // ignoreBinaries: ['tsx','rimraf', 'nlx', 'nr', 'act', 'storybook'],
   entry: [
     // 'index.{js,ts}',
