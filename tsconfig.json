@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["es2022", "scripthost", "dom"],
     "moduleDetection": "force",
     "experimentalDecorators": true,
@@ -27,7 +27,8 @@
     //    instead of:
     //    import * as React from "react";
     //    Enabling esModuleInterop will also enable allowSyntheticDefaultImports.
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]

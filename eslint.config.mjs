@@ -14,6 +14,7 @@ export default antfu(
   {
     // Without `files`, they are general rules for all files
     rules: {
+      '@typescript-eslint/no-unsafe-assignment': 'off',
       'style/semi': ['off', 'never'],
       'ts/no-misused-promises': ['off'],
       'no-console': ['warn', { allow: ['table', 'debug', 'warn', 'error'] }],
