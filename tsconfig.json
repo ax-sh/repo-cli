@@ -22,13 +22,13 @@
     // "sourceMap": true,
     "inlineSourceMap": true,
     "outDir": "build",
+    "allowSyntheticDefaultImports": true,
     //    When allowSyntheticDefaultImports: true allows you to write an import like:
     //    import React from "react";
     //    instead of:
     //    import * as React from "react";
     //    Enabling esModuleInterop will also enable allowSyntheticDefaultImports.
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "esModuleInterop": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]

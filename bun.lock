@@ -5,7 +5,7 @@
       "name": "repo",
       "dependencies": {
         "@antfu/eslint-config": "^4.10.1",
-        "@ax-sh/ts-morph-kit": "^0.10.0",
+        "@ax-sh/ts-morph-kit": "^0.12.0",
         "@types/app-root-path": "^1.2.8",
         "app-root-path": "^3.1.0",
         "execa": "^9.5.2",
@@ -43,7 +43,7 @@
 
     "@antfu/install-pkg": ["@antfu/install-pkg@1.0.0", "", { "dependencies": { "package-manager-detector": "^0.2.8", "tinyexec": "^0.3.2" } }, "sha512-xvX6P/lo1B3ej0OsaErAjqgFYzYVcJpamjLAFLYh9vRJngBrMoUG7aVnrGTeqM7yxbyTD5p3F2+0/QUEh8Vzhw=="],
 
-    "@ax-sh/ts-morph-kit": ["@ax-sh/ts-morph-kit@0.10.0", "https://npm.pkg.github.com/download/@ax-sh/ts-morph-kit/0.10.0/46d04da78bc94a702a60da5b701f692780c79d18", { "dependencies": { "ts-morph": "^25.0.1" }, "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-FD1jHt2h60hOOz5QeYdHSHII5DNLg38yRMzrxy7zoZ7ooIZgUROmVXCUP/PJTgCZYzw0//e3iCBOW3Nza18NaA=="],
+    "@ax-sh/ts-morph-kit": ["@ax-sh/ts-morph-kit@0.12.0", "https://npm.pkg.github.com/download/@ax-sh/ts-morph-kit/0.12.0/2090eae88df224c486ace940fa71013e3213bbd7", { "dependencies": { "ts-morph": "^25.0.1" }, "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-2anYHyfwYUcFwgSU3/wlPzSl1P0ExE6k+7Lah8iLgV1m8h152yl6YDz+ZnbEtHP6ucUXMT5S1GoE3Kma5OyMfQ=="],
 
     "@babel/code-frame": ["@babel/code-frame@7.26.2", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.25.9", "js-tokens": "^4.0.0", "picocolors": "^1.0.0" } }, "sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ=="],
 

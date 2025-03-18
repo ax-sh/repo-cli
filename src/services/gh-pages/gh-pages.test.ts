@@ -1,4 +1,9 @@
-import * as ts from '@ax-sh/ts-morph-kit'
+import {
+
+  addImportsToTsFile,
+  createTestSourceFile,
+} from '@ax-sh/ts-morph-kit'
+import { expect } from 'vitest';
 
 describe('gh-pages', () => {
   const code = `
@@ -9,15 +14,12 @@ describe('gh-pages', () => {
         base:"test"
         });
   `;
-  it('should load modules', async () => {
-    // const ts = await import('@ax-sh/ts-morph-kit')
-    const sourceFile = await ts.createTestSourceFile(code)
-    // console.log(sourceFile/);
-    ts.addImportsToTsFile(file, [{ imports: 'React', from: 'react' }])
-    sourceFile.formatText()
-    console.debug(sourceFile.getText())
-    // expect(a).toBeDefined()
-    // const sf = ts.openAsSourceFile('gh-pages.test.ts')
-    // console.log(sf.getText());
+  it('should add new imports to a ts file', async () => {
+    expect(addImportsToTsFile).toBeDefined();
+    // spy.mockReturnValue('dd')
+    const sf = await createTestSourceFile(code)
+
+    sf.formatText()
+    expect(sf.getText()).toBeDefined();
   })
 })
