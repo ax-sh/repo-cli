@@ -7,7 +7,8 @@ export async function whoamiGithub() {
 }
 
 // "gh:pub": "NPM_CONFIG_REGISTRY=\"https://npm.pkg.github.com/\" npm publish --//npm.pkg.github.com/:_authToken=\"$(gh auth token)\"",
-
+// "pub": "nr prepublishOnly && npm publish --scope=@ax-sh --registry=https://npm.pkg.github.com",
+// ^ this does not work as expected as above
 export async function publishToGithubPrivateRegistry() {
   // eslint-disable-next-line node/prefer-global/process
   process.env.NPM_CONFIG_REGISTRY = 'https://npm.pkg.github.com/'
