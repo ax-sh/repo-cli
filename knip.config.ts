@@ -13,7 +13,7 @@ const config: KnipConfig = {
     'git-cliff',
     'is-ci',
     '@release-it/conventional-changelog',
-'oxlint',
+    'oxlint',
     'tsx',
   ],
   vitest: {

@@ -5,7 +5,7 @@ const src = filesystem.path(__dirname, '..')
 async function cli(cmd: string) {
   return system.run(`node ${filesystem.path(src, 'bin', 'repo')} ${cmd}`)
 }
-const VERSION = filesystem.read('CURRENT_VERSION.txt');
+const VERSION = filesystem.read('CURRENT_VERSION.txt')
 
 test('outputs version', async () => {
   const output = await cli('--version')
