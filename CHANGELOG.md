@@ -4,6 +4,21 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ## [unreleased]
 
+### 🎨 Styling
+
+- Fix formatting and remove unnecessary semicolons [`da70241`](https://github.com/ax-sh/ax-sh.github.io/commit/da7024139249023bf043aa8731318f262c9d5f26)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update ts-morph-kit dependency and test description [`78091ec`](https://github.com/ax-sh/ax-sh.github.io/commit/78091ec256d07aacae027ec5ab5d31cee18c1615)
+- Update npm publish command comment for clarity [`c10cf58`](https://github.com/ax-sh/ax-sh.github.io/commit/c10cf58e0ef77aa8cbc52eb2b5afb62d96b03cca)
+- Update dependencies and modify tests [`d3fc310`](https://github.com/ax-sh/ax-sh.github.io/commit/d3fc3100ce0da536c10861f2fd6e04b77e53926d)
+- Update dependencies and eslint rules configuration [`666887f`](https://github.com/ax-sh/ax-sh.github.io/commit/666887f5e082120c5d6d2e79448af1e0e30ed9ea)
+- Format files before release [`430d9fa`](https://github.com/ax-sh/ax-sh.github.io/commit/430d9fa6526d57cb63231b217a30857eefc1fb02)
+
+## [[0.6.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.6.0)
+
+
 ### 🚀 Features
 
 - *(npm)* Implement publish to GitHub private registry [`e52c14a`](https://github.com/ax-sh/ax-sh.github.io/commit/e52c14a8b5d37dc5e27aa8fc994f11e0af2659a5)
@@ -25,6 +40,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 - Update knip config and package dependencies [`1f1355a`](https://github.com/ax-sh/ax-sh.github.io/commit/1f1355aee6bb5afffd45462e2a7d778f31bc1a7d)
 - Update ts-morph-kit version and modify test description [`c725862`](https://github.com/ax-sh/ax-sh.github.io/commit/c725862f06dd2436f261b20878b386c0b7af37e0)
 - Format files before release [`b5e979c`](https://github.com/ax-sh/ax-sh.github.io/commit/b5e979c98cf2ec76904a6dc97751386e1c3e331a)
+- Add CHANGELOG [`4248c57`](https://github.com/ax-sh/ax-sh.github.io/commit/4248c57fb8e2fee5fe4c02a811834aa86a9891bc)
 
 ## [[0.5.0] - 2025-03-17](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.5.0)
 
