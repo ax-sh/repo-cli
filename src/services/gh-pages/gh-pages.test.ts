@@ -1,7 +1,7 @@
-describe.todo('gh-pages', () => {
+describe('gh-pages', () => {
   it('should load modules', async () => {
-    // const i = await import('@ax-sh/ts-morph-kit')
-    // console.log(i);
-    expect(1).toBe(1)
+    const ts = await import('@ax-sh/ts-morph-kit')
+    console.debug(ts);
+    expect(ts).toBeDefined()
   });
 });
