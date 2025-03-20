@@ -9,7 +9,9 @@ export function packageJsonScript(
   pm: 'npm' | 'pnpm' = 'npm',
 ) {
   async function set(cmd: string): Promise<string> {
-    return getTrimmedFromCmdOutput(`${pm} pkg set scripts.${commandName}="${cmd}"`)
+    return getTrimmedFromCmdOutput(
+      `${pm} pkg set scripts.${commandName}="${cmd}"`,
+    )
   }
   async function get(): Promise<string> {
     return getTrimmedFromCmdOutput(`${pm} pkg get scripts.${commandName}`)
@@ -17,9 +19,13 @@ export function packageJsonScript(
   async function remove(): Promise<string> {
     switch (pm) {
       case 'npm':
-        return getTrimmedFromCmdOutput(`${pm} pkg delete scripts.${commandName}`)
+        return getTrimmedFromCmdOutput(
+          `${pm} pkg delete scripts.${commandName}`,
+        )
       case 'pnpm':
-        return getTrimmedFromCmdOutput(`${pm} pkg remove scripts.${commandName}`)
+        return getTrimmedFromCmdOutput(
+          `${pm} pkg remove scripts.${commandName}`,
+        )
       default:
         throw new KnownError('Not implemented')
     }

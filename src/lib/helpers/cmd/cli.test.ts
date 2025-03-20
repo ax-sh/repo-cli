@@ -1,7 +1,5 @@
 import { system } from 'gluegun'
 import { KnownError } from '../../../errors'
-// eslint-ig
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 
 vi.mock('gluegun', { spy: true })
 describe('cli helper', () => {
