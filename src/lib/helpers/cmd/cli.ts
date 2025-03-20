@@ -41,6 +41,9 @@ export async function addScriptToPackageJson(scriptName: string, cmd: string) {
 
   return script.set(cmd)
 }
+export async function getTrimmedFromCmdOutput(cmd: string) {
+  return system.run(cmd, { trim: true })
+}
 
 export async function getJsonFromCmd<T = JSONValue>(cmd: string) {
   const data = await system.run(cmd, { trim: true })
