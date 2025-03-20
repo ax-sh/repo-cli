@@ -41,7 +41,7 @@ export async function addScriptToPackageJson(scriptName: string, cmd: string) {
   const script = packageJsonScript(scriptName)
   const hasScript = await script.isAvailable()
   if (hasScript) {
-    throw new KnownError(`script ${scriptName} already defined Exiting`)
+    throw new KnownError(`script [${scriptName}] already defined Exiting`)
   }
 
   return script.set(cmd)

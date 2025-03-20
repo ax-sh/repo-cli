@@ -10,7 +10,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const root = await import('../../services/git-cliff.service')
 
     const out = await root.addGitCliffScriptsToPackageJson()
-
+    print.highlight(out)
     const fileNames = ['cliff.toml']
     for (const fileName of fileNames) {
       await template.generate({
@@ -19,7 +19,6 @@ const command: GluegunCommand<ExtendedToolbox> = {
         target: filesystem.path('.', fileName),
       })
     }
-    print.highlight(out)
   },
 }
 
