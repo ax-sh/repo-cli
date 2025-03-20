@@ -15,7 +15,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
         target: filesystem.path('.', fileName),
       })
     }
-    const root = await import('../../services/git-cliff.service')
+    const root = await import('../../services/git-cliff/git-cliff.service')
 
     const out = await root.addGitCliffScriptsToPackageJson()
     print.highlight(out)

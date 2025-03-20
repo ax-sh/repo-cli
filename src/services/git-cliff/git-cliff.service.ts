@@ -1,5 +1,5 @@
 import { print } from 'gluegun'
-import { addScriptToPackageJson } from '../lib/helpers/cmd/cli'
+import { addScriptToPackageJson } from '../../lib/helpers/cmd/cli'
 
 export async function addGitCliffScriptsToPackageJson() {
   let script: string
