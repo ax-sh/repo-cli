@@ -9,6 +9,8 @@ export type ExtendedToolbox = GluegunToolbox & {
 // For unknown/dynamic JSON structure, use these types:
 type JSONPrimitive = string | number | boolean | null
 type JSONArray = JSONValue[]
-interface JSONObject { [key: string]: JSONValue }
+interface JSONObject {
+  [key: string]: JSONValue
+}
 // use this for json
 export type JSONValue = JSONPrimitive | JSONObject | JSONArray

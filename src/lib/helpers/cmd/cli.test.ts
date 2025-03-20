@@ -1,5 +1,5 @@
 import { system } from 'gluegun'
-import { KnownError } from '../../../errors';
+import { KnownError } from '../../../errors'
 
 vi.mock('gluegun', { spy: true })
 describe('cli', () => {
@@ -26,7 +26,9 @@ describe('cli', () => {
   })
   it('check if script exists in package.json', async () => {
     const cli = await import('./cli')
-    vi.mocked(system).run.mockImplementation(async () => Promise.resolve('mockedTestScript'))
+    vi.mocked(system).run.mockImplementation(async () =>
+      Promise.resolve('mockedTestScript'),
+    )
     const script = cli.packageJsonScript('test')
     const has = await script.isAvailable()
     await expect(script.get()).resolves.toBe('mockedTestScript')
@@ -34,7 +36,9 @@ describe('cli', () => {
   })
 
   it.fails('fail if script exists in package.json', async () => {
-    vi.mocked(system).run.mockImplementation(async () => Promise.reject(new KnownError('{d}')))
+    vi.mocked(system).run.mockImplementation(async () =>
+      Promise.reject(new KnownError('{d}')),
+    )
     const cli = await import('./cli')
     const script = cli.packageJsonScript('fooo')
     const has = await script.isAvailable()
@@ -61,8 +65,8 @@ describe('cli', () => {
     const cli = await import('./cli')
     const cmd = 'moooo'
     try {
-      console.log(await cli.addScriptToPackageJson(cmd, 'cow'))
-      console.log(await cli.addScriptToPackageJson(cmd, 'dog'))
+      console.warn(await cli.addScriptToPackageJson(cmd, 'cow'))
+      console.warn(await cli.addScriptToPackageJson(cmd, 'dog'))
     }
     finally {
       await cli.packageJsonScript(cmd).remove()

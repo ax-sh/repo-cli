@@ -1,6 +1,6 @@
-import type { JSONValue } from '../../../types';
+import type { JSONValue } from '../../../types'
 import { system } from 'gluegun'
-import { KnownError } from '../../../errors';
+import { KnownError } from '../../../errors'
 
 export function packageJsonScript(
   commandName: string,
