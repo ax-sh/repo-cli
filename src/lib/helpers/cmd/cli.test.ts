@@ -30,6 +30,7 @@ describe('cli', () => {
       Promise.resolve('mockedTestScript'),
     )
     const script = cli.packageJsonScript('test')
+    // eslint-disable-next-line ts/no-unsafe-member-access
     const has = await script.isAvailable()
     await expect(script.get()).resolves.toBe('mockedTestScript')
     expect(has).toBeTruthy()
