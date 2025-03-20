@@ -37,7 +37,9 @@
     "up": "bun update --latest",
     "upp": "bunx npm-check-updates -i",
     "ox": "nr oxlint",
-    "tag": "bun exec 'VERSION=$(git cliff --bumped-version) && git tag $VERSION && git push origin $VERSION && git cliff -l -s all | gh release create $VERSION --notes-file -' && npm pkg fix"
+    "tag": "bun exec 'VERSION=$(git cliff --bumped-version) && git tag $VERSION && git push origin $VERSION && git cliff -l -s all | gh release create $VERSION --notes-file -' && npm pkg fix",
+    "cll": "git cliff -l",
+    "cl": "git cliff -u"
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.10.1",
