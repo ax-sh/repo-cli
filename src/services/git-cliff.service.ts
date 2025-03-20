@@ -1,8 +1,6 @@
-// name: 'git-cliff',
-async function wait(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
-export async function run() {
-  await wait(1000)
-  console.debug('doing')
+import { addScriptToPackageJson } from '../lib/helpers/cmd/cli';
+
+export async function addGitCliffScriptsToPackageJson() {
+  const script = await addScriptToPackageJson('cl', 'git cliff -l')
+  console.warn(script);
 }

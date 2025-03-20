@@ -5,12 +5,11 @@ const command: GluegunCommand<ExtendedToolbox> = {
   name: 'git-cliff',
   alias: ['cliff'],
   run: async (toolbox) => {
-    const { print, parameters, system } = toolbox
-    const name = parameters.first
+    const { print } = toolbox
+
     const root = await import('../../services/git-cliff.service')
-    await root.run()
-    print.highlight(`Todo git-cliff ${name}`)
-    await system.run('echo ni -D husky')
+    const out = await root.addGitCliffScriptsToPackageJson()
+    print.highlight(out)
   },
 }
 
