@@ -8,13 +8,13 @@ export function packageJsonScript(
   // for itself as the package manager making it annoying when using bun using nr
   pm: 'npm' | 'pnpm' = 'npm',
 ) {
-  async function set(cmd: string) {
+  async function set(cmd: string): Promise<string> {
     return getTrimmedFromCmdOutput(`${pm} pkg set scripts.${commandName}="${cmd}"`)
   }
-  async function get() {
+  async function get(): Promise<string> {
     return getTrimmedFromCmdOutput(`${pm} pkg get scripts.${commandName}`)
   }
-  async function remove() {
+  async function remove(): Promise<string> {
     switch (pm) {
       case 'npm':
         return getTrimmedFromCmdOutput(`${pm} pkg delete scripts.${commandName}`)
@@ -24,9 +24,9 @@ export function packageJsonScript(
         throw new KnownError('Not implemented')
     }
   }
-  async function isAvailable() {
+  async function isAvailable(): Promise<boolean> {
     const result = await get()
-    return result !== '{}'
+    return Promise.resolve(result !== '{}')
   }
   return { set, get, remove, isAvailable }
 }
@@ -40,7 +40,7 @@ export async function addScriptToPackageJson(scriptName: string, cmd: string) {
 
   return script.set(cmd)
 }
-export async function getTrimmedFromCmdOutput(cmd: string) {
+export async function getTrimmedFromCmdOutput(cmd: string): Promise<string> {
   return system.run(cmd, { trim: true })
 }
 
