@@ -8,19 +8,18 @@ export function packageJsonScript(
   // for itself as the package manager making it annoying when using bun using nr
   pm: 'npm' | 'pnpm' = 'npm',
 ) {
-  const opts = { trim: true }
   async function set(cmd: string) {
-    return system.run(`${pm} pkg set scripts.${commandName}="${cmd}"`, opts)
+    return getTrimmedFromCmdOutput(`${pm} pkg set scripts.${commandName}="${cmd}"`)
   }
   async function get() {
-    return system.run(`${pm} pkg get scripts.${commandName}`, opts)
+    return getTrimmedFromCmdOutput(`${pm} pkg get scripts.${commandName}`)
   }
   async function remove() {
     switch (pm) {
       case 'npm':
-        return system.run(`${pm} pkg delete scripts.${commandName}`, opts)
+        return getTrimmedFromCmdOutput(`${pm} pkg delete scripts.${commandName}`)
       case 'pnpm':
-        return system.run(`${pm} pkg remove scripts.${commandName}`, opts)
+        return getTrimmedFromCmdOutput(`${pm} pkg remove scripts.${commandName}`)
       default:
         throw new KnownError('Not implemented')
     }
