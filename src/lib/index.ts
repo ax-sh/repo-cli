@@ -10,7 +10,8 @@ export async function execa() {
 export function generateNewCmdPath(name: string) {
   return {
     command: appRootPath.resolve(`src/commands/${name}.ts`),
-    service: appRootPath.resolve(`src/services/${name}.service.ts`),
+    service: appRootPath.resolve(`src/services/${name}/${name}.service.ts`),
+    test: appRootPath.resolve(`src/services/${name}/${name}.test.ts`),
   }
 }
 
