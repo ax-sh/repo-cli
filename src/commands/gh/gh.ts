@@ -6,7 +6,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
   run: async (toolbox) => {
     const { print } = toolbox
 
-    print.printCommands(toolbox)
+    print.printCommands(toolbox, ['repo', 'add'])
   },
 }
 

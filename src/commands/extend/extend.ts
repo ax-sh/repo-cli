@@ -3,6 +3,7 @@ import type { ExtendedToolbox } from '../../types'
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'extend',
+  alias: ['edit'],
   description: 'Open project on a webstorm editor for further extension',
   run: async (toolbox) => {
     const { print, system, lib } = toolbox

@@ -3,6 +3,8 @@ import type { ExtendedToolbox } from '../../types'
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'publish',
+  alias: ['ts', 'js'],
+  description: 'publish build dir on your github npm registry',
   run: async (toolbox) => {
     const { print } = toolbox
 

@@ -2,6 +2,7 @@ import type { GluegunCommand } from 'gluegun'
 
 const command: GluegunCommand = {
   name: 'repo',
+  hidden: true,
   run: (toolbox) => {
     const { print } = toolbox
 
