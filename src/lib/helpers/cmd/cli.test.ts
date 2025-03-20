@@ -1,4 +1,5 @@
 import { system } from 'gluegun'
+import { KnownError } from '../../../errors';
 
 vi.mock('gluegun', { spy: true })
 describe('cli', () => {
@@ -33,7 +34,7 @@ describe('cli', () => {
   })
 
   it.fails('fail if script exists in package.json', async () => {
-    vi.mocked(system).run.mockImplementation(async () => Promise.reject('{d}'))
+    vi.mocked(system).run.mockImplementation(async () => Promise.reject(new KnownError('{d}')))
     const cli = await import('./cli')
     const script = cli.packageJsonScript('fooo')
     const has = await script.isAvailable()
