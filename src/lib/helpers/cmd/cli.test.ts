@@ -1,8 +1,10 @@
 import { system } from 'gluegun'
 import { KnownError } from '../../../errors'
+// eslint-ig
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 
 vi.mock('gluegun', { spy: true })
-describe('cli', () => {
+describe('cli helper', () => {
   beforeEach(() => {
     vi.clearAllMocks()
   })
@@ -10,12 +12,13 @@ describe('cli', () => {
     const cli = await import('./cli')
     const systemSpy = vi.spyOn(system, 'run')
     // systemSpy.mockResolvedValueOnce('3')
-    systemSpy.mockImplementation(async (cmd: string) => {
+    // @ts-expect-error not a error
+    systemSpy.mockImplementation(async (cmd: string): Promise<string> => {
       if (cmd.includes('npm pkg get')) {
         return Promise.resolve('{}')
       }
       if (cmd.includes('pnpm pkg set')) {
-        return Promise.resolve(null)
+        return Promise.resolve('{}')
       }
     })
 
@@ -30,7 +33,7 @@ describe('cli', () => {
       Promise.resolve('mockedTestScript'),
     )
     const script = cli.packageJsonScript('test')
-    // eslint-disable-next-line ts/no-unsafe-member-access
+
     const has = await script.isAvailable()
     await expect(script.get()).resolves.toBe('mockedTestScript')
     expect(has).toBeTruthy()
@@ -38,7 +41,7 @@ describe('cli', () => {
 
   it.fails('fail if script exists in package.json', async () => {
     vi.mocked(system).run.mockImplementation(async () =>
-      Promise.reject(new KnownError('{d}')),
+      Promise.reject(new KnownError('expected error')),
     )
     const cli = await import('./cli')
     const script = cli.packageJsonScript('fooo')
@@ -48,11 +51,11 @@ describe('cli', () => {
 
   test('should call system.run with the correct command for get()', async () => {
     const systemSpy = vi.spyOn(system, 'run')
-    systemSpy.mockResolvedValueOnce(null)
+    systemSpy.mockResolvedValueOnce('')
     const out = system.run('echo fooo', { trim: true })
     expect(systemSpy).toHaveBeenCalledTimes(1)
     expect(systemSpy).toHaveBeenCalledWith('echo fooo', { trim: true })
-    await expect(out).resolves.toBe(null)
+    await expect(out).resolves.toBe('')
     systemSpy.mockClear()
   })
   it('should check if has all required property ', async () => {
