@@ -5,10 +5,20 @@ const command: GluegunCommand<ExtendedToolbox> = {
   name: 'git-cliff',
   alias: ['cliff'],
   run: async (toolbox) => {
-    const { print } = toolbox
+    const { print, template, filesystem } = toolbox
 
     const root = await import('../../services/git-cliff.service')
+
     const out = await root.addGitCliffScriptsToPackageJson()
+
+    const fileNames = ['cliff.toml']
+    for (const fileName of fileNames) {
+      await template.generate({
+        // directory: "CONFIGS/tailwind",
+        template: `/CONFIGS/git-cliff/${fileName}`,
+        target: filesystem.path('.', fileName),
+      })
+    }
     print.highlight(out)
   },
 }

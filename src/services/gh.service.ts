@@ -1,4 +1,4 @@
-import { getJsonFromCmd, getTrimmedFromCmdOutput } from '../lib/helpers/cmd/cli';
+import { getJsonFromCmd, getTrimmedFromCmdOutput } from '../lib/helpers/cmd/cli'
 
 export async function tagRepoAndRelease() {
   const cmd = `bun exec 'VERSION=$(git cliff --bumped-version) && git tag $VERSION && git push origin $VERSION && git cliff -l -s all | gh release create $VERSION --notes-file -'`
