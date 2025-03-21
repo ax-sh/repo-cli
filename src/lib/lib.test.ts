@@ -35,7 +35,8 @@ describe('lib test', () => {
   it('should handle complex names with special characters', () => {
     const name = 'create-user_v2'
     const expectedCommand = 'src/commands/create-user_v2.ts'
-    const expectedService = 'src/services/create-user_v2/create-user_v2.service.ts'
+    const expectedService
+      = 'src/services/create-user_v2/create-user_v2.service.ts'
     const expectedTest = 'src/services/create-user_v2/create-user_v2.test.ts'
 
     const resolveSpy = vi
@@ -65,7 +66,7 @@ describe('lib test', () => {
       ['src/commands/auth.ts'],
       ['src/services/auth/auth.service.ts'],
       ['src/services/auth/auth.test.ts'],
-    ]);
+    ])
     expect(mockResolve).toHaveBeenNthCalledWith(
       3,
       'src/services/auth/auth.test.ts',
