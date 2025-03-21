@@ -1,4 +1,4 @@
-import g from 'gluegun'
+import { system } from 'gluegun'
 import { exeCmdWithOutput } from '../../lib';
 import { createIssue } from './issues.service';
 
@@ -37,7 +37,8 @@ describe('[issues] service test', () => {
   });
   it('should create issues', async () => {
     const cmd = 'gh issue create -a @me -t test_title -b test_body '
-    const fn = vi.mocked(g.system.run)
+    // eslint-disable-next-line ts/unbound-method
+    const fn = vi.mocked(system.run)
     fn.mockImplementation(async (args) => {
       expect(args).toEqual(cmd);
       return 'https://github.com/user/repo/issues/mocked'
