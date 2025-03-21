@@ -47,7 +47,8 @@
     "@types/app-root-path": "^1.2.8",
     "app-root-path": "^3.1.0",
     "execa": "^9.5.2",
-    "gluegun": "^5.2.0"
+    "gluegun": "^5.2.0",
+    "spacetime": "^7.8.0"
   },
   "devDependencies": {
     "@release-it/bumper": "^7.0.2",

@@ -10,6 +10,7 @@
         "app-root-path": "^3.1.0",
         "execa": "^9.5.2",
         "gluegun": "^5.2.0",
+        "spacetime": "^7.8.0",
       },
       "devDependencies": {
         "@release-it/bumper": "^7.0.2",
@@ -1350,6 +1351,8 @@
     "source-map": ["source-map@0.6.1", "", {}, "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="],
 
     "source-map-js": ["source-map-js@1.2.1", "", {}, "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA=="],
+
+    "spacetime": ["spacetime@7.8.0", "", {}, "sha512-H9kwMYcFycuW6VHN3NZ9V3RMafdrU/zkbD7digwhtKNDmCIbl0Oal0M1MhVR7FIEc7tQQHDP01ryrS1i3sp1CA=="],
 
     "spdx-correct": ["spdx-correct@3.2.0", "", { "dependencies": { "spdx-expression-parse": "^3.0.0", "spdx-license-ids": "^3.0.0" } }, "sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA=="],
 
