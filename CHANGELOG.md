@@ -6,6 +6,41 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ### 🚀 Features
 
+- *(command)* Update import path and log output message [`f43bb14`](https://github.com/ax-sh/ax-sh.github.io/commit/f43bb143b9123f1b395dda920fbd7d37b8a8816a)
+- *(issues)* Add issues command and service implementation [`862ab9d`](https://github.com/ax-sh/ax-sh.github.io/commit/862ab9d464320da9a124045f7e48a082d1d5ce6c)
+- *(issues)* Add create issue functionality and tests [`a4313ae`](https://github.com/ax-sh/ax-sh.github.io/commit/a4313ae3ecf53bbdc95b97dd25aab77798950e0c)
+- Add spacetime for issue timestamps formatting [`045e959`](https://github.com/ax-sh/ax-sh.github.io/commit/045e959e7655b793af7e84980b5956ef348829b1)
+- *(git-cliff)* Update git cliff scripts with options [`0952072`](https://github.com/ax-sh/ax-sh.github.io/commit/09520724fc2f73c950c25d0aefb309352e49306c)
+
+### 🐛 Bug Fixes
+
+- *(issues)* Stringify output in highlight message [`fe95512`](https://github.com/ax-sh/ax-sh.github.io/commit/fe9551261d81f072c09cc96df0c4a95f59db878c)
+
+### 🚜 Refactor
+
+- *(issues)* Simplify command implementation [`0e3477a`](https://github.com/ax-sh/ax-sh.github.io/commit/0e3477a1c49edc609da6f5fe0c2827ccf26b12c8)
+
+### 🎨 Styling
+
+- *(command)* Format code for better readability [`1105c99`](https://github.com/ax-sh/ax-sh.github.io/commit/1105c99ebb19a89886a88916f53740b101bbadce)
+
+### 🧪 Testing
+
+- *(issues)* Update tests for issue creation functionality [`e6d99b5`](https://github.com/ax-sh/ax-sh.github.io/commit/e6d99b584ba5a064dd04813725c4db6ee89a3adf)
+- *(issues)* Add tests for createIssue functionality [`b1165e6`](https://github.com/ax-sh/ax-sh.github.io/commit/b1165e6d3ec422bd949d7377ed8323e0783b525d)
+- Update import for gluegun in issue tests [`283be72`](https://github.com/ax-sh/ax-sh.github.io/commit/283be720e2312aea12d94994fada748486a5b722)
+- Update gluegun import and mark test as todo [`d62633e`](https://github.com/ax-sh/ax-sh.github.io/commit/d62633eb6fa51d7c5d51f3ba6a1258331151b514)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update git cliff commands in package.json [`8ee0d40`](https://github.com/ax-sh/ax-sh.github.io/commit/8ee0d4043768ed2ec8246f8ca4890b2d815848f4)
+- Format files before release [`10562f0`](https://github.com/ax-sh/ax-sh.github.io/commit/10562f027906002de6961e80957a4972ca2ea71a)
+
+## [[0.9.0] - 2025-03-21](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.9.0)
+
+
+### 🚀 Features
+
 - Add git-cliff configuration template and commands [`2fefe71`](https://github.com/ax-sh/ax-sh.github.io/commit/2fefe713c840c334f62043b7f61187265674f3b0)
 - *(generate)* Add test file generation for commands [`5970c76`](https://github.com/ax-sh/ax-sh.github.io/commit/5970c76686d6351ad5821b5db67b8203003b805c)
 - Update test template [`58a23ba`](https://github.com/ax-sh/ax-sh.github.io/commit/58a23ba1f0a730e9e6e0acb31ec9f4359dbf9d15)
@@ -34,6 +69,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 ### ⚙️ Miscellaneous Tasks
 
 - Format files before release [`42f6247`](https://github.com/ax-sh/ax-sh.github.io/commit/42f6247974b9a0655d7389c9a1ce66746608066f)
+- Add CHANGELOG [`8305042`](https://github.com/ax-sh/ax-sh.github.io/commit/8305042a8f34126f8a09cf12f046ff40c6e7fbab)
 
 ## [[0.8.0] - 2025-03-20](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.8.0)
 
