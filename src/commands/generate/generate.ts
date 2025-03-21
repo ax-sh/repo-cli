@@ -23,6 +23,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     Generating subcommand [${name}] files on ${cliProjectPath} 
         ${path.command}
         ${path.service}
+        ${path.test}
     `)
     const props = { name }
 
@@ -36,7 +37,12 @@ const command: GluegunCommand<ExtendedToolbox> = {
       target: path.service,
       props,
     })
-    await system.run('nr format')
+    await template.generate({
+      template: 'test.ts.ejs',
+      target: path.test,
+      props,
+    })
+    await system.run('nr lint:fix')
     print.printCommands(toolbox)
   },
 }

@@ -1,3 +1,4 @@
+import { print } from 'gluegun'
 // name: '<%= props.name %>',
 async function wait(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms))
@@ -5,4 +6,5 @@ async function wait(ms: number) {
 export async function run() {
  await wait(1000)
  console.debug('doing')
+ print.info("done")
 }
