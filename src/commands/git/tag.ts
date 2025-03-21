@@ -5,7 +5,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
   name: 'tag',
   run: async (toolbox) => {
     const { print } = toolbox
-    const root = await import('../../services/git.service')
+    const root = await import('../../services/git/git.service')
     const version = await root.gitCliffBumpedVersion()
     print.highlight(`Git cliff next ${version}`)
   },
