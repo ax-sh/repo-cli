@@ -1,4 +1,8 @@
-import { getJsonFromCmd } from '../../lib/helpers/cmd/cli';
+import { exeCmdWithOutput, getJsonFromCmd } from '../../lib/helpers/cmd/cli';
+
+export async function createIssue(title: string, body: string) {
+  return exeCmdWithOutput(`gh issue create -a @me -t ${title} -b ${body} `)
+}
 
 export async function listIssues() {
   //  assignees
