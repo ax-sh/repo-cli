@@ -1,5 +1,7 @@
 import appRootPath from 'app-root-path'
 
+export { addScriptToPackageJson } from './helpers/cmd/cli';
+
 export { appRootPath }
 
 export async function execa() {
