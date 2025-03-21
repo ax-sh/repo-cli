@@ -9,21 +9,21 @@ export function packageJsonScript(
   pm: 'npm' | 'pnpm' = 'npm',
 ) {
   async function set(cmd: string): Promise<string> {
-    return getTrimmedFromCmdOutput(
+    return exeCmdWithOutput(
       `${pm} pkg set scripts.${commandName}="${cmd}"`,
     )
   }
   async function get(): Promise<string> {
-    return getTrimmedFromCmdOutput(`${pm} pkg get scripts.${commandName}`)
+    return exeCmdWithOutput(`${pm} pkg get scripts.${commandName}`)
   }
   async function remove(): Promise<string> {
     switch (pm) {
       case 'npm':
-        return getTrimmedFromCmdOutput(
+        return exeCmdWithOutput(
           `${pm} pkg delete scripts.${commandName}`,
         )
       case 'pnpm':
-        return getTrimmedFromCmdOutput(
+        return exeCmdWithOutput(
           `${pm} pkg remove scripts.${commandName}`,
         )
       default:
@@ -46,7 +46,7 @@ export async function addScriptToPackageJson(scriptName: string, cmd: string) {
 
   return script.set(cmd)
 }
-export async function getTrimmedFromCmdOutput(cmd: string): Promise<string> {
+export async function exeCmdWithOutput(cmd: string): Promise<string> {
   return system.run(cmd, { trim: true })
 }
 
