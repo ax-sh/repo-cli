@@ -8,7 +8,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const name = parameters.first
     const root = await import('../services/issues/issues.service')
     const out = await root.listIssues();
-    print.highlight(`Run Out issues ${out}`)
+    print.highlight(`Run Out issues ${JSON.stringify(out)}`)
     print.highlight(`Todo issues ${name}`)
     await system.run('echo ni -D husky')
   },
