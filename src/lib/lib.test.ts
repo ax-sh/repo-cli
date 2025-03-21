@@ -14,7 +14,8 @@ describe('lib test', () => {
   it('should generate correct paths for a simple name', () => {
     const name = 'user'
     const expectedCommand = 'src/commands/user.ts'
-    const expectedService = 'src/services/user.service.ts'
+    const expectedService = 'src/services/user/user.service.ts'
+    const expectedTest = 'src/services/user/user.test.ts'
 
     // Mock resolve to return the path it receives
 
@@ -26,13 +27,16 @@ describe('lib test', () => {
 
     expect(result.command).toBe(expectedCommand)
     expect(result.service).toBe(expectedService)
+    expect(result.test).toEqual(expectedTest)
     expect(resolveSpy).toHaveBeenCalledWith(expectedCommand)
     expect(resolveSpy).toHaveBeenCalledWith(expectedService)
+    expect(resolveSpy).toHaveBeenCalledWith(expectedTest)
   })
   it('should handle complex names with special characters', () => {
     const name = 'create-user_v2'
     const expectedCommand = 'src/commands/create-user_v2.ts'
-    const expectedService = 'src/services/create-user_v2.service.ts'
+    const expectedService = 'src/services/create-user_v2/create-user_v2.service.ts'
+    const expectedTest = 'src/services/create-user_v2/create-user_v2.test.ts'
 
     const resolveSpy = vi
       .spyOn(appRootPath, 'resolve')
@@ -42,6 +46,7 @@ describe('lib test', () => {
 
     expect(result.command).toBe(expectedCommand)
     expect(result.service).toBe(expectedService)
+    expect(result.test).toBe(expectedTest)
     expect(resolveSpy).toHaveBeenCalledWith(expectedCommand)
     expect(resolveSpy).toHaveBeenCalledWith(expectedService)
   })
@@ -54,11 +59,16 @@ describe('lib test', () => {
 
     generateNewCmdPath(name)
 
-    expect(mockResolve).toHaveBeenCalledTimes(2)
+    expect(mockResolve).toHaveBeenCalledTimes(3)
     expect(mockResolve).toHaveBeenNthCalledWith(1, 'src/commands/auth.ts')
+    expect(mockResolve.mock.calls).toEqual([
+      ['src/commands/auth.ts'],
+      ['src/services/auth/auth.service.ts'],
+      ['src/services/auth/auth.test.ts'],
+    ]);
     expect(mockResolve).toHaveBeenNthCalledWith(
-      2,
-      'src/services/auth.service.ts',
+      3,
+      'src/services/auth/auth.test.ts',
     )
   })
 })
