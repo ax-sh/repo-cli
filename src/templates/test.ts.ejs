@@ -4,6 +4,8 @@ describe('[<%= props.name %>] service test', () => {
     it('should ', async () => {
         const mod = await import('./<%= props.name %>.service')
         expect(mod).toBeDefined()
-        console.log(mod)
+
+        const out = await mod.run()
+        console.warn(out)
     });
 });
