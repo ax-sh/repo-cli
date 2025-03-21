@@ -4,13 +4,13 @@ import type { ExtendedToolbox } from '../types';
 const command: GluegunCommand<ExtendedToolbox> = {
     name: '<%= props.name %>',
     run: async (toolbox) => {
-        const { print, parameters, system } = toolbox
-        const name = parameters.first
-        const root = await import('../services/<%= props.name %>/<%= props.name %>.service')
-        const out = await root.run();
-        print.highlight(`Run Out <%= props.name %> ${out}`)
-        print.highlight(`Todo <%= props.name %> ${name}`)
-        await system.run('echo ni -D husky')
+    const { print, parameters, system } = toolbox
+    const name = parameters.first
+    const root = await import('../services/<%= props.name %>/<%= props.name %>.service')
+    const out = await root.run();
+    print.highlight(`Run Out <%= props.name %> ${out}`)
+    print.highlight(`Todo <%= props.name %> ${name}`)
+    await system.run('echo ni -D husky')
     },
 }
 
