@@ -6,6 +6,27 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ### 🚀 Features
 
+- *(go.service)* Add code quality tools installation logic [`382d901`](https://github.com/ax-sh/ax-sh.github.io/commit/382d9018b6501c71f07d7e0bfc7fa12bbb9df4aa)
+- *(go)* Add code quality tools installation instructions [`f5705b7`](https://github.com/ax-sh/ax-sh.github.io/commit/f5705b765240584e2414729fd2dde61ba72d76ad)
+- *(go)* Add repository validation in addCodeQualityTools [`74d62bc`](https://github.com/ax-sh/ax-sh.github.io/commit/74d62bca42020b4e511e60813858109c47c94b7f)
+
+### 🚜 Refactor
+
+- Clean up imports and formatting in code files [`d41d101`](https://github.com/ax-sh/ax-sh.github.io/commit/d41d101cddeb8a3f79908fcac1d462b11f467f5a)
+
+### 🧪 Testing
+
+- *(go)* Add tests for mocked filesystem and cmd output [`115b086`](https://github.com/ax-sh/ax-sh.github.io/commit/115b086780994494812d20e20ce0dce1e1b7100c)
+
+### ⚙️ Miscellaneous Tasks
+
+- Format files before release [`061c52e`](https://github.com/ax-sh/ax-sh.github.io/commit/061c52e950cc0be39ffeec0ae254ec3de1977431)
+
+## [[0.10.0] - 2025-03-21](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.10.0)
+
+
+### 🚀 Features
+
 - *(command)* Update import path and log output message [`f43bb14`](https://github.com/ax-sh/ax-sh.github.io/commit/f43bb143b9123f1b395dda920fbd7d37b8a8816a)
 - *(issues)* Add issues command and service implementation [`862ab9d`](https://github.com/ax-sh/ax-sh.github.io/commit/862ab9d464320da9a124045f7e48a082d1d5ce6c)
 - *(issues)* Add create issue functionality and tests [`a4313ae`](https://github.com/ax-sh/ax-sh.github.io/commit/a4313ae3ecf53bbdc95b97dd25aab77798950e0c)
@@ -35,6 +56,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 - Update git cliff commands in package.json [`8ee0d40`](https://github.com/ax-sh/ax-sh.github.io/commit/8ee0d4043768ed2ec8246f8ca4890b2d815848f4)
 - Format files before release [`10562f0`](https://github.com/ax-sh/ax-sh.github.io/commit/10562f027906002de6961e80957a4972ca2ea71a)
+- Add CHANGELOG [`11c39e9`](https://github.com/ax-sh/ax-sh.github.io/commit/11c39e97fc00ddb535594e88300d2c6b83f86643)
 
 ## [[0.9.0] - 2025-03-21](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.9.0)
 
