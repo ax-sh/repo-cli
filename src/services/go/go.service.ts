@@ -10,12 +10,18 @@ export async function addCodeQualityTools() {
   print.info(out)
   out = await exeCmdWithOutput('go get -tool mvdan.cc/gofumpt@latest')
   print.info(out)
+  out = await exeCmdWithOutput('go get -tool golang.org/x/tools/cmd/goimports@latest')
+  print.info(out)
 
-  // # release
-  // go tool goreleaser --snapshot --clean
-  // # tidy imports
-  // go tool goimports -l -w .
-  // # format
-  // go tool gofumpt -l -w .
-  return out
+  const howToUse = `
+  # lint
+  go tool golangci-lint run
+  # release
+  go tool goreleaser --snapshot --clean
+  # tidy imports
+  go tool goimports -l -w .
+  # format
+  go tool gofumpt -l -w .
+  `
+  return howToUse
 }
