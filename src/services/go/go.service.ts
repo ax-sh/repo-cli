@@ -1,12 +1,21 @@
 import { print } from 'gluegun'
-// name: 'go',
-async function wait(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
+import { exeCmdWithOutput } from '../../lib';
+
 export async function addCodeQualityTools() {
-  await wait(1000)
-  console.debug('doing')
-  print.info('done')
-  const out = 'out'
+  let out: string
+
+  out = await exeCmdWithOutput('go get -tool github.com/golangci/golangci-lint/cmd/golangci-lint')
+  print.info(out)
+  out = await exeCmdWithOutput('go get -tool github.com/goreleaser/goreleaser/v2@latest')
+  print.info(out)
+  out = await exeCmdWithOutput('go get -tool mvdan.cc/gofumpt@latest')
+  print.info(out)
+
+  // # release
+  // go tool goreleaser --snapshot --clean
+  // # tidy imports
+  // go tool goimports -l -w .
+  // # format
+  // go tool gofumpt -l -w .
   return out
 }
