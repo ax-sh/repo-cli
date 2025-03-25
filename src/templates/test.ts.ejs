@@ -1,7 +1,11 @@
 import { run } from './<%= props.name %>.service'
+import { exeCmdWithOutput } from '../../lib';
+vi.mock('../../lib/helpers/cmd/cli')
 
 describe('[<%= props.name %>] service test', () => {
-    it('should ', async () => {
+    it('should return results', async () => {
+        const fn = vi.mocked(exeCmdWithOutput)
+        fn.mockImplementation(async (args: string) => args)
         const mod = await import('./<%= props.name %>.service')
         expect(mod).toBeDefined()
 

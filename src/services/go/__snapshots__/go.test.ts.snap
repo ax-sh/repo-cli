@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`[go] service test > should addCodeQualityTools 1`] = `
+"
+  # lint
+  go tool golangci-lint run
+  # release
+  go tool goreleaser --snapshot --clean
+  # tidy imports
+  go tool goimports -l -w .
+  # format
+  go tool gofumpt -l -w .
+  "
+`;
