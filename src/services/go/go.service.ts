@@ -1,7 +1,12 @@
-import { print } from 'gluegun'
+import { filesystem, print } from 'gluegun';
+import { KnownError } from '../../errors';
 import { exeCmdWithOutput } from '../../lib';
 
 export async function addCodeQualityTools() {
+  const isGoRepo = filesystem.isFile('go.mod')
+  if (!isGoRepo) {
+    throw new KnownError('not go repo')
+  }
   let out: string
 
   out = await exeCmdWithOutput('go get -tool github.com/golangci/golangci-lint/cmd/golangci-lint')
