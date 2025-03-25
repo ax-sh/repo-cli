@@ -1,5 +1,5 @@
 import { system } from 'gluegun'
-import { exeCmdWithOutput } from '../../lib/helpers/cmd/cli';
+import { exeCmdWithOutput } from '../../lib/helpers/cmd/cli'
 
 export async function gitCliffBumpedVersion() {
   const nextVersion = await exeCmdWithOutput('git cliff --bumped-version')

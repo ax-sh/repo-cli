@@ -1,6 +1,6 @@
 import appRootPath from 'app-root-path'
 
-export { addScriptToPackageJson, exeCmdWithOutput } from './helpers/cmd/cli';
+export { addScriptToPackageJson, exeCmdWithOutput } from './helpers/cmd/cli'
 
 export { appRootPath }
 
