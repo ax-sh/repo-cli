@@ -1,4 +1,4 @@
-import { findDefaultExport, openAsSourceFile } from '@ax-sh/ts-morph-kit';
+import { addBasePropertyInDefaultViteConfig, openAsSourceFile } from '@ax-sh/ts-morph-kit';
 import { filesystem, print } from 'gluegun';
 import { KnownError } from '../../errors'
 import { exeCmdWithOutput } from '../../lib';
@@ -6,8 +6,11 @@ import { exeCmdWithOutput } from '../../lib';
 const viteConfigPath = 'vite.config.ts'
 export async function configViteConfigForGhPages(viteConfigPath: string) {
   const sourceFile = openAsSourceFile(viteConfigPath)
-  const defaultConfig = findDefaultExport(sourceFile)
-  console.log(defaultConfig);
+  // const defaultConfig = getDefaultViteConfig(sourceFile)
+  const config = addBasePropertyInDefaultViteConfig(sourceFile, 'jjl')
+
+  sourceFile.formatText()
+  return config
 }
 
 export async function addDependencies() {
