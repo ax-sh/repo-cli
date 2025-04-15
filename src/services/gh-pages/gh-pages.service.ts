@@ -1,11 +1,10 @@
-import { print, system } from 'gluegun'
+import { print } from 'gluegun'
 import { KnownError } from '../../errors'
+import { exeCmdWithOutput } from '../../lib';
 
 export async function checkIfPushedToRemote() {
   try {
-    const checkIfPushedToRemote = await system.run('git ls-remote', {
-      trim: true,
-    })
+    const checkIfPushedToRemote = await exeCmdWithOutput('git ls-remote')
     print.highlight({ checkIfPushedToRemote })
   }
   catch (e) {

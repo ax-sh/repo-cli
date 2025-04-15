@@ -6,12 +6,12 @@ const command: GluegunCommand<ExtendedToolbox> = {
   alias: ['gh-page'],
   description: 'adds config to vitest react for gh-page deploy compatible',
   run: async (toolbox) => {
-    const { print, system } = toolbox
+    const { print, lib } = toolbox
 
     const root = await import('../../services/gh-pages/gh-pages.service')
     await root.checkIfPushedToRemote()
     const spinner = print.spin('Adding gh-pages')
-    await system.run('ni -D rimraf gh-pages')
+    await lib.exeCmdWithOutput('ni -D rimraf gh-pages')
 
     spinner.fail(`Todo gh-pages`)
   },
