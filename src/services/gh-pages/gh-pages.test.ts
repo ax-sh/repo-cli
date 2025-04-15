@@ -20,6 +20,7 @@ describe('gh-pages', () => {
     expect(sf.getText()).toBeDefined()
   })
   it('should add base on vite.config', async () => {
+    const viteConfigPath = 'vite.config.ts'
     await configViteConfigForGhPages(viteConfigPath)
     expect(1).toBe(1);
   });
