@@ -22,6 +22,9 @@ const command: GluegunCommand<ExtendedToolbox> = {
 
     await lib.addScriptToPackageJson('deploy', 'nr build && gh-pages -d dist')
     await lib.addScriptToPackageJson('clean', 'rimraf dist')
+    const homepage = await gh.getGithubPagesUrlForRepo()
+    print.info(`set homepage to ${homepage}`)
+    await gh.setHomepageUrlOnGithubRepoDescription()
   },
 }
 

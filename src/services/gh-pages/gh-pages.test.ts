@@ -4,7 +4,8 @@ import {
   objectLiteralExpressionToJson,
   openAsSourceFile,
 } from '@ax-sh/ts-morph-kit';
-import { configViteConfigForGhPages } from './gh-pages.service';
+import { expect } from 'vitest';
+import { configViteConfigForGhPages, getGithubPagesUrlForRepo } from './gh-pages.service';
 
 const code = `
 import { defineConfig } from 'vite';
@@ -55,12 +56,18 @@ describe('gh-pages', () => {
     // console.log(result.getText());
 
     const config = await configViteConfigForGhPages()
-    const sf = config.getSourceFile()
-    const json = objectLiteralExpressionToJson(config)
-    console.debug(json);
 
-    console.debug(sf.getText());
-    // sf.saveSync()
-    // expect(1).toBe(1);
+    const json = objectLiteralExpressionToJson(config)
+    expect(json).toEqual({
+      ___test___: true,
+      base: '/repo-cli/',
+      plugins: [
+        'foo()',
+      ],
+    })
+  });
+  it('should get repo remote gh-page url', async () => {
+    const url = await getGithubPagesUrlForRepo()
+    expect(url).toBe(1);
   });
 })

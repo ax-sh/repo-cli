@@ -51,3 +51,18 @@ export async function checkIfPushedToRemote() {
     ])
   }
 }
+
+export async function getGithubPagesUrlForRepo() {
+  const username = 'ax-sh'
+  const repoName = await exeCmdWithOutput(`gh repo view --json name -q '.name'`)
+  const homepage = `https://${username}.github.io/${repoName}`
+  return homepage
+}
+
+export async function setHomepageUrlOnGithubRepoDescription() {
+  const repoPath = await exeCmdWithOutput(`gh repo view --json url --jq '.url'`)
+  const homepage = await getGithubPagesUrlForRepo()
+
+  const out = await exeCmdWithOutput(`gh repo edit ${repoPath} --homepage ${homepage}`)
+  return out
+}
