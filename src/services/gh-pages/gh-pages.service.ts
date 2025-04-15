@@ -1,3 +1,6 @@
+import type {
+  SourceFile,
+} from '@ax-sh/ts-morph-kit';
 import {
   addBasePropertyInDefaultViteConfig,
   openAsSourceFile,
@@ -5,19 +8,21 @@ import {
 import { filesystem, print } from 'gluegun';
 import { KnownError } from '../../errors'
 import { exeCmdWithOutput } from '../../lib';
-import { getRepoUrl } from '../git/git.service';
+import { getRepoBaseName } from '../git/git.service';
 
 const viteConfigPath = 'vite.config.ts'
 
-async function addGithubPagesBase(sourceFile: unknown) {
-  const base = await getRepoUrl()
+async function addGithubPagesBase(sourceFile: SourceFile) {
+  const value = await getRepoBaseName()
+  print.info(`https://ax-sh.github.io/${value}/`)
+  const base = `/${value}/`
+
   const config = addBasePropertyInDefaultViteConfig(sourceFile, base)
   return config
 }
 
 export async function configViteConfigForGhPages() {
   const sourceFile = openAsSourceFile(viteConfigPath)
-  // todo get base name from git
   const config = await addGithubPagesBase(sourceFile)
 
   sourceFile.formatText()
