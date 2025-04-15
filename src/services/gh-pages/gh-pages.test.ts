@@ -1,4 +1,9 @@
-import { addImportsToTsFile, createTestSourceFile, openAsSourceFile } from '@ax-sh/ts-morph-kit';
+import {
+  addImportsToTsFile,
+  createTestSourceFile,
+  objectLiteralExpressionToJson,
+  openAsSourceFile,
+} from '@ax-sh/ts-morph-kit';
 import { configViteConfigForGhPages } from './gh-pages.service';
 
 const code = `
@@ -45,16 +50,16 @@ describe('gh-pages', () => {
 
   it('should add base on test vite.config', async () => {
     const result = openAsSourceFile('vitest.config.ts');
-    console.log(result);
-    // console.log(result.mock);
 
     result.formatText();
     // console.log(result.getText());
 
     const config = await configViteConfigForGhPages()
     const sf = config.getSourceFile()
+    const json = objectLiteralExpressionToJson(config)
+    console.debug(json);
 
-    console.log(sf.getText());
+    console.debug(sf.getText());
     // sf.saveSync()
     // expect(1).toBe(1);
   });
