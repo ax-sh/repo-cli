@@ -1,6 +1,6 @@
 import { print } from 'gluegun'
-import { KnownError } from '../errors'
-import { exeCmdWithOutput } from '../lib';
+import { KnownError } from '../../errors'
+import { exeCmdWithOutput } from '../../lib';
 
 // NPM_CONFIG_REGISTRY="https://npm.pkg.github.com/" npm publish --//npm.pkg.github.com/:_authToken="$(gh auth token)"
 // NPM_CONFIG_REGISTRY="https://npm.pkg.github.com/" npm whoami --//npm.pkg.github.com/:_authToken="$(gh auth token)"

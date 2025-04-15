@@ -7,7 +7,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
   run: async (toolbox) => {
     const { print } = toolbox
 
-    const npm = await import('../../services/npm.service')
+    const npm = await import('../../services/npm/npm.service')
 
     const who = await npm.whoamiGithub()
 
