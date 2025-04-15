@@ -1,3 +1,4 @@
+import type { CommandError } from '../../types';
 import { print } from 'gluegun';
 import { KnownError } from '../../errors'
 import { exeCmdWithOutput } from '../../lib';
@@ -13,11 +14,13 @@ async function checkGithubAuthStatus() {
     // Token scopes: 'admin:public_key', 'copilot', 'delete:packages', 'read:org', 'repo', 'write:packages'
     return true
   }
+  // eslint-disable-next-line unused-imports/no-unused-vars
   catch (e) {
     // print.error(new KnownError(['Invalid GITHUB token', e.cmd, e.stderr]));
     return false
   }
 }
+
 async function exeCmdWithOutputWithGithubNpmAuth(cmd: string) {
   const auth = '--//npm.pkg.github.com/:_authToken="$(gh auth token)"'
   // eslint-disable-next-line node/prefer-global/process
@@ -25,10 +28,11 @@ async function exeCmdWithOutputWithGithubNpmAuth(cmd: string) {
   try {
     return await exeCmdWithOutput(`${cmd} ${auth}`)
   }
-  catch (e) {
-    print.error(e.stderr);
-    print.highlight(e.cmd)
-    throw new KnownError(e)
+  catch (err) {
+    const error = err as CommandError
+    print.error(error.stderr);
+    print.highlight(error.cmd)
+    throw new KnownError(error.message)
   }
 }
 

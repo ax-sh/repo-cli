@@ -1,4 +1,5 @@
 import type { GluegunToolbox } from 'gluegun'
+import type { GluegunError } from 'gluegun/build/types/toolbox/system-types';
 import type * as lib from '../src/lib'
 
 export type ExtendedToolbox = GluegunToolbox & {
@@ -14,3 +15,9 @@ interface JSONObject {
 }
 // use this for json
 export type JSONValue = JSONPrimitive | JSONObject | JSONArray
+
+export interface CommandError extends GluegunError { cmd: string }
+// export interface GluegunError extends Error {
+//   stdout?: StringOrBuffer;
+//   stderr?: StringOrBuffer;
+// }

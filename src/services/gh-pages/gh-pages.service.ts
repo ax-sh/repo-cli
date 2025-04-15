@@ -1,15 +1,23 @@
-import { addBasePropertyInDefaultViteConfig, openAsSourceFile } from '@ax-sh/ts-morph-kit';
+import {
+  addBasePropertyInDefaultViteConfig,
+  objectLiteralExpressionToJson,
+  openAsSourceFile,
+} from '@ax-sh/ts-morph-kit';
 import { filesystem, print } from 'gluegun';
 import { KnownError } from '../../errors'
 import { exeCmdWithOutput } from '../../lib';
 
 const viteConfigPath = 'vite.config.ts'
-export async function configViteConfigForGhPages(viteConfigPath: string) {
+export async function configViteConfigForGhPages() {
   const sourceFile = openAsSourceFile(viteConfigPath)
-  // const defaultConfig = getDefaultViteConfig(sourceFile)
-  const config = addBasePropertyInDefaultViteConfig(sourceFile, 'jjl')
+  // todo get base name from git
+  const base = 'fooddoo'
+  const config = addBasePropertyInDefaultViteConfig(sourceFile, base)
 
   sourceFile.formatText()
+  // eslint-disable-next-line ts/no-unsafe-call
+  const json = objectLiteralExpressionToJson(config)
+  console.log(json);
   return config
 }
 
