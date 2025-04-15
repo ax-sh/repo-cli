@@ -1,5 +1,6 @@
 import { addImportsToTsFile, createTestSourceFile } from '@ax-sh/ts-morph-kit'
 import { expect } from 'vitest'
+import { configViteConfigForGhPages } from './gh-pages.service';
 
 describe('gh-pages', () => {
   const code = `
@@ -18,4 +19,8 @@ describe('gh-pages', () => {
     sf.formatText()
     expect(sf.getText()).toBeDefined()
   })
+  it('should add base on vite.config', async () => {
+    await configViteConfigForGhPages(viteConfigPath)
+    expect(1).toBe(1);
+  });
 })

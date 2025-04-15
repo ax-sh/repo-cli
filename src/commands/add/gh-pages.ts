@@ -13,6 +13,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     try {
       await gh.checkIfPushedToRemote()
       await gh.addDependencies()
+      await gh.configViteConfigForGhPages()
     }
     catch (e) {
       print.error(e)
