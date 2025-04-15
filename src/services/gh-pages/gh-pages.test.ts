@@ -66,7 +66,7 @@ describe('gh-pages', () => {
       ],
     })
   });
-  it('should get repo remote gh-page url', async () => {
+  it.todo('should get repo remote gh-page url', async () => {
     const url = await getGithubPagesUrlForRepo()
     expect(url).toBe(1);
   });

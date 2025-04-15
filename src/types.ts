@@ -21,3 +21,8 @@ export interface CommandError extends GluegunError { cmd: string }
 //   stdout?: StringOrBuffer;
 //   stderr?: StringOrBuffer;
 // }
+
+// Maps a union of string literals (e.g., 'url' | 'name') to an object with keys of those strings.
+export type MappedString<T extends string> = {
+  [K in T]: string // Iterate over each member of the union `T`
+}

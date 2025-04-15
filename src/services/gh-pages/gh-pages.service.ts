@@ -1,6 +1,7 @@
 import type {
   SourceFile,
 } from '@ax-sh/ts-morph-kit';
+import type { MappedString } from '../../types';
 import {
   addBasePropertyInDefaultViteConfig,
   openAsSourceFile,
@@ -8,13 +9,14 @@ import {
 import { filesystem, print } from 'gluegun';
 import { KnownError } from '../../errors'
 import { exeCmdWithOutput } from '../../lib';
+import { getJsonFromCmd } from '../../lib/helpers/cmd/cli';
 import { getRepoBaseName } from '../git/git.service';
 
 const viteConfigPath = 'vite.config.ts'
 
 async function addGithubPagesBase(sourceFile: SourceFile) {
   const value = await getRepoBaseName()
-  print.info(`https://ax-sh.github.io/${value}/`)
+
   const base = `/${value}/`
 
   const config = addBasePropertyInDefaultViteConfig(sourceFile, base)
@@ -52,6 +54,27 @@ export async function checkIfPushedToRemote() {
   }
 }
 
+export async function getGithubRepoInfo() {
+  const props = [
+    'id',
+    'url',
+    'name',
+    'createdAt',
+    'description',
+    'homepageUrl',
+    'nameWithOwner',
+    'pushedAt',
+    'sshUrl',
+    'visibility',
+    'watchers',
+    'diskUsage',
+    'createdAt',
+    'updatedAt',
+  ] as const
+  const cmd = `gh repo view --json ${props.join(',')}`
+  return getJsonFromCmd<MappedString<(typeof props)[number]>>(cmd)
+}
+
 export async function getGithubPagesUrlForRepo() {
   const username = 'ax-sh'
   const repoName = await exeCmdWithOutput(`gh repo view --json name -q '.name'`)
@@ -59,9 +82,9 @@ export async function getGithubPagesUrlForRepo() {
   return homepage
 }
 
-export async function setHomepageUrlOnGithubRepoDescription() {
-  const repoPath = await exeCmdWithOutput(`gh repo view --json url --jq '.url'`)
-  const homepage = await getGithubPagesUrlForRepo()
+export async function setHomepageUrlOnGithubRepoDescription(repoPath: string, homepage: string) {
+  // const repoPath = await exeCmdWithOutput(`gh repo view --json url --jq '.url'`)
+  // const homepage = await getGithubPagesUrlForRepo()
 
   const out = await exeCmdWithOutput(`gh repo edit ${repoPath} --homepage ${homepage}`)
   return out
