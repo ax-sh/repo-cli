@@ -8,8 +8,10 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const { print } = toolbox
 
     const npm = await import('../../services/npm.service')
-    const whoami = await npm.whoamiGithub()
-    // print.highlight(`github ${whoami}`)
+
+    const who = await npm.whoamiGithub()
+
+    print.info(`github ${who}`)
   },
 }
 
