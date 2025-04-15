@@ -34,6 +34,7 @@ async function exeCmdWithOutputWithGithubNpmAuth(cmd: string) {
 
 export async function whoamiGithub() {
   if (!await checkGithubAuthStatus()) {
+    print.highlight('gh auth status')
     throw new KnownError('gh Auth Token is invalid')
   }
 
