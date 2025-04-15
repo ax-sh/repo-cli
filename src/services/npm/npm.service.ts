@@ -1,4 +1,4 @@
-import { print } from 'gluegun'
+import { print } from 'gluegun';
 import { KnownError } from '../../errors'
 import { exeCmdWithOutput } from '../../lib';
 
@@ -7,8 +7,23 @@ import { exeCmdWithOutput } from '../../lib';
 // NPM_CONFIG_REGISTRY="https://npm.pkg.github.com/" npm login --//npm.pkg.github.com/:_authToken="$(gh auth token)"
 // NPM_CONFIG_REGISTRY="https://npm.pkg.github.com/" npm adduser --//npm.pkg.github.com/:_authToken="$(gh auth token)"
 
+async function checkGithubAuthStatus() {
+  try {
+    await exeCmdWithOutput(`gh auth status`)
+    // Token scopes: 'admin:public_key', 'copilot', 'delete:packages', 'read:org', 'repo', 'write:packages'
+    return true
+  }
+  catch (e) {
+    // print.error(new KnownError(['Invalid GITHUB token', e.cmd, e.stderr]));
+    return false
+  }
+}
+
 const auth = '--//npm.pkg.github.com/:_authToken="$(gh auth token)"'
 export async function whoamiGithub() {
+  if (!await checkGithubAuthStatus()) {
+    throw new KnownError('gh Auth Token is invalid')
+  }
   const { $ } = await import('execa')
 
   // eslint-disable-next-line node/prefer-global/process

@@ -6,7 +6,7 @@ export class KnownError extends Error {
       message = message.join('\n')
     }
 
-    print.error(message)
+    print.error(`KNOWN ERROR: ${message}`)
     super(message)
   }
 }
