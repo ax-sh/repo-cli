@@ -4,7 +4,7 @@ import { openViteConfigAsSourceFile } from '../gh-pages/gh-pages.service'
 
 export async function addTailwindToViteProject() {
   const sourceFile = openViteConfigAsSourceFile()
-  await exeCmdWithOutput('ni tailwindcss @tailwindcss/vite')
+  await exeCmdWithOutput('ni tailwindcss @tailwindcss/vite clsx lucide-react')
 
   addImportsToSourceFile(sourceFile, [
     {
