@@ -1,4 +1,4 @@
-import { filesystem, print } from 'gluegun'
+import { filesystem } from 'gluegun'
 
 import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
 import { addVitestReactTypesToTsconfig } from '../tsconfig/tsconfig.service'
@@ -26,39 +26,26 @@ export async function addVitestWithReactTesting() {
   // modify tsconfig for react and vite
   await modifyTsconfigForViteReactProject()
 
-  // todo type can be omitted as the above adds it on tsconfig
-  // /// <reference types="vitest" />
-  //
-  // import { defineConfig } from "vitest/config";
-  //
-  // export default defineConfig({
-  //   test: {
-  //     globals: true,
-  //     environment: "jsdom",
-  //     setupFiles: "./vitest.setup.ts",
-  //   },
-  // });
-  // root file ./vitest.setup.ts
-  // import "@testing-library/jest-dom/vitest";
-  // import { afterEach } from "vitest";
-  // import { cleanup } from "@testing-library/react";
-  //
-  // // runs a clean after each test case (e.g. clearing jsdom)
-  // afterEach(() => {
-  //   cleanup();
-  // });
-  // app.test.tsx
-  // import { render, screen } from "@testing-library/react";
-  // import App from "./App";
-  //
-  // describe("App", () => {
-  //   it("renders the App component", () => {
-  //     render(<App />);
-  //
-  //     screen.debug(); // prints out the jsx in the App component unto the command line
-  //   });
-  // });
-  print.info('done')
-  const out = 'out'
-  return out
+  return 'added types and deps'
 }
+
+// export function formatTsFile(script: string) {
+//   // eslint-disable-next-line ts/no-unsafe-return
+//   return prettier.format(script, {
+//     parser: 'typescript',
+//   })
+// }
+
+export const vitestReactConfigContent = `
+/// <reference types="vitest" />
+
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./vitest.setup.ts"],
+  },
+});
+`
