@@ -45,7 +45,7 @@
 
     "@antfu/install-pkg": ["@antfu/install-pkg@1.0.0", "", { "dependencies": { "package-manager-detector": "^0.2.8", "tinyexec": "^0.3.2" } }, "sha512-xvX6P/lo1B3ej0OsaErAjqgFYzYVcJpamjLAFLYh9vRJngBrMoUG7aVnrGTeqM7yxbyTD5p3F2+0/QUEh8Vzhw=="],
 
-    "@ax-sh/ts-morph-kit": ["@ax-sh/ts-morph-kit@0.27.0", "https://npm.pkg.github.com/download/@ax-sh/ts-morph-kit/0.27.0/4b4f22589f9d72e310d64193f91346767479c2e6", { "dependencies": { "ts-morph": "^25.0.1", "type-fest": "^4.40.0" }, "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-VJnuOyX2eiHX9C8ektfzqp2fOQTRHMfw5Ps6/gpgtLWl76MFZvLxmAv+ECrvE6lYCLD4azMXHSfnX389WKUTIg=="],
+    "@ax-sh/ts-morph-kit": ["@ax-sh/ts-morph-kit@0.28.0", "https://npm.pkg.github.com/download/@ax-sh/ts-morph-kit/0.28.0/b75f0aac59612d10ac52d3b0b257c5711342f432", { "dependencies": { "ts-morph": "^25.0.1", "type-fest": "^4.40.0" }, "peerDependencies": { "typescript": "^5.8.3" } }, "sha512-sV9/IR5QHcBzUxW693yIWgh1+oMQIpVF3cB85ZftpHUFbr9W+HunevNwoaP+QKJJDrIWZ6PMoWnXn+e8tZkLcQ=="],
 
     "@babel/code-frame": ["@babel/code-frame@7.26.2", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.25.9", "js-tokens": "^4.0.0", "picocolors": "^1.0.0" } }, "sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ=="],
 
