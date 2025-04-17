@@ -1,10 +1,15 @@
 import { applyEdits, modify, parse } from 'jsonc-parser'
 
-export interface TsconfigContent { compilerOptions: { types: string[] } }
+export type TsconfigContent = Readonly<{ compilerOptions: { types: string[] } }>
 
+export function parseTsconfigJsonc(rawJsonString: string) {
+  const tsconfig: TsconfigContent = parse(rawJsonString)
+  return tsconfig
+}
 export function parseCompilerOptionsTypes(rawJsonString: string) {
   const tsconfig: TsconfigContent = parse(rawJsonString) as TsconfigContent
-  const types = tsconfig.compilerOptions?.types || []
+
+  const types = tsconfig.compilerOptions.types || []
   return types
 }
 export function modifyCompilerOptionsTypes(rawJsonString: string, types: string[]) {
