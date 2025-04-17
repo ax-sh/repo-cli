@@ -16,5 +16,5 @@ export async function addTailwindToViteProject() {
   sourceFile.formatText()
   sourceFile.saveSync()
 
-  return '@import "tailwindcss"'
+  return '@import "tailwindcss";'
 }
