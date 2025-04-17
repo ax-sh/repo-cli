@@ -5,11 +5,14 @@ const command: GluegunCommand<ExtendedToolbox> = {
   name: 'react',
   run: async (toolbox) => {
     const { print } = toolbox
+    const spinner = print.spin('Adding vitest')
 
-    const root = await import('../../../services/vitest/vitest.service')
-    const out = await root.addVitestWithReactTesting();
+    const mod = await import('../../../services/vitest/vitest.service')
+    const out = await mod.addVitestWithReactTesting();
     print.highlight(`Run Out vitest ${out}`)
-    // const vitestConfigPath = 'vitest.config.ts'
+    await mod.writeVitestConfig()
+
+    spinner.succeed('Added vitest')
 
     // root file ./vitest.setup.ts
     // import "@testing-library/jest-dom/vitest";
@@ -20,6 +23,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     // afterEach(() => {
     //   cleanup();
     // });
+    // -________
     // app.test.tsx
     // import { render, screen } from "@testing-library/react";
     // import App from "./App";

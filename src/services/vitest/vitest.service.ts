@@ -1,7 +1,33 @@
 import { filesystem } from 'gluegun'
 
+import prettier from 'prettier'
+import { KnownError } from '../../errors'
 import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
 import { addVitestReactTypesToTsconfig } from '../tsconfig/tsconfig.service'
+
+export const vitestReactConfigContent = `
+/// <reference types="vitest" />
+
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./vitest.setup.ts"],
+  },
+});
+`
+
+export async function writeVitestConfig() {
+  const vitestConfigPath = 'vitest.config.ts'
+
+  if (filesystem.isFile(vitestConfigPath)) {
+    throw new KnownError('🚨 vite.config.ts already exists; not overwriting with default')
+  }
+  filesystem.write(vitestConfigPath, await formatTsFile(vitestReactConfigContent))
+  return true
+}
 
 export async function addVitestDeps() {
   const out = await exeCmdWithOutput('ni -D vitest msw@latest @faker-js/faker')
@@ -29,23 +55,8 @@ export async function addVitestWithReactTesting() {
   return 'added types and deps'
 }
 
-// export function formatTsFile(script: string) {
-//   // eslint-disable-next-line ts/no-unsafe-return
-//   return prettier.format(script, {
-//     parser: 'typescript',
-//   })
-// }
-
-export const vitestReactConfigContent = `
-/// <reference types="vitest" />
-
-import { defineConfig } from "vitest/config";
-
-export default defineConfig({
-  test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: ["./vitest.setup.ts"],
-  },
-});
-`
+export async function formatTsFile(script: string) {
+  return prettier.format(script, {
+    parser: 'typescript',
+  })
+}
