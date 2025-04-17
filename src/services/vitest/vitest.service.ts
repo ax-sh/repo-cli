@@ -6,7 +6,7 @@ export async function addVitestDeps() {
 }
 
 export async function addVitestWithReactTesting() {
-  await exeCmdWithOutput('ni -D vitest @testing-library/react @testing-library/dom @types/react @types/react-dom msw@latest @faker-js/faker')
+  await exeCmdWithOutput('ni -D vitest @testing-library/react @testing-library/dom @types/react @types/react-dom msw@latest @faker-js/faker @testing-library/jest-dom')
 
   print.info('done')
   const out = 'out'
