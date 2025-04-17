@@ -1,4 +1,4 @@
-import type { ParseError } from 'jsonc-parser'
+import type { EditResult, JSONPath, ModificationOptions, ParseError } from 'jsonc-parser'
 import { applyEdits, modify, parse } from 'jsonc-parser'
 
 // More complete type definition with optional fields
@@ -53,11 +53,13 @@ export function parseCompilerOptionsTypes(
 export function modifyCompilerOptionsTypes(
   rawJsonString: string,
   types: readonly string[],
-) {
-  const jsonPath = ['compilerOptions', 'types'] as const
-  return modify(rawJsonString, jsonPath, [...types], {
+): EditResult {
+  const jsonPath: JSONPath = ['compilerOptions', 'types'];
+  const options: ModificationOptions = {
     formattingOptions: { insertSpaces: true, tabSize: 2 },
-  })
+  };
+
+  return modify(rawJsonString, jsonPath, [...types], options);
 }
 
 /**
