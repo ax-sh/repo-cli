@@ -33,6 +33,6 @@ describe('', () => {
     const json = parseTsconfigJsonc(updated)
     console.log(json)
 
-    expect(json).toEqual(['foo', '@testing-library/jest-dom', 'vitest/globals'])
+    expect(json.compilerOptions?.types).toEqual(['foo', '@testing-library/jest-dom', 'vitest/globals'])
   })
 })

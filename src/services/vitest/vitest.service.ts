@@ -1,6 +1,7 @@
-import { print } from 'gluegun'
+import { filesystem, print } from 'gluegun'
 
 import { exeCmdWithOutput } from '../../lib'
+import { addVitestReactTypesToTsconfig } from '../tsconfig/tsconfig.service'
 
 export async function addVitestDeps() {
   return exeCmdWithOutput('ni -D vitest msw@latest @faker-js/faker')
@@ -8,7 +9,10 @@ export async function addVitestDeps() {
 
 export async function addVitestWithReactTesting() {
   await exeCmdWithOutput('ni -D vitest @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom msw@latest @faker-js/faker @testing-library/jest-dom')
-
+  const tsconfigPath = 'tsconfig.app.json'
+  const currentData = filesystem.read(tsconfigPath)!
+  const updatedData = await addVitestReactTypesToTsconfig(currentData)
+  filesystem.write(tsconfigPath, updatedData)
   // todo
   // /// <reference types="vitest" />
   //
