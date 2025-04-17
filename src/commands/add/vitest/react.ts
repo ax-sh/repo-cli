@@ -14,15 +14,6 @@ const command: GluegunCommand<ExtendedToolbox> = {
 
     spinner.succeed('Added vitest')
 
-    // root file ./vitest.setup.ts
-    // import "@testing-library/jest-dom/vitest";
-    // import { afterEach } from "vitest";
-    // import { cleanup } from "@testing-library/react";
-    //
-    // // runs a clean after each test case (e.g. clearing jsdom)
-    // afterEach(() => {
-    //   cleanup();
-    // });
     // -________
     // app.test.tsx
     // import { render, screen } from "@testing-library/react";

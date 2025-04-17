@@ -19,13 +19,25 @@ export default defineConfig({
 });
 `
 
+const vitestReactSetup = `import "@testing-library/jest-dom/vitest";
+import { afterEach } from "vitest";
+import { cleanup } from "@testing-library/react";
+
+// runs a clean after each test case (e.g. clearing jsdom)
+afterEach(() => {
+  cleanup();
+});`
+
 export async function writeVitestConfig() {
   const vitestConfigPath = 'vitest.config.ts'
-
+  const setupFile = 'vitest.setup.ts'
   if (filesystem.isFile(vitestConfigPath)) {
     throw new KnownError('🚨 vite.config.ts already exists; not overwriting with default')
   }
+
   filesystem.write(vitestConfigPath, await formatTsFile(vitestReactConfigContent))
+  filesystem.write(setupFile, await formatTsFile(vitestReactSetup))
+
   return true
 }
 
