@@ -7,8 +7,9 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const { print } = toolbox
 
     const root = await import('../../services/tailwind/tailwind.service')
-    const out = await root.addTailwindToProject();
-    print.highlight(`Run Output tailwind ${out}`)
+    const out = await root.addTailwindToViteProject();
+    print.success(`Run Output tailwind:`)
+    print.highlight(out)
   },
 }
 

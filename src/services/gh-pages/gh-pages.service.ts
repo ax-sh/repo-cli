@@ -38,7 +38,7 @@ export async function configViteConfigForGhPages() {
   return config
 }
 
-export async function addDependencies() {
+export async function addGithubPagesDependencies() {
   if (filesystem.isNotFile(viteConfigPath)) {
     throw new KnownError('🚨Not a vite project vite.config.ts not found!')
   }

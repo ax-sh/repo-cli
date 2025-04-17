@@ -1,8 +1,10 @@
 import { addImportsToSourceFile, addPluginsInDefaultViteConfig } from '@ax-sh/ts-morph-kit'
+import { exeCmdWithOutput } from '../../lib'
 import { openViteConfigAsSourceFile } from '../gh-pages/gh-pages.service'
 
-export async function addTailwindToProject() {
+export async function addTailwindToViteProject() {
   const sourceFile = openViteConfigAsSourceFile()
+  await exeCmdWithOutput('ni tailwindcss @tailwindcss/vite')
 
   addImportsToSourceFile(sourceFile, [
     {
@@ -14,5 +16,5 @@ export async function addTailwindToProject() {
   sourceFile.formatText()
   sourceFile.saveSync()
 
-  return 'Add @import "tailwindcss"; to your main css file'
+  return '@import "tailwindcss"'
 }

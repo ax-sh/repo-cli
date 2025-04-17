@@ -21,7 +21,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const spinner = print.spin('Adding gh-pages')
     try {
       await gh.checkIfPushedToRemote()
-      await gh.addDependencies()
+      await gh.addGithubPagesDependencies()
       await gh.configViteConfigForGhPages()
     }
     catch (e) {
