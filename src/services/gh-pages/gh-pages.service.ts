@@ -14,6 +14,11 @@ import { getRepoBaseName } from '../git/git.service';
 
 const viteConfigPath = 'vite.config.ts'
 
+export function openViteConfigAsSourceFile() {
+  const sourceFile = openAsSourceFile(viteConfigPath)
+  return sourceFile
+}
+
 async function addGithubPagesBase(sourceFile: SourceFile) {
   const value = await getRepoBaseName()
 
@@ -24,7 +29,7 @@ async function addGithubPagesBase(sourceFile: SourceFile) {
 }
 
 export async function configViteConfigForGhPages() {
-  const sourceFile = openAsSourceFile(viteConfigPath)
+  const sourceFile = openViteConfigAsSourceFile()
   const config = await addGithubPagesBase(sourceFile)
 
   sourceFile.formatText()
