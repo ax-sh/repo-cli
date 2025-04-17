@@ -13,14 +13,18 @@ export async function addVitestDeps() {
   return out
 }
 
-export async function addVitestWithReactTesting() {
-  await exeCmdWithOutput('ni -D vitest @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom msw@latest @faker-js/faker @testing-library/jest-dom')
-
-  // modify tsconfig for react and vite
+async function modifyTsconfigForViteReactProject() {
   const tsconfigPath = 'tsconfig.app.json'
   const currentData = filesystem.read(tsconfigPath)!
   const updatedData = await addVitestReactTypesToTsconfig(currentData)
   filesystem.write(tsconfigPath, updatedData)
+}
+
+export async function addVitestWithReactTesting() {
+  await exeCmdWithOutput('ni -D vitest @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom msw@latest @faker-js/faker @testing-library/jest-dom')
+
+  // modify tsconfig for react and vite
+  await modifyTsconfigForViteReactProject()
 
   // todo type can be omitted as the above adds it on tsconfig
   // /// <reference types="vitest" />
