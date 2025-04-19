@@ -1,6 +1,8 @@
 import { expect } from 'vitest'
 import { exeCmdWithOutput } from '../../lib';
 
+vi.mock('../tsconfig/tsconfig.service', { spy: true })
+vi.mock('gluegun')
 vi.mock('../../lib/helpers/cmd/cli')
 
 describe('[vitest] service test', () => {
