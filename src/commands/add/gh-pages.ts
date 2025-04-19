@@ -26,14 +26,16 @@ const command: GluegunCommand<ExtendedToolbox> = {
     }
     catch (e) {
       print.error(e)
+      spinner.fail(`gh-pages`)
+      return
     }
-    spinner.fail(`Todo gh-pages`)
 
     await lib.addScriptToPackageJson('deploy', 'nr build && gh-pages -d dist')
     await lib.addScriptToPackageJson('clean', 'rimraf dist')
 
     print.info(`set repo url ${url}`)
     await gh.setHomepageToGithubPages(nameWithOwner)
+    spinner.succeed('Added gh-pages')
   },
 }
 

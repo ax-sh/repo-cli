@@ -105,7 +105,8 @@ export async function setHomepageUrlOnGithubRepoDescription(nameWithOwner: strin
   return out
 }
 export async function setHomepageToGithubPages(nameWithOwner: string) {
-  const homepage = await getGithubPagesUrlForRepo(nameWithOwner)
-  const homepageUrl = await setHomepageUrlOnGithubRepoDescription(nameWithOwner, homepage)
-  print.info(`set homepage to ${homepageUrl}`)
+  const homepageUrl = await getGithubPagesUrlForRepo(nameWithOwner)
+  const out = await setHomepageUrlOnGithubRepoDescription(nameWithOwner, homepageUrl)
+  print.info(`set homepage in repo description to ${homepageUrl} `)
+  print.highlight(out)
 }
