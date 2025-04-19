@@ -25,15 +25,17 @@ describe('[vitest] service test', () => {
     const out = await mod.addVitestWithReactTesting()
     expect(out).toEqual('Added types and deps for addVitestWithReactTesting')
 
-    const a = `{"compilerOptions":{"types":[
+    const modifiedTypes = `{"compilerOptions":{"types":[
       "___test_type",
       "@testing-library/jest-dom",
       "vitest/globals"
     ]}}`
 
-    expect(write).toBeCalledWith('tsconfig.app.json', a)
+    expect(write).toBeCalledWith('tsconfig.app.json', modifiedTypes)
 
     expect(fn).toBeCalled()
-    expect(fn).toHaveResolvedWith('ni -D vitest @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom msw@latest @faker-js/faker @testing-library/jest-dom')
+    expect(fn).toHaveResolvedTimes(2)
+    expect(fn).toHaveNthResolvedWith(1, 'ni -D vitest msw@latest @faker-js/faker vite-tsconfig-paths')
+    expect(fn).toHaveNthResolvedWith(2, 'ni -D @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom @testing-library/jest-dom')
   });
 });
