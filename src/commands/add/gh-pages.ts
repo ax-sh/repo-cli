@@ -21,21 +21,22 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const spinner = print.spin('Adding gh-pages')
     try {
       await gh.checkIfPushedToRemote()
+      await lib.addScriptToPackageJson('deploy', 'nr build && gh-pages -d dist')
+      await lib.addScriptToPackageJson('clean', 'rimraf dist')
       await gh.addGithubPagesDependencies()
       await gh.configViteConfigForGhPages()
+      print.info(`set repo url ${url}`)
+      await gh.setHomepageToGithubPages(nameWithOwner)
+      spinner.succeed('Added gh-pages')
     }
     catch (e) {
       print.error(e)
-      spinner.fail(`gh-pages`)
+      spinner.fail(`gh-pages ${homepageUrl}`)
       return
     }
-
-    await lib.addScriptToPackageJson('deploy', 'nr build && gh-pages -d dist')
-    await lib.addScriptToPackageJson('clean', 'rimraf dist')
-
-    print.info(`set repo url ${url}`)
-    await gh.setHomepageToGithubPages(nameWithOwner)
-    spinner.succeed('Added gh-pages')
+    finally {
+      spinner.stop()
+    }
   },
 }
 
