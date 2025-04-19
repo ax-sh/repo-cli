@@ -1,5 +1,6 @@
 import type { EditResult, JSONPath, ModificationOptions, ParseError } from 'jsonc-parser'
 import { applyEdits, modify, parse } from 'jsonc-parser'
+import { KnownError } from '../../errors'
 
 // More complete type definition with optional fields
 export interface TsconfigContent {
@@ -18,15 +19,16 @@ export interface TsconfigContent {
  */
 export function parseTsconfigJsonc(rawJsonString: string): TsconfigContent {
   const errors: ParseError[] = []
-  const tsconfig = parse(rawJsonString, errors) as TsconfigContent
-
-  if (errors.length > 0) {
-    throw new Error(
-      `Failed to parse tsconfig: ${errors.map(e => e.error).join(', ')}`,
+  try {
+    const tsconfig = parse(rawJsonString, errors) as TsconfigContent
+    return tsconfig
+  }
+  catch (e) {
+    const error: Error = e
+    throw new KnownError(
+      `Failed to parse tsconfig: ${error.message} ${errors.map(e => e.error).join(', ')}`,
     )
   }
-
-  return tsconfig
 }
 
 /**
