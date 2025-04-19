@@ -2,6 +2,7 @@ import { filesystem, print } from 'gluegun'
 import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
 
 const code = `
+// https://github.com/antfu/eslint-config
 import antfu from '@antfu/eslint-config'
 
 const globalConfig = {
@@ -14,12 +15,19 @@ const globalConfig = {
   },
 };
 export default antfu(
-  { type: 'app', test: true, typescript: { tsconfigPath: 'tsconfig.json' } },
+  { 
+    type: 'app', 
+    test: true,
+    typescript: { tsconfigPath: 'tsconfig.json' },
+    // \`.eslintignore\` is no longer supported in Flat config, use \`ignores\` instead
+    ignores: [
+      '**/fixtures',
+      // ...globs
+    ]
+  },
   globalConfig,
   {},
 )
-
-
 `
 export async function addEslint() {
   print.info('done')
