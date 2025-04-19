@@ -31,7 +31,6 @@ describe('', () => {
     }`
     const updated = await addVitestReactTypesToTsconfig(data)
     const json = parseTsconfigJsonc(updated)
-    console.log(json)
 
     expect(json.compilerOptions?.types).toEqual(['foo', '@testing-library/jest-dom', 'vitest/globals'])
   })

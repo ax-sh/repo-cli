@@ -5,7 +5,6 @@ import {
   openAsSourceFile,
 } from '@ax-sh/ts-morph-kit'
 
-import { expect } from 'vitest'
 import { exeCmdWithOutput } from '../../lib';
 
 vi.mock('../../lib/helpers/cmd/cli')
@@ -36,6 +35,7 @@ describe('[vite-plugins] service test', () => {
     expect(mod).toBeDefined()
 
     const out = await mod.addDefaultVitePlugins()
+    expect(fn).toBeCalledWith('ni --save-dev vite-plugin-qrcode')
     const sf = await createTestSourceFile(out)
     const viteDefaultConfigJson = objectLiteralExpressionToJson(getDefaultViteConfig(sf))
 

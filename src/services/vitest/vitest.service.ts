@@ -7,10 +7,11 @@ import { addVitestReactTypesToTsconfig } from '../tsconfig/tsconfig.service'
 
 export const vitestReactConfigContent = `
 /// <reference types="vitest" />
-
+import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
+  plugins: [tsconfigPaths()]
   test: {
     globals: true,
     environment: "jsdom",
@@ -42,7 +43,7 @@ export async function writeVitestConfig() {
 }
 
 export async function addVitestDeps() {
-  const out = await exeCmdWithOutput('ni -D vitest msw@latest @faker-js/faker')
+  const out = await exeCmdWithOutput('ni -D vitest msw@latest @faker-js/faker vite-tsconfig-paths')
   await addScriptToPackageJson('test', 'dotenv -- vitest run')
   // await toolbox.addScriptToPackageJson('test', 'vitest run')
   await addScriptToPackageJson('test:watch', 'vitest')
@@ -59,7 +60,8 @@ export async function modifyTsconfigForViteReactProject() {
 }
 
 export async function addVitestWithReactTesting() {
-  await exeCmdWithOutput('ni -D vitest @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom msw@latest @faker-js/faker @testing-library/jest-dom')
+  await addVitestDeps()
+  await exeCmdWithOutput('ni -D @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom @testing-library/jest-dom')
 
   // modify tsconfig for react and vite
   await modifyTsconfigForViteReactProject()
