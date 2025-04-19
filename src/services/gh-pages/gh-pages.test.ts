@@ -66,8 +66,8 @@ describe('gh-pages', () => {
       ],
     })
   });
-  it.todo('should get repo remote gh-page url', async () => {
-    const url = await getGithubPagesUrlForRepo()
-    expect(url).toBe(1);
+  it('should make repo hosted gh-page url', async () => {
+    const url = await getGithubPagesUrlForRepo('ax-sh/repo-cli')
+    expect(url).toEqual('https://ax-sh.github.io/repo-cli');
   });
 })

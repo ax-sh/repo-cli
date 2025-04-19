@@ -7,6 +7,7 @@ import {
   openAsSourceFile,
 } from '@ax-sh/ts-morph-kit';
 import { filesystem, print } from 'gluegun';
+import { z } from 'zod';
 import { KnownError } from '../../errors'
 import { exeCmdWithOutput } from '../../lib';
 import { getJsonFromCmd } from '../../lib/helpers/cmd/cli';
@@ -80,17 +81,31 @@ export async function getGithubRepoInfo() {
   return getJsonFromCmd<MappedString<(typeof props)[number]>>(cmd)
 }
 
-export async function getGithubPagesUrlForRepo() {
-  const username = 'ax-sh'
-  const repoName = await exeCmdWithOutput(`gh repo view --json name -q '.name'`)
-  const homepage = `https://${username}.github.io/${repoName}`
+export async function getGithubPagesUrlForRepo(nameWithOwner: string) {
+  const homepage = z.string().transform((repoWithUsername) => {
+    const [username, repoName] = repoWithUsername.split('/')
+    if (!username)
+      throw new KnownError('username cant be empty')
+    if (!repoName)
+      throw new KnownError('repo name cant be empty')
+
+    return `https://${username}.github.io/${repoName}`
+  }).parse(nameWithOwner)
+
   return homepage
 }
 
-export async function setHomepageUrlOnGithubRepoDescription(repoPath: string, homepage: string) {
-  // const repoPath = await exeCmdWithOutput(`gh repo view --json url --jq '.url'`)
-  // const homepage = await getGithubPagesUrlForRepo()
+export async function setHomepageUrlOnGithubRepoDescription(nameWithOwner: string, homepage: string) {
+  if (!homepage) {
+    throw new KnownError('homepage not defined')
+  }
 
-  const out = await exeCmdWithOutput(`gh repo edit ${repoPath} --homepage ${homepage}`)
+  const out = await exeCmdWithOutput(`gh repo edit ${nameWithOwner} --homepage ${homepage}`)
+
   return out
+}
+export async function setHomepageToGithubPages(nameWithOwner: string) {
+  const homepage = await getGithubPagesUrlForRepo(nameWithOwner)
+  const homepageUrl = await setHomepageUrlOnGithubRepoDescription(nameWithOwner, homepage)
+  print.info(`set homepage to ${homepageUrl}`)
 }

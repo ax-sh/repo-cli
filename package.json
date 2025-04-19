@@ -52,7 +52,8 @@
     "gluegun": "^5.2.0",
     "jsonc-parser": "^3.3.1",
     "kolorist": "^1.8.0",
-    "spacetime": "^7.9.0"
+    "spacetime": "^7.9.0",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@release-it/bumper": "^7.0.2",
