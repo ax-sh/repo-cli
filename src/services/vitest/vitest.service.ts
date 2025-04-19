@@ -51,7 +51,7 @@ export async function addVitestDeps() {
   return out
 }
 
-async function modifyTsconfigForViteReactProject() {
+export async function modifyTsconfigForViteReactProject() {
   const tsconfigPath = 'tsconfig.app.json'
   const currentData = filesystem.read(tsconfigPath)!
   const updatedData = await addVitestReactTypesToTsconfig(currentData)
