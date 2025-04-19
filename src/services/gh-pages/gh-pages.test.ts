@@ -67,7 +67,7 @@ describe('gh-pages', () => {
     })
   });
   it('should make repo hosted gh-page url', async () => {
-    const url = await getGithubPagesUrlForRepo('ax-sh/repo-cli')
-    expect(url).toEqual('https://ax-sh.github.io/repo-cli');
+    const url = await getGithubPagesUrlForRepo('username/repo')
+    expect(url).toEqual('https://username.github.io/repo');
   });
 })
