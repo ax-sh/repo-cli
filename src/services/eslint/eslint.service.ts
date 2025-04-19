@@ -15,15 +15,15 @@ const globalConfig = {
   },
 };
 export default antfu(
-  { 
-    type: 'app', 
+  {
+    type: 'app',
     test: true,
     typescript: { tsconfigPath: 'tsconfig.json' },
     // \`.eslintignore\` is no longer supported in Flat config, use \`ignores\` instead
     ignores: [
       '**/fixtures',
       // ...globs
-    ]
+    ],
   },
   globalConfig,
   {},
