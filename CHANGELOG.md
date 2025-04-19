@@ -6,6 +6,78 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ### 🚀 Features
 
+- *(gh-pages)* Add config for Vite in GitHub Pages setup [`3391ee5`](https://github.com/ax-sh/ax-sh.github.io/commit/3391ee531b7d4c8d3fc3c95dbcdf7ff42f2baa62)
+- Add who in npm command [`d104fb1`](https://github.com/ax-sh/ax-sh.github.io/commit/d104fb13d1106ea6c7d60e486a78b2b49a567256)
+- *(npm.service)* Enhance whoamiGithub with error handling [`d5d6060`](https://github.com/ax-sh/ax-sh.github.io/commit/d5d6060951cfd126d0153865f0887f12afb2d74c)
+- *(npm)* Improve whoami command and error handling [`f232232`](https://github.com/ax-sh/ax-sh.github.io/commit/f23223282b94b304cdf0600310c336de4571f3b0)
+- *(npm)* Add highlight for GitHub auth status check [`80dd082`](https://github.com/ax-sh/ax-sh.github.io/commit/80dd0829fbb3b4e3219bc5187f89ffdcf05ef9ab)
+- Update ts-morph-kit and modify gh-pages service [`57ad217`](https://github.com/ax-sh/ax-sh.github.io/commit/57ad217b38a8bb787042878bbbdf81a14fe650de)
+- *(gh-pages)* Add base URL retrieval for GitHub pages config [`1e87908`](https://github.com/ax-sh/ax-sh.github.io/commit/1e879088e2df4c9a621c1714ea76cfb91ac1acde)
+- Update dependencies and add deploy scripts [`7bcd7d2`](https://github.com/ax-sh/ax-sh.github.io/commit/7bcd7d2b8ba0a8088b413ac7a6baf284c7fc14b9)
+- *(gh-pages)* Add homepage URL functionality for repo [`e95bf5b`](https://github.com/ax-sh/ax-sh.github.io/commit/e95bf5bc596f15ca3834f429b6ed49bdf8d2fcac)
+- *(gh-pages)* Add support for public repository checks [`316ac7d`](https://github.com/ax-sh/ax-sh.github.io/commit/316ac7d342d89331e1a38d9621fe9b202148ed4d)
+- *(info)* Add info command and service implementation [`3639ffe`](https://github.com/ax-sh/ax-sh.github.io/commit/3639ffe1f91c0630e805c33796345764df4e2535)
+- *(info)* Add print message after info retrieval [`8dbe186`](https://github.com/ax-sh/ax-sh.github.io/commit/8dbe186323fa6bb767734cc93a3d1080c95e5921)
+- *(npm-list)* Add npm package listing command and service [`b256e1b`](https://github.com/ax-sh/ax-sh.github.io/commit/b256e1b6f19debea5c667286189e10063ddf4628)
+- Add faker dependency and update tests with it [`c5b6080`](https://github.com/ax-sh/ax-sh.github.io/commit/c5b6080f804095bf6b723b9f7ad83fadf20e86e8)
+- *(tailwind)* Add Tailwind CSS integration command [`61d3976`](https://github.com/ax-sh/ax-sh.github.io/commit/61d39769b88c71b8a370fe247f989c0cd16ab72b)
+- *(tailwind)* Integrate tailwindcss into project setup [`e89ec79`](https://github.com/ax-sh/ax-sh.github.io/commit/e89ec791125ada152f78a3654378c068508bbb7e)
+- *(vite-plugins)* Add Vite plugins command and service [`f2cf686`](https://github.com/ax-sh/ax-sh.github.io/commit/f2cf68649de9c355030fe1eccad284becf1634e3)
+- *(tailwind)* Add clsx and lucide-react dependencies [`aa406c1`](https://github.com/ax-sh/ax-sh.github.io/commit/aa406c1e5ba47dfd2f1d6a434aaec9066966f2a4)
+- *(vitest)* Add commands and service for vitest setup [`211d35d`](https://github.com/ax-sh/ax-sh.github.io/commit/211d35d1233fff3e4c0ea5aa7f9fec27ca413fc8)
+- *(vitest)* Add functions for managing Vitest dependencies [`ebc3c3f`](https://github.com/ax-sh/ax-sh.github.io/commit/ebc3c3fb043ffbb8cc84c68de1dfed52e61ced93)
+- *(tsconfig)* Add functions to modify compiler options types [`06d369e`](https://github.com/ax-sh/ax-sh.github.io/commit/06d369e96cfe497f823687f81b6140b4c8fb561d)
+- *(tsconfig)* Add parseTsconfigJsonc function and type [`33a4477`](https://github.com/ax-sh/ax-sh.github.io/commit/33a447703bb9d23ff3ef768950d33ae591b9e3b3)
+- *(tsconfig)* Add tsconfig service for parsing and editing [`dd24405`](https://github.com/ax-sh/ax-sh.github.io/commit/dd24405f6bd2972ddddc66abc583c561a33306f2)
+- *(tsconfig)* Enhance type definitions in service file [`a75597d`](https://github.com/ax-sh/ax-sh.github.io/commit/a75597d020f1f2850aa55cdd21ae5930092b9e88)
+- *(vitest)* Add vitest scripts to package.json [`19a2368`](https://github.com/ax-sh/ax-sh.github.io/commit/19a23686ada0a0a3dee7fc7485efb75eff3fde7b)
+- Add vitest configuration and spinner feedback [`b38a278`](https://github.com/ax-sh/ax-sh.github.io/commit/b38a278e8b05c3db72c6a09ba3f393f1847cac39)
+- Add vitest setup file for React testing [`f3be6db`](https://github.com/ax-sh/ax-sh.github.io/commit/f3be6dbbb5dca946e578e56f6115a3042361695d)
+- *(storybook)* Add storybook command and service files [`f9b7f89`](https://github.com/ax-sh/ax-sh.github.io/commit/f9b7f89d9271293a93b76ca9b4ac63bdd715e2a2)
+- *(threejs)* Add threejs command and service implementation [`f731097`](https://github.com/ax-sh/ax-sh.github.io/commit/f73109784c72379c47b60ee743d9a519805f9e03)
+- *(vitest)* Export modifyTsconfigForViteReactProject function [`41354ef`](https://github.com/ax-sh/ax-sh.github.io/commit/41354efa3e8bc78d1a939344cfef2b8fc79ab484)
+- Wip [`7b13cf8`](https://github.com/ax-sh/ax-sh.github.io/commit/7b13cf88d4f8a811a7d7e5919f98e416836b0150)
+
+### 🚜 Refactor
+
+- *(gh-pages)* Update command to use lib for execution [`5f4fe32`](https://github.com/ax-sh/ax-sh.github.io/commit/5f4fe322f4b6f1433a26d3bf36259f039b9f751b)
+- *(gh-pages)* Update command to use lib for execution [`9c6aea7`](https://github.com/ax-sh/ax-sh.github.io/commit/9c6aea7f3c66ed5091fdf2a5990adc914b5f67d9)
+- *(npm)* Reorganize npm service structure and imports [`1df9992`](https://github.com/ax-sh/ax-sh.github.io/commit/1df9992b13d1cd84f2451c475946344f892aea10)
+- *(errors, npm.service)* Improve error messaging and auth check [`f8c6863`](https://github.com/ax-sh/ax-sh.github.io/commit/f8c68634d68a2c6e1a2c279ab079c927d41a33ef)
+- *(npm.service.ts)* Simplify GitHub NPM auth handling [`7a8317f`](https://github.com/ax-sh/ax-sh.github.io/commit/7a8317f48715032255c08e38a00a77551ddf53c4)
+- Update dependencies and improve code structure [`73d3296`](https://github.com/ax-sh/ax-sh.github.io/commit/73d32966291128dad5cf527f5559b2881f3ce747)
+- Rename functions for clarity and consistency [`6a22093`](https://github.com/ax-sh/ax-sh.github.io/commit/6a22093bcdb946b264055f9b3a2797f59742e538)
+- *(vitest)* Restructure addVitestWithReactTesting function [`ba9b08e`](https://github.com/ax-sh/ax-sh.github.io/commit/ba9b08ef243fe488147926856e0cd78e8f48d4c4)
+- *(vitest)* Clean up commented code and return statement [`aced3f5`](https://github.com/ax-sh/ax-sh.github.io/commit/aced3f5d2b664edbf7f909023118196fec936299)
+- *(vitest)* Update return message in addVitest function [`e5eb816`](https://github.com/ax-sh/ax-sh.github.io/commit/e5eb8166468b3c46adf148adb4f59c6a35375514)
+
+### 🎨 Styling
+
+- *(tailwind.service)* Add missing semicolon to return statement [`cf7315c`](https://github.com/ax-sh/ax-sh.github.io/commit/cf7315cef4db425f75a102e76bf3bc2db2fc57aa)
+
+### 🧪 Testing
+
+- *(gh-pages)* Add test for vite.config integration [`a3bc047`](https://github.com/ax-sh/ax-sh.github.io/commit/a3bc047779ba2cf5c216e056e8947b6ce3d20f35)
+- *(vitest)* Add assertions to vitest service test [`488563f`](https://github.com/ax-sh/ax-sh.github.io/commit/488563fd8041aeed1e59352f03003223b0c363c2)
+- *(vitest)* Add error handling to tsconfig.service.ts [`ba1b0a5`](https://github.com/ax-sh/ax-sh.github.io/commit/ba1b0a56ec81a2ec26a378501855196f298c9eb6)
+- *(vite-plugins)* Add unit tests for Vite plugins service [`9ea0da8`](https://github.com/ax-sh/ax-sh.github.io/commit/9ea0da836ee9e49015afd3d0c56ebb3fce88815e)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update package dependencies and manager version [`631bee1`](https://github.com/ax-sh/ax-sh.github.io/commit/631bee10b123b8cf1cf56bec7479c45d44afa138)
+- Add todo comments for vitest setup and tests [`c1fdde0`](https://github.com/ax-sh/ax-sh.github.io/commit/c1fdde05d6446c7711a05c99a4097afaea8c8afc)
+- Update package dependencies and manager version [`206b16d`](https://github.com/ax-sh/ax-sh.github.io/commit/206b16dabdf083a9b3d54e7108f62e2f205c8410)
+- Format files before release [`3b6b1b3`](https://github.com/ax-sh/ax-sh.github.io/commit/3b6b1b3cc09a11a26fb7729afc8b8ddf6a59aaff)
+
+### Build
+
+- Add @testing-library/jest-dom to dependencies [`70cdc99`](https://github.com/ax-sh/ax-sh.github.io/commit/70cdc99456a86ae95f4c63b1210488dbb906d296)
+
+## [[0.11.0] - 2025-03-25](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.11.0)
+
+
+### 🚀 Features
+
 - *(go.service)* Add code quality tools installation logic [`382d901`](https://github.com/ax-sh/ax-sh.github.io/commit/382d9018b6501c71f07d7e0bfc7fa12bbb9df4aa)
 - *(go)* Add code quality tools installation instructions [`f5705b7`](https://github.com/ax-sh/ax-sh.github.io/commit/f5705b765240584e2414729fd2dde61ba72d76ad)
 - *(go)* Add repository validation in addCodeQualityTools [`74d62bc`](https://github.com/ax-sh/ax-sh.github.io/commit/74d62bca42020b4e511e60813858109c47c94b7f)
@@ -21,6 +93,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 ### ⚙️ Miscellaneous Tasks
 
 - Format files before release [`061c52e`](https://github.com/ax-sh/ax-sh.github.io/commit/061c52e950cc0be39ffeec0ae254ec3de1977431)
+- Add CHANGELOG [`93e0dbd`](https://github.com/ax-sh/ax-sh.github.io/commit/93e0dbd79f8f53d0e36976dda31d2f5c87c0ef70)
 
 ## [[0.10.0] - 2025-03-21](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.10.0)
 
