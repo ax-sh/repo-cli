@@ -64,7 +64,7 @@ export async function addVitestWithReactTesting() {
   // modify tsconfig for react and vite
   await modifyTsconfigForViteReactProject()
 
-  return 'added types and deps'
+  return 'Added types and deps for addVitestWithReactTesting'
 }
 
 export async function formatTsFile(script: string) {
