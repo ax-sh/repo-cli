@@ -1,4 +1,4 @@
-import { filesystem, print } from 'gluegun'
+import { filesystem } from 'gluegun'
 import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
 
 const code = `
@@ -30,7 +30,6 @@ export default antfu(
 )
 `
 export async function addEslint() {
-  print.info('done')
   const out = await exeCmdWithOutput('ni -D eslint @antfu/eslint-config')
   filesystem.write('./eslint.config.mjs', code)
   await addScriptToPackageJson('lint', 'eslint')
