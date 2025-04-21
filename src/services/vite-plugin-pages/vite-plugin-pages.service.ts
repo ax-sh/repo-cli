@@ -32,6 +32,7 @@ function configureViteReactMainFile() {
    
     // vite-env.d.ts
     /// <reference types="vite-plugin-pages/client-react" />
+   //  adding it on tsconfig also works 
    
    function Loader() {
       return (
