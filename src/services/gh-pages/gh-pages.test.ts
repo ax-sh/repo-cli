@@ -4,7 +4,6 @@ import {
   objectLiteralExpressionToJson,
   openAsSourceFile,
 } from '@ax-sh/ts-morph-kit';
-import { expect } from 'vitest';
 import { configViteConfigForGhPages, getGithubPagesUrlForRepo } from './gh-pages.service';
 
 const code = `

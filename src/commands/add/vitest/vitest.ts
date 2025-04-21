@@ -8,6 +8,8 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const mod = await import('../../../services/vitest/vitest.service')
 
     const out = await mod.addVitestDeps()
+    await mod.modifyTsconfigForVitest()
+    await mod.writeVitestConfig()
 
     print.highlight(`Added vitest deps ${out}`)
   },

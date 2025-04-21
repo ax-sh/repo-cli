@@ -1,5 +1,4 @@
 import { filesystem } from 'gluegun';
-import { expect } from 'vitest';
 import { exeCmdWithOutput } from '../../lib';
 
 vi.mock('../../lib/helpers/cmd/cli')

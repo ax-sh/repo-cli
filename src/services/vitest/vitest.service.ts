@@ -3,7 +3,7 @@ import { filesystem } from 'gluegun'
 import prettier from 'prettier'
 import { KnownError } from '../../errors'
 import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
-import { addVitestReactTypesToTsconfig } from '../tsconfig/tsconfig.service'
+import { addVitestReactTypesToTsconfig, updateTypesOnTsConfig } from '../tsconfig/tsconfig.service'
 
 export const vitestReactConfigContent = `
 /// <reference types="vitest" />
@@ -11,7 +11,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  plugins: [tsconfigPaths()]
+  plugins: [tsconfigPaths()],
   test: {
     globals: true,
     environment: "jsdom",
@@ -50,6 +50,17 @@ export async function addVitestDeps() {
   await addScriptToPackageJson('test:snapupdate', 'vitest -u')
   await addScriptToPackageJson('coverage', 'vitest run --coverage')
   return out
+}
+
+export async function modifyTsconfigForVitest() {
+  const tsconfigPath = 'tsconfig.json'
+  const currentData = filesystem.read(tsconfigPath)!
+
+  const newTypesToAdd: readonly string[] = [
+    'vitest/globals',
+  ] as const
+  const updatedData = updateTypesOnTsConfig(currentData, newTypesToAdd)
+  filesystem.write(tsconfigPath, updatedData)
 }
 
 export async function modifyTsconfigForViteReactProject() {
