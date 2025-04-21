@@ -13,6 +13,6 @@ export async function addVitePluginPages() {
   sourceFile.saveSync()
 
   print.info('ref: https://www.npmjs.com/package/vite-plugin-pages')
-  const out = 'out'
+  const out = 'done'
   return out
 }
