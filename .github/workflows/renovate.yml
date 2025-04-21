@@ -25,5 +25,4 @@ jobs:
           RENOVATE_ONBOARDING: 'false'
           RENOVATE_PLATFORM: github
           RENOVATE_ENDPOINT: ${{ secrets.GITHUB_API_URL }}
-          RENOVATE_AUTODISCOVER: true
           RENOVATE_AUTODISCOVER_FILTER: ${{ github.event.repository.full_name }}
