@@ -15,7 +15,7 @@ function configureViteConfigWithVitePagesPlugin() {
 }
 
 function configureViteReactMainFile() {
-  const mainFile = 'src/main.tsx'
+  const mainFile = './src/main.tsx'
   const sourceFile = openAsSourceFile(mainFile)
 
   addImportsToSourceFile(sourceFile, [
@@ -23,7 +23,7 @@ function configureViteReactMainFile() {
   ])
   sourceFile.formatText()
   sourceFile.saveSync()
-  updateTypesOnTsConfig('', ['vite-plugin-pages/client-react'])
+
   print.highlight(` 
     // main.tsx
     import { HashRouter } from 'react-router-dom';
@@ -82,11 +82,18 @@ function configureViteReactMainFile() {
   `)
 }
 
+function addVitePluginPagestypesToTsConfig() {
+  const tsConfigJson = '{}'
+  const updatedTsConfigJson = updateTypesOnTsConfig(tsConfigJson, ['vite-plugin-pages/client-react'])
+  console.log(updatedTsConfigJson, 'todo')
+}
+
 export async function addVitePluginPages() {
   await exeCmdWithOutput('ni -D vite-plugin-pages')
   await exeCmdWithOutput('ni react-router react-router-dom react-error-boundary')
   configureViteConfigWithVitePagesPlugin()
   configureViteReactMainFile()
+  addVitePluginPagestypesToTsConfig()
 
   print.info('ref: https://www.npmjs.com/package/vite-plugin-pages')
   const out = 'done'
