@@ -85,7 +85,7 @@ function configureViteReactMainFile() {
 function addVitePluginPagestypesToTsConfig() {
   const tsConfigJson = '{}'
   const updatedTsConfigJson = updateTypesOnTsConfig(tsConfigJson, ['vite-plugin-pages/client-react'])
-  console.log(updatedTsConfigJson, 'todo')
+  console.warn(updatedTsConfigJson, 'todo')
 }
 
 export async function addVitePluginPages() {
