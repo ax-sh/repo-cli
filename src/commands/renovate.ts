@@ -5,7 +5,9 @@ const command: GluegunCommand<ExtendedToolbox> = {
   name: 'renovate',
   run: async (toolbox) => {
     const { print, lib } = toolbox
-    const out = await lib.exeCmdWithOutput('bunx renovate --token $(gh auth token) --autodiscover')
+    const cmd = 'bunx renovate --token $(gh auth token) --autodiscover'
+    print.highlight(cmd)
+    const out = await lib.exeCmdWithOutput(cmd)
     const spinner = print.spin('Running renovate on all the allowed repos')
     print.info('renovate')
     spinner.succeed('Done')
