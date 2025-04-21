@@ -41,7 +41,8 @@
     "cll": "git cliff -l -s all",
     "cl": "git cliff -u -s all",
     "clc": "git cliff --current -s all",
-    "renovate": "nr act --env RENOVATE_TOKEN=$(gh auth token) -j renovate"
+    "ci:renovate:local": "nr act --env RENOVATE_TOKEN=$(gh auth token) -j renovate",
+    "ci:renovate": "gh workflow run renovate.yml"
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.12.0",
