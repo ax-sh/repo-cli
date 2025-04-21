@@ -23,9 +23,59 @@ function configureViteReactMainFile() {
   sourceFile.formatText()
   sourceFile.saveSync()
   print.highlight(` 
-   <HashRouter basename="/">
-     <App />
-   </HashRouter>
+    // main.tsx
+    import { HashRouter } from 'react-router-dom';
+
+    <HashRouter basename="/">
+       <App />
+    </HashRouter>
+   
+    // vite-env.d.ts
+    /// <reference types="vite-plugin-pages/client-react" />
+   
+   function Loader() {
+      return (
+        <Layout>
+          <FillViewPort>
+            <h1>Innicement</h1>
+          </FillViewPort>
+        </Layout>
+      );
+    }
+    // errors.tsx
+        
+    function AppErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+      return (
+        <Layout className={'container'}>
+          <div role="alert">
+            <p>Something went wrong:</p>
+            <pre>{error.message}</pre>
+            <button type="button" onClick={resetErrorBoundary}>Try again</button>
+          </div>
+        </Layout>
+      );
+    }
+    
+    export function AppErrorBoundary({ children }: PropsWithChildren) {
+      return (
+        <ErrorBoundary
+          FallbackComponent={AppErrorFallback}
+          onReset={(details) => {
+            console.warn(details);
+            // Reset the state of your app so the error doesn't happen again
+          }}
+        >
+          {children}
+        </ErrorBoundary>
+      );
+    }
+        
+    
+    // App.tsx
+    import routes from '~react-pages';
+    function App() {
+      return <AppErrorBoundary><Suspense fallback={<Loader />}>{useRoutes(routes)}</Suspense></AppErrorBoundary>;
+    }
   `)
 }
 

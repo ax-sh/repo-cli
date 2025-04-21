@@ -3,7 +3,7 @@ import type { ExtendedToolbox } from '../../types';
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'vite-plugin-pages',
-  alias: ['vite-pages'],
+  alias: ['vite-pages', 'vite-page'],
   run: async (toolbox) => {
     const { print } = toolbox
 
