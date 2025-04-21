@@ -21,7 +21,9 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const spinner = print.spin('Adding gh-pages')
     try {
       await gh.checkIfPushedToRemote()
-      await lib.addScriptToPackageJson('deploy', 'nr build && gh-pages -d dist')
+      // "predeploy": "nr rimraf dist && nr build",
+      //  "deploy": "nr gh-pages --nojekyll -d dist",
+      await lib.addScriptToPackageJson('deploy', 'nr build && gh-pages --nojekyll -d dist')
       await lib.addScriptToPackageJson('clean', 'rimraf dist')
       await gh.addGithubPagesDependencies()
       await gh.configViteConfigForGhPages()
