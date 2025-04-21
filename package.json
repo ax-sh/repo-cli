@@ -40,7 +40,8 @@
     "tag": "bun exec 'VERSION=$(git cliff --bumped-version) && git tag $VERSION && git push origin $VERSION && git cliff -l -s all | gh release create $VERSION --notes-file -' && npm pkg fix",
     "cll": "git cliff -l -s all",
     "cl": "git cliff -u -s all",
-    "clc": "git cliff --current -s all"
+    "clc": "git cliff --current -s all",
+    "renovate": "nr act --env RENOVATE_TOKEN=$(gh auth token) -j renovate"
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.12.0",
