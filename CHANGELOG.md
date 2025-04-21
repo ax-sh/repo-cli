@@ -6,6 +6,61 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ### 🚀 Features
 
+- Add zod validation for GitHub pages URL generation [`c8f0930`](https://github.com/ax-sh/ax-sh.github.io/commit/c8f0930c51b09632f174656ca2eef47263936790)
+- Add scripts for deploy and clean in gh-pages command [`ec10b65`](https://github.com/ax-sh/ax-sh.github.io/commit/ec10b65531fce65e577d907944489e76fa6e4d81)
+- *(eslint)* Add eslint command and service integration [`ff3c8b2`](https://github.com/ax-sh/ax-sh.github.io/commit/ff3c8b2e630d3bac862324f746da798b029ea252)
+- *(zustand)* Add zustand command and service integration [`bddb543`](https://github.com/ax-sh/ax-sh.github.io/commit/bddb543f479b6e70dc5d3bdb59e76bdd0b6a3d2c)
+- Add Renovate workflow and configuration files [`a7ad576`](https://github.com/ax-sh/ax-sh.github.io/commit/a7ad5765d67a87a0b3cb92b9c857f529bcc6541e)
+- *(lodash)* Add lodash command and service implementation [`05bd0ef`](https://github.com/ax-sh/ax-sh.github.io/commit/05bd0effdebd526311bf88516140e19979b0dcca)
+- *(ci)* Add local renovate command and workflow trigger [`6b7c70f`](https://github.com/ax-sh/ax-sh.github.io/commit/6b7c70fbf72265c79a9be6dddd03cb1584449d23)
+- *(vite-plugin-pages)* Add vite-plugin-pages command and service [`524e21e`](https://github.com/ax-sh/ax-sh.github.io/commit/524e21efd7abde705cfa84bc43b868c256191404)
+- *(vite-plugin-pages)* Add vite-plugin-pages command and service [`6f2df18`](https://github.com/ax-sh/ax-sh.github.io/commit/6f2df1861956daf9bee12dbcb3313d3b8172ad7d)
+- Add configuration functions for Vite pages plugin [`114c463`](https://github.com/ax-sh/ax-sh.github.io/commit/114c463e7b6dcf8bd815ed2e71ebf76e585be1e8)
+- Add new alias and improve Vite plugin pages setup [`653137a`](https://github.com/ax-sh/ax-sh.github.io/commit/653137a2cc865daa77c56c2f1ceec9e52bb157f8)
+- *(tsconfig)* Add function to update types in tsconfig [`3e83d50`](https://github.com/ax-sh/ax-sh.github.io/commit/3e83d50f7ab52c78b09636ee8f4337087c1a42c1)
+- Add Vite plugin pages configuration and tests [`1ecc9ac`](https://github.com/ax-sh/ax-sh.github.io/commit/1ecc9ac9f6a793243d1a9d2c97c536374af2fa18)
+
+### 🐛 Bug Fixes
+
+- *(gh-pages)* Handle errors and improve success messages [`5ff35c2`](https://github.com/ax-sh/ax-sh.github.io/commit/5ff35c2e6a17ef360d9a56111ae4b43e724d4898)
+
+### 🚜 Refactor
+
+- *(vitest)* Clean up vitest configuration and dependencies [`4fc88ef`](https://github.com/ax-sh/ax-sh.github.io/commit/4fc88ef230cb33b87dc284470a41bb3972e67cbd)
+- Simplify command execution in renovate.ts [`3259d5e`](https://github.com/ax-sh/ax-sh.github.io/commit/3259d5e670dda2bd47a79b1368f4c23a3ecb8240)
+- *(add/gh-pages)* Update deploy script for gh-pages [`ae8fcfa`](https://github.com/ax-sh/ax-sh.github.io/commit/ae8fcfa663def04f6e7e05695095797e0d5bb643)
+
+### 📚 Documentation
+
+- *(eslint)* Add comment about eslint-config usage [`e2d8319`](https://github.com/ax-sh/ax-sh.github.io/commit/e2d831958dd0a27f7fda4c56d3facca7d9d00288)
+
+### 🎨 Styling
+
+- *(eslint.service.ts)* Format eslint service config object [`8bb4421`](https://github.com/ax-sh/ax-sh.github.io/commit/8bb44216c29e422ff937269883064a98fcb48d2e)
+
+### 🧪 Testing
+
+- *(vitest)* Update resolved expectations in tests [`a12c79a`](https://github.com/ax-sh/ax-sh.github.io/commit/a12c79a239e5921b9af44ff4c87309c8a08e6026)
+- *(gh-pages)* Update test for GitHub Pages URL format [`7dbbc97`](https://github.com/ax-sh/ax-sh.github.io/commit/7dbbc976226af1c69bbd1053229392b6a8b79ef1)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update renovate configuration for autodiscover feature [`c0d7535`](https://github.com/ax-sh/ax-sh.github.io/commit/c0d75358160f264b560316c20c8429d5e3312a71)
+- Update Renovate version in workflow file [`fd1ebf7`](https://github.com/ax-sh/ax-sh.github.io/commit/fd1ebf7226db8ca23bd51c30190399e3acf22b44)
+- Update schedule to every weekend in renovate.json [`e7a34fd`](https://github.com/ax-sh/ax-sh.github.io/commit/e7a34fd68b3e3e66f66bb632719fb33f88863c17)
+- *(renovate)* Add reviewers to configuration file [`5bf62f7`](https://github.com/ax-sh/ax-sh.github.io/commit/5bf62f75fa0012a413132bb63b923947928b630f)
+- Add comment about tsconfig for vite-plugin-pages [`8256127`](https://github.com/ax-sh/ax-sh.github.io/commit/8256127e8a10bf54fc074829344cd0399ae81319)
+- Format files before release [`a2b9373`](https://github.com/ax-sh/ax-sh.github.io/commit/a2b9373ae9b8ff4037eff10e71f0417c4e87a670)
+
+### Build
+
+- Update package dependencies in package.json [`7dd7ad0`](https://github.com/ax-sh/ax-sh.github.io/commit/7dd7ad0ec88fa9fb05b95f05a2b7f50a24891955)
+
+## [[0.12.0] - 2025-04-19](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.12.0)
+
+
+### 🚀 Features
+
 - *(gh-pages)* Add config for Vite in GitHub Pages setup [`3391ee5`](https://github.com/ax-sh/ax-sh.github.io/commit/3391ee531b7d4c8d3fc3c95dbcdf7ff42f2baa62)
 - Add who in npm command [`d104fb1`](https://github.com/ax-sh/ax-sh.github.io/commit/d104fb13d1106ea6c7d60e486a78b2b49a567256)
 - *(npm.service)* Enhance whoamiGithub with error handling [`d5d6060`](https://github.com/ax-sh/ax-sh.github.io/commit/d5d6060951cfd126d0153865f0887f12afb2d74c)
@@ -68,6 +123,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 - Add todo comments for vitest setup and tests [`c1fdde0`](https://github.com/ax-sh/ax-sh.github.io/commit/c1fdde05d6446c7711a05c99a4097afaea8c8afc)
 - Update package dependencies and manager version [`206b16d`](https://github.com/ax-sh/ax-sh.github.io/commit/206b16dabdf083a9b3d54e7108f62e2f205c8410)
 - Format files before release [`3b6b1b3`](https://github.com/ax-sh/ax-sh.github.io/commit/3b6b1b3cc09a11a26fb7729afc8b8ddf6a59aaff)
+- Add CHANGELOG [`b5f7097`](https://github.com/ax-sh/ax-sh.github.io/commit/b5f709784083adc3d3ddbf3ad5ec3bc47fc05cf7)
 
 ### Build
 
