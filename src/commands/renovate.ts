@@ -1,5 +1,6 @@
 import type { GluegunCommand } from 'gluegun'
 import type { ExtendedToolbox } from '../types';
+import { KnownError } from '../errors'
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'renovate',
@@ -8,11 +9,20 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const cmd = 'bunx renovate --platform=github --token $(gh auth token) $(gh repo view --json nameWithOwner -q .nameWithOwner)'
     // const cmd = 'bunx renovate --token $(gh auth token) --autodiscover'
     print.highlight(cmd)
-    const out = await lib.exeCmdWithOutput(cmd)
-    const spinner = print.spin('Running renovate on all the allowed repos')
-    print.info('renovate')
-    spinner.succeed('Done')
-    print.highlight(out)
+    const spinner = print.spin('Running renovate on current repo')
+    try {
+      const out = await lib.exeCmdWithOutput(cmd)
+      print.info('renovate')
+      spinner.succeed('Done')
+      print.highlight(out)
+    }
+    catch (e) {
+      spinner.fail(`error ${e}`)
+      throw new KnownError(e)
+    }
+    finally {
+      spinner.stop()
+    }
   },
 }
 
