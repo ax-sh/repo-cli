@@ -64,6 +64,18 @@ export function modifyCompilerOptionsTypes(
   return modify(rawJsonString, jsonPath, [...types], options);
 }
 
+export function updateTypesOnTsConfig(rawJsonString: Readonly<string>, newTypesToAdd: readonly string[]) {
+  const existingTypes = parseCompilerOptionsTypes(rawJsonString)
+  // Filter out duplicates by creating a Set
+  const uniqueTypes = [...new Set([...existingTypes, ...newTypesToAdd])]
+
+  // Prepare the edits
+  const edits = modifyCompilerOptionsTypes(rawJsonString, uniqueTypes)
+
+  // Apply the edits to the original JSONC data
+  return applyEdits(rawJsonString, edits)
+}
+
 /**
  * Adds Vitest React types to tsconfig
  * @param rawJsonString The raw tsconfig JSON string
@@ -73,19 +85,9 @@ export function modifyCompilerOptionsTypes(
 export async function addVitestReactTypesToTsconfig(
   rawJsonString: string,
 ): Promise<string> {
-  const existingTypes = parseCompilerOptionsTypes(rawJsonString)
-
   const newTypesToAdd: readonly string[] = [
     '@testing-library/jest-dom',
     'vitest/globals',
-  ]
-
-  // Filter out duplicates by creating a Set
-  const uniqueTypes = [...new Set([...existingTypes, ...newTypesToAdd])]
-
-  // Prepare the edits
-  const edits = modifyCompilerOptionsTypes(rawJsonString, uniqueTypes)
-
-  // Apply the edits to the original JSONC data
-  return applyEdits(rawJsonString, edits)
+  ] as const
+  return updateTypesOnTsConfig(rawJsonString, newTypesToAdd)
 }

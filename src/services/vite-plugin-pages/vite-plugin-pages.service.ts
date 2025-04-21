@@ -2,6 +2,7 @@ import { addImportsToSourceFile, addPluginsInDefaultViteConfig, openAsSourceFile
 import { print } from 'gluegun'
 import { exeCmdWithOutput } from '../../lib'
 import { openViteConfigAsSourceFile } from '../gh-pages/gh-pages.service'
+import { updateTypesOnTsConfig } from '../tsconfig/tsconfig.service'
 
 function configureViteConfigWithVitePagesPlugin() {
   const sourceFile = openViteConfigAsSourceFile()
@@ -22,6 +23,7 @@ function configureViteReactMainFile() {
   ])
   sourceFile.formatText()
   sourceFile.saveSync()
+  updateTypesOnTsConfig('', ['vite-plugin-pages/client-react'])
   print.highlight(` 
     // main.tsx
     import { HashRouter } from 'react-router-dom';
