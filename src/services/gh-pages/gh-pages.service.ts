@@ -84,6 +84,7 @@ export async function getGithubRepoInfo() {
 export async function getGithubPagesUrlForRepo(nameWithOwner: string) {
   const homepage = z.string().transform((repoWithUsername) => {
     const [username, repoName] = repoWithUsername.split('/')
+    // gh api /repos/ax-sh/ax-sh.github.io/pages
     if (!username)
       throw new KnownError('username cant be empty')
     if (!repoName)
