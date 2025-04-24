@@ -1,5 +1,5 @@
 import { filesystem } from 'gluegun'
-import { exeCmdWithOutput } from '../../lib';
+import { exeCmdWithOutput } from '../../lib'
 
 vi.mock('gluegun', { spy: true }) // mocks every export with spying for mocking
 vi.mock('../../lib/helpers/cmd/cli')
@@ -11,10 +11,12 @@ describe('[vitest] service test', () => {
     const mod = await import('./vitest.service')
     expect(mod).toBeDefined()
     const tsconfig = {
-      compilerOptions: { types: [
-        // 'vitest/globals',
-        '___test_type',
-      ] },
+      compilerOptions: {
+        types: [
+          // 'vitest/globals',
+          '___test_type',
+        ],
+      },
     }
 
     // eslint-disable-next-line ts/unbound-method
@@ -35,7 +37,13 @@ describe('[vitest] service test', () => {
 
     expect(fn).toBeCalled()
     expect(fn).toHaveResolvedTimes(2)
-    expect(fn).toHaveNthResolvedWith(1, 'ni -D vitest msw@latest @faker-js/faker vite-tsconfig-paths')
-    expect(fn).toHaveNthResolvedWith(2, 'ni -D @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom @testing-library/jest-dom')
-  });
-});
+    expect(fn).toHaveNthResolvedWith(
+      1,
+      'ni -D vitest msw@latest @faker-js/faker vite-tsconfig-paths',
+    )
+    expect(fn).toHaveNthResolvedWith(
+      2,
+      'ni -D @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom @testing-library/jest-dom',
+    )
+  })
+})

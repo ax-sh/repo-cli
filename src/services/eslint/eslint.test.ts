@@ -1,8 +1,8 @@
-import { exeCmdWithOutput } from '../../lib';
+import { exeCmdWithOutput } from '../../lib'
 
 vi.mock('../../lib/helpers/cmd/cli')
 // @ts-expect-error weird error
-vi.mock('gluegun', ({ filesystem: { write: vi.fn() } }))
+vi.mock('gluegun', { filesystem: { write: vi.fn() } })
 
 describe('[eslint] service test', () => {
   it('should return results', async () => {
@@ -13,5 +13,5 @@ describe('[eslint] service test', () => {
 
     const out = await mod.addEslint()
     expect(out).toEqual('ni -D eslint @antfu/eslint-config')
-  });
-});
+  })
+})

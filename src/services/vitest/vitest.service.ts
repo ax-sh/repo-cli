@@ -3,7 +3,10 @@ import { filesystem } from 'gluegun'
 import prettier from 'prettier'
 import { KnownError } from '../../errors'
 import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
-import { addVitestReactTypesToTsconfig, updateTypesOnTsConfig } from '../tsconfig/tsconfig.service'
+import {
+  addVitestReactTypesToTsconfig,
+  updateTypesOnTsConfig,
+} from '../tsconfig/tsconfig.service'
 
 export const vitestReactConfigContent = `
 /// <reference types="vitest" />
@@ -33,17 +36,24 @@ export async function writeVitestConfig() {
   const vitestConfigPath = 'vitest.config.ts'
   const setupFile = 'vitest.setup.ts'
   if (filesystem.isFile(vitestConfigPath)) {
-    throw new KnownError('🚨 vite.config.ts already exists; not overwriting with default')
+    throw new KnownError(
+      '🚨 vite.config.ts already exists; not overwriting with default',
+    )
   }
 
-  filesystem.write(vitestConfigPath, await formatTsFile(vitestReactConfigContent))
+  filesystem.write(
+    vitestConfigPath,
+    await formatTsFile(vitestReactConfigContent),
+  )
   filesystem.write(setupFile, await formatTsFile(vitestReactSetup))
 
   return true
 }
 
 export async function addVitestDeps() {
-  const out = await exeCmdWithOutput('ni -D vitest msw@latest @faker-js/faker vite-tsconfig-paths')
+  const out = await exeCmdWithOutput(
+    'ni -D vitest msw@latest @faker-js/faker vite-tsconfig-paths',
+  )
   await addScriptToPackageJson('test', 'dotenv -- vitest run')
   // await toolbox.addScriptToPackageJson('test', 'vitest run')
   await addScriptToPackageJson('test:watch', 'vitest')
@@ -56,9 +66,7 @@ export async function modifyTsconfigForVitest() {
   const tsconfigPath = 'tsconfig.json'
   const currentData = filesystem.read(tsconfigPath)!
 
-  const newTypesToAdd: readonly string[] = [
-    'vitest/globals',
-  ] as const
+  const newTypesToAdd: readonly string[] = ['vitest/globals'] as const
   const updatedData = updateTypesOnTsConfig(currentData, newTypesToAdd)
   filesystem.write(tsconfigPath, updatedData)
 }
@@ -72,7 +80,9 @@ export async function modifyTsconfigForViteReactProject() {
 
 export async function addVitestWithReactTesting() {
   await addVitestDeps()
-  await exeCmdWithOutput('ni -D @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom @testing-library/jest-dom')
+  await exeCmdWithOutput(
+    'ni -D @testing-library/user-event @testing-library/react @testing-library/dom @types/react @types/react-dom @testing-library/jest-dom',
+  )
 
   // modify tsconfig for react and vite
   await modifyTsconfigForViteReactProject()

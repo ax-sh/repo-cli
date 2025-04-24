@@ -1,5 +1,5 @@
 import type { GluegunCommand } from 'gluegun'
-import type { ExtendedToolbox } from '../../types';
+import type { ExtendedToolbox } from '../../types'
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'storybook',
@@ -7,9 +7,9 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const { print } = toolbox
 
     const root = await import('../../services/storybook/storybook.service')
-    const out = await root.addStorybookToRepo();
+    const out = await root.addStorybookToRepo()
     print.highlight(`Run Out storybook ${out}`)
   },
 }
 
-export default command;
+export default command

@@ -3,8 +3,11 @@ import {
   createTestSourceFile,
   objectLiteralExpressionToJson,
   openAsSourceFile,
-} from '@ax-sh/ts-morph-kit';
-import { configViteConfigForGhPages, getGithubPagesUrlForRepo } from './gh-pages.service';
+} from '@ax-sh/ts-morph-kit'
+import {
+  configViteConfigForGhPages,
+  getGithubPagesUrlForRepo,
+} from './gh-pages.service'
 
 const code = `
 import { defineConfig } from 'vite';
@@ -16,14 +19,14 @@ export default defineConfig({
 });
 `
 vi.mock('@ax-sh/ts-morph-kit', async () => {
-  const actual = await vi.importActual('@ax-sh/ts-morph-kit');
+  const actual = await vi.importActual('@ax-sh/ts-morph-kit')
   // const testSourceFile = await createTestSourceFile(code)
 
   return {
     ...actual,
     openAsSourceFile: vi.fn(),
-  };
-});
+  }
+})
 
 describe('gh-pages', () => {
   // Before your tests, make sure to resolve the mock
@@ -36,10 +39,8 @@ describe('gh-pages', () => {
     // })
     expect(mocked).toHaveProperty('mock')
 
-    mocked.mockReturnValue(
-      await createTestSourceFile(code),
-    );
-  });
+    mocked.mockReturnValue(await createTestSourceFile(code))
+  })
   it('should add new imports to a ts file', async () => {
     expect(addImportsToTsFile).toBeDefined()
     const sf = openAsSourceFile(code)
@@ -49,9 +50,9 @@ describe('gh-pages', () => {
   })
 
   it('should add base on test vite.config', async () => {
-    const result = openAsSourceFile('vitest.config.ts');
+    const result = openAsSourceFile('vitest.config.ts')
 
-    result.formatText();
+    result.formatText()
     // console.log(result.getText());
 
     const config = await configViteConfigForGhPages()
@@ -60,13 +61,11 @@ describe('gh-pages', () => {
     expect(json).toEqual({
       ___test___: true,
       base: '/repo-cli/',
-      plugins: [
-        'foo()',
-      ],
+      plugins: ['foo()'],
     })
-  });
+  })
   it('should make repo hosted gh-page url', async () => {
     const url = await getGithubPagesUrlForRepo('username/repo')
-    expect(url).toEqual('https://username.github.io/repo');
-  });
+    expect(url).toEqual('https://username.github.io/repo')
+  })
 })

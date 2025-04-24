@@ -7,6 +7,12 @@
   "reviewers": ["team:ax-sh"],
   "env": {
     "NPM_TOKEN": "NPM_TOKEN"
-  }
-
+  },
+  "hostRules": [
+    {
+      "hostType": "npm",
+      "matchHost": "https://npm.pkg.github.com/",
+      "token": "${{ secrets.GITHUB_TOKEN }}"
+    }
+  ]
 }

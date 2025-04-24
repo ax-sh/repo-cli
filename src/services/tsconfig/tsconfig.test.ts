@@ -1,4 +1,8 @@
-import { addVitestReactTypesToTsconfig, parseCompilerOptionsTypes, parseTsconfigJsonc } from './tsconfig.service'
+import {
+  addVitestReactTypesToTsconfig,
+  parseCompilerOptionsTypes,
+  parseTsconfigJsonc,
+} from './tsconfig.service'
 
 describe('', () => {
   it('should parse tsconfig', async () => {
@@ -32,6 +36,10 @@ describe('', () => {
     const updated = await addVitestReactTypesToTsconfig(data)
     const json = parseTsconfigJsonc(updated)
 
-    expect(json.compilerOptions?.types).toEqual(['foo', '@testing-library/jest-dom', 'vitest/globals'])
+    expect(json.compilerOptions?.types).toEqual([
+      'foo',
+      '@testing-library/jest-dom',
+      'vitest/globals',
+    ])
   })
 })

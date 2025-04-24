@@ -1,4 +1,8 @@
-import { addImportsToSourceFile, addPluginsInDefaultViteConfig, openAsSourceFile } from '@ax-sh/ts-morph-kit'
+import {
+  addImportsToSourceFile,
+  addPluginsInDefaultViteConfig,
+  openAsSourceFile,
+} from '@ax-sh/ts-morph-kit'
 import { print } from 'gluegun'
 import { exeCmdWithOutput } from '../../lib'
 import { openViteConfigAsSourceFile } from '../gh-pages/gh-pages.service'
@@ -84,13 +88,17 @@ function configureViteReactMainFile() {
 
 function addVitePluginPagestypesToTsConfig() {
   const tsConfigJson = '{}'
-  const updatedTsConfigJson = updateTypesOnTsConfig(tsConfigJson, ['vite-plugin-pages/client-react'])
+  const updatedTsConfigJson = updateTypesOnTsConfig(tsConfigJson, [
+    'vite-plugin-pages/client-react',
+  ])
   console.warn(updatedTsConfigJson, 'todo')
 }
 
 export async function addVitePluginPages() {
   await exeCmdWithOutput('ni -D vite-plugin-pages')
-  await exeCmdWithOutput('ni react-router react-router-dom react-error-boundary')
+  await exeCmdWithOutput(
+    'ni react-router react-router-dom react-error-boundary',
+  )
   configureViteConfigWithVitePagesPlugin()
   configureViteReactMainFile()
   addVitePluginPagestypesToTsConfig()

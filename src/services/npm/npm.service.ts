@@ -1,7 +1,7 @@
-import type { CommandError } from '../../types';
-import { print } from 'gluegun';
+import type { CommandError } from '../../types'
+import { print } from 'gluegun'
 import { KnownError } from '../../errors'
-import { exeCmdWithOutput } from '../../lib';
+import { exeCmdWithOutput } from '../../lib'
 
 // NPM_CONFIG_REGISTRY="https://npm.pkg.github.com/" npm publish --//npm.pkg.github.com/:_authToken="$(gh auth token)"
 // NPM_CONFIG_REGISTRY="https://npm.pkg.github.com/" npm whoami --//npm.pkg.github.com/:_authToken="$(gh auth token)"
@@ -13,9 +13,8 @@ async function checkGithubAuthStatus() {
     await exeCmdWithOutput(`gh auth status`)
     // Token scopes: 'admin:public_key', 'copilot', 'delete:packages', 'read:org', 'repo', 'write:packages'
     return true
-  }
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  catch (e) {
+  } catch (e) {
+    // eslint-disable-next-line unused-imports/no-unused-vars
     // print.error(new KnownError(['Invalid GITHUB token', e.cmd, e.stderr]));
     return false
   }
@@ -27,17 +26,16 @@ async function exeCmdWithOutputWithGithubNpmAuth(cmd: string) {
   process.env.NPM_CONFIG_REGISTRY = 'https://npm.pkg.github.com/'
   try {
     return await exeCmdWithOutput(`${cmd} ${auth}`)
-  }
-  catch (err) {
+  } catch (err) {
     const error = err as CommandError
-    print.error(error.stderr);
+    print.error(error.stderr)
     print.highlight(error.cmd)
     throw new KnownError(error.message)
   }
 }
 
 export async function whoamiGithub() {
-  if (!await checkGithubAuthStatus()) {
+  if (!(await checkGithubAuthStatus())) {
     print.highlight('gh auth status')
     throw new KnownError('gh Auth Token is invalid')
   }
