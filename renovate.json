@@ -4,5 +4,9 @@
   "timezone": "America/Los_Angeles",
   "schedule": "every weekend",
   "commitMessagePrefix": "chore(deps): ",
-  "reviewers": ["team:ax-sh"]
+  "reviewers": ["team:ax-sh"],
+  "env": {
+    "NPM_TOKEN": "NPM_TOKEN"
+  }
+
 }
