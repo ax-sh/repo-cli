@@ -13,8 +13,9 @@ async function checkGithubAuthStatus() {
     await exeCmdWithOutput(`gh auth status`)
     // Token scopes: 'admin:public_key', 'copilot', 'delete:packages', 'read:org', 'repo', 'write:packages'
     return true
-  } catch (e) {
-    // eslint-disable-next-line unused-imports/no-unused-vars
+  }
+  catch (e) {
+    console.error(e)
     // print.error(new KnownError(['Invalid GITHUB token', e.cmd, e.stderr]));
     return false
   }
@@ -26,7 +27,8 @@ async function exeCmdWithOutputWithGithubNpmAuth(cmd: string) {
   process.env.NPM_CONFIG_REGISTRY = 'https://npm.pkg.github.com/'
   try {
     return await exeCmdWithOutput(`${cmd} ${auth}`)
-  } catch (err) {
+  }
+  catch (err) {
     const error = err as CommandError
     print.error(error.stderr)
     print.highlight(error.cmd)

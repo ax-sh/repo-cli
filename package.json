@@ -32,6 +32,7 @@
     "snapupdate": "vitest --update",
     "coverage": "vitest --coverage",
     "knip": "knip",
+    "pr:create": "gh pr create --fill",
     "release": "dotenv -v DEBUG=1 release-it -- minor --no-git.push --no-git.requireUpstream --ci",
     "changelog:latest": "nr git-cliff -l",
     "up": "bun update --latest",
