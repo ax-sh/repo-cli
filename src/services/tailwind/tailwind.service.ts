@@ -1,4 +1,7 @@
-import { addImportsToSourceFile, addPluginsInDefaultViteConfig } from '@ax-sh/ts-morph-kit'
+import {
+  addImportsToSourceFile,
+  addPluginsInDefaultViteConfig,
+} from '@ax-sh/ts-morph-kit'
 import { exeCmdWithOutput } from '../../lib'
 import { openViteConfigAsSourceFile } from '../gh-pages/gh-pages.service'
 

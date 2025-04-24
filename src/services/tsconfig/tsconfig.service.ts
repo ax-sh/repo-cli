@@ -1,4 +1,9 @@
-import type { EditResult, JSONPath, ModificationOptions, ParseError } from 'jsonc-parser'
+import type {
+  EditResult,
+  JSONPath,
+  ModificationOptions,
+  ParseError,
+} from 'jsonc-parser'
 import { applyEdits, modify, parse } from 'jsonc-parser'
 import { KnownError } from '../../errors'
 
@@ -22,11 +27,12 @@ export function parseTsconfigJsonc(rawJsonString: string): TsconfigContent {
   try {
     const tsconfig = parse(rawJsonString, errors) as TsconfigContent
     return tsconfig
-  }
-  catch (e) {
+  } catch (e) {
     const error: Error = e
     throw new KnownError(
-      `Failed to parse tsconfig: ${error.message} ${errors.map(e => e.error).join(', ')}`,
+      `Failed to parse tsconfig: ${error.message} ${errors
+        .map((e) => e.error)
+        .join(', ')}`,
     )
   }
 }
@@ -56,15 +62,18 @@ export function modifyCompilerOptionsTypes(
   rawJsonString: string,
   types: readonly string[],
 ): EditResult {
-  const jsonPath: JSONPath = ['compilerOptions', 'types'];
+  const jsonPath: JSONPath = ['compilerOptions', 'types']
   const options: ModificationOptions = {
     formattingOptions: { insertSpaces: true, tabSize: 2 },
-  };
+  }
 
-  return modify(rawJsonString, jsonPath, [...types], options);
+  return modify(rawJsonString, jsonPath, [...types], options)
 }
 
-export function updateTypesOnTsConfig(rawJsonString: Readonly<string>, newTypesToAdd: readonly string[]) {
+export function updateTypesOnTsConfig(
+  rawJsonString: Readonly<string>,
+  newTypesToAdd: readonly string[],
+) {
   const existingTypes = parseCompilerOptionsTypes(rawJsonString)
   // Filter out duplicates by creating a Set
   const uniqueTypes = [...new Set([...existingTypes, ...newTypesToAdd])]

@@ -1,4 +1,4 @@
-import { expect } from 'vitest';
+import { expect } from 'vitest'
 
 async function whoamiInGithub() {
   const { $, ExecaError } = await import('execa')
@@ -7,11 +7,11 @@ async function whoamiInGithub() {
     const auth = `--//npm.pkg.github.com/:_authToken="${token.stdout}"`
     const { stdout } = await $`npm whoami ${auth}`
     return stdout
-  }
-  catch (error) {
-    if (!(error instanceof ExecaError))
+  } catch (error) {
+    if (!(error instanceof ExecaError)) {
       return
-    console.error('error running command:', error.command);
+    }
+    console.error('error running command:', error.command)
   }
 }
 
@@ -23,5 +23,5 @@ describe('npm cmd test', () => {
   it.todo('should get whoami', async () => {
     const who = await whoamiInGithub()
     expect(who).toEqual('me')
-  });
-});
+  })
+})

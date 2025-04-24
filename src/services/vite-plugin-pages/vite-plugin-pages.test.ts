@@ -1,5 +1,5 @@
 import { createTestSourceFile, openAsSourceFile } from '@ax-sh/ts-morph-kit'
-import { exeCmdWithOutput } from '../../lib';
+import { exeCmdWithOutput } from '../../lib'
 
 vi.mock('../../lib/helpers/cmd/cli')
 vi.mock('@ax-sh/ts-morph-kit', { spy: true })
@@ -21,5 +21,5 @@ describe('[vite-plugin-pages] service test', () => {
 
     const out = await mod.addVitePluginPages()
     console.warn(out)
-  });
-});
+  })
+})

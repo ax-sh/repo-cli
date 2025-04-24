@@ -1,7 +1,7 @@
-import { faker } from '@faker-js/faker/locale/ar';
-import { exeCmdWithOutput } from '../../lib';
-import { getJsonFromCmd } from '../../lib/helpers/cmd/cli';
-import { listNPMPackagesFromGithubRegistry } from './npm-list.service';
+import { faker } from '@faker-js/faker/locale/ar'
+import { exeCmdWithOutput } from '../../lib'
+import { getJsonFromCmd } from '../../lib/helpers/cmd/cli'
+import { listNPMPackagesFromGithubRegistry } from './npm-list.service'
 
 vi.mock('../../lib/helpers/cmd/cli')
 
@@ -14,7 +14,7 @@ describe('[npm-list] service test', () => {
     //
     // const out = await mod.run()
     // console.warn(out)
-  });
+  })
   it('should use gh for getting npm packages from github registry', async () => {
     const cmdMock = vi.mocked(getJsonFromCmd)
 
@@ -32,11 +32,11 @@ describe('[npm-list] service test', () => {
     })
     console.debug(arr)
     expect(arr).toHaveLength(3)
-    console.debug(arr.map(i => i.name))
+    console.debug(arr.map((i) => i.name))
     expect(arr.length).toEqual(3)
     const [pkg] = arr
 
     console.debug(pkg.owner)
     console.debug(pkg.package_type)
   })
-});
+})

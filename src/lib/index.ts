@@ -1,6 +1,6 @@
 import appRootPath from 'app-root-path'
 
-export { elapsedTime } from './date-utils';
+export { elapsedTime } from './date-utils'
 
 export { addScriptToPackageJson, exeCmdWithOutput } from './helpers/cmd/cli'
 

@@ -1,4 +1,4 @@
-import { getGithubRepoInfo } from '../gh-pages/gh-pages.service';
+import { getGithubRepoInfo } from '../gh-pages/gh-pages.service'
 
 export async function getInfo() {
   const json = await getGithubRepoInfo()

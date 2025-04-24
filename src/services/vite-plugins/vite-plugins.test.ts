@@ -5,7 +5,7 @@ import {
   openAsSourceFile,
 } from '@ax-sh/ts-morph-kit'
 
-import { exeCmdWithOutput } from '../../lib';
+import { exeCmdWithOutput } from '../../lib'
 
 vi.mock('../../lib/helpers/cmd/cli')
 vi.mock('@ax-sh/ts-morph-kit', { spy: true })
@@ -24,10 +24,8 @@ describe('[vite-plugins] service test', () => {
     const mocked = vi.mocked(openAsSourceFile)
     expect(mocked).toHaveProperty('mock')
 
-    mocked.mockReturnValue(
-      await createTestSourceFile(code),
-    );
-  });
+    mocked.mockReturnValue(await createTestSourceFile(code))
+  })
   it('should return results', async () => {
     const fn = vi.mocked(exeCmdWithOutput)
     fn.mockImplementation(async (args: string) => args)
@@ -37,8 +35,14 @@ describe('[vite-plugins] service test', () => {
     const out = await mod.addDefaultVitePlugins()
     expect(fn).toBeCalledWith('ni --save-dev vite-plugin-qrcode')
     const sf = await createTestSourceFile(out)
-    const viteDefaultConfigJson = objectLiteralExpressionToJson(getDefaultViteConfig(sf))
+    const viteDefaultConfigJson = objectLiteralExpressionToJson(
+      getDefaultViteConfig(sf),
+    )
 
-    expect(viteDefaultConfigJson).toEqual({ plugins: ['foo()', 'qrcode()'], base: 'test', ___test___: true })
-  });
-});
+    expect(viteDefaultConfigJson).toEqual({
+      plugins: ['foo()', 'qrcode()'],
+      base: 'test',
+      ___test___: true,
+    })
+  })
+})

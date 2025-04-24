@@ -1,4 +1,4 @@
-import { exeCmdWithOutput } from '../../lib';
+import { exeCmdWithOutput } from '../../lib'
 
 vi.mock('../../lib/helpers/cmd/cli')
 
@@ -11,5 +11,5 @@ describe('[zustand] service test', () => {
 
     const out = await mod.addZustand()
     expect(out).toEqual('ni zustand immer')
-  });
-});
+  })
+})

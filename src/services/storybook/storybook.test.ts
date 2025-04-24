@@ -1,5 +1,5 @@
 import { expect } from 'vitest'
-import { exeCmdWithOutput } from '../../lib';
+import { exeCmdWithOutput } from '../../lib'
 
 vi.mock('../../lib/helpers/cmd/cli')
 
@@ -11,6 +11,8 @@ describe('[storybook] service test', () => {
     expect(mod).toBeDefined()
 
     const out = await mod.addStorybookToRepo()
-    expect(out).toEqual('bun create storybook@latest --package-manager bun --disable-telemetry --builder vite  --yes')
-  });
-});
+    expect(out).toEqual(
+      'bun create storybook@latest --package-manager bun --disable-telemetry --builder vite  --yes',
+    )
+  })
+})

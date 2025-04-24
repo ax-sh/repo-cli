@@ -1,5 +1,5 @@
 import type { GluegunCommand } from 'gluegun'
-import type { ExtendedToolbox } from '../../../types';
+import type { ExtendedToolbox } from '../../../types'
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'react',
@@ -8,7 +8,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const spinner = print.spin('Adding vitest')
 
     const mod = await import('../../../services/vitest/vitest.service')
-    const out = await mod.addVitestWithReactTesting();
+    const out = await mod.addVitestWithReactTesting()
     print.highlight(`Run Out vitest ${out}`)
     await mod.writeVitestConfig()
 
@@ -29,4 +29,4 @@ const command: GluegunCommand<ExtendedToolbox> = {
   },
 }
 
-export default command;
+export default command
