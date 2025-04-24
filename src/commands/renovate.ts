@@ -18,7 +18,8 @@ const command: GluegunCommand<ExtendedToolbox> = {
     }
     catch (e) {
       spinner.fail(`error ${e}`)
-      throw new KnownError(e)
+      const error = e as Error
+      throw new KnownError(error.message)
     }
     finally {
       spinner.stop()
