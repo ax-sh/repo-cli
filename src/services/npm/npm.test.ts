@@ -7,7 +7,8 @@ async function whoamiInGithub() {
     const auth = `--//npm.pkg.github.com/:_authToken="${token.stdout}"`
     const { stdout } = await $`npm whoami ${auth}`
     return stdout
-  } catch (error) {
+  }
+  catch (error) {
     if (!(error instanceof ExecaError)) {
       return
     }

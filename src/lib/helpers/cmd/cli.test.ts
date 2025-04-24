@@ -69,7 +69,8 @@ describe('cli helper', () => {
     try {
       console.warn(await cli.addScriptToPackageJson(cmd, 'cow'))
       console.warn(await cli.addScriptToPackageJson(cmd, 'dog'))
-    } finally {
+    }
+    finally {
       await cli.packageJsonScript(cmd).remove()
     }
   })

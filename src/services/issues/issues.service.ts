@@ -8,7 +8,7 @@ export async function createIssue(title: string, body: string) {
 // gh api 'repos/{owner}/{repo}/issues' --paginate
 interface IssuesResponse {
   isPinned: boolean
-  author: { login: string; is_bot: boolean; id: string; name: string }
+  author: { login: string, is_bot: boolean, id: string, name: string }
   title: string
   createdAt: string
   updatedAt: string

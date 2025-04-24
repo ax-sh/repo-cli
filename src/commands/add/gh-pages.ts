@@ -43,11 +43,13 @@ const command: GluegunCommand<ExtendedToolbox> = {
       print.info(`set repo url ${url}`)
       await gh.setHomepageToGithubPages(nameWithOwner)
       spinner.succeed('Added gh-pages')
-    } catch (e) {
+    }
+    catch (e) {
       print.error(e)
       spinner.fail(`gh-pages ${homepageUrl}`)
       return
-    } finally {
+    }
+    finally {
       spinner.stop()
     }
   },

@@ -6,8 +6,8 @@ const command: GluegunCommand<ExtendedToolbox> = {
   name: 'renovate',
   run: async (toolbox) => {
     const { print, lib } = toolbox
-    const cmd =
-      'bunx renovate --platform=github --token $(gh auth token) $(gh repo view --json nameWithOwner -q .nameWithOwner)'
+    const cmd
+      = 'bunx renovate --platform=github --token $(gh auth token) $(gh repo view --json nameWithOwner -q .nameWithOwner)'
     // const cmd = 'bunx renovate --token $(gh auth token) --autodiscover'
     print.highlight(cmd)
     const spinner = print.spin('Running renovate on current repo')
@@ -16,11 +16,13 @@ const command: GluegunCommand<ExtendedToolbox> = {
       print.info('renovate')
       spinner.succeed('Done')
       print.highlight(out)
-    } catch (e) {
+    }
+    catch (e) {
       spinner.fail(`error ${e}`)
       const error = e as Error
       throw new KnownError(error.message)
-    } finally {
+    }
+    finally {
       spinner.stop()
     }
   },
