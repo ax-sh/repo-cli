@@ -5,9 +5,6 @@
   "schedule": "every weekend",
   "commitMessagePrefix": "chore(deps): ",
   "reviewers": ["team:ax-sh"],
-  "env": {
-    "NPM_TOKEN": "NPM_TOKEN"
-  },
   "hostRules": [
     {
       "hostType": "npm",
