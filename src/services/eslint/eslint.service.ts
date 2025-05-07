@@ -34,9 +34,8 @@ export async function addEslint() {
   filesystem.write('./eslint.config.mjs', code)
   await addScriptToPackageJson('lint', 'eslint')
   await addScriptToPackageJson('lint:fix', 'eslint --fix')
-
-  // eslint --print-config eslint.config.mjs > .eslintrc.json
-  // Rm eslint.config.mjs
+  
+  // eslint --print-config eslint.config.mjs > .eslintrc.json && rimraf eslint.config.mjs
   // biome migrate eslint --write
 
   return out
