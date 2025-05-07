@@ -9,7 +9,7 @@
     {
       "hostType": "npm",
       "matchHost": "https://npm.pkg.github.com/",
-      "token": "${{ secrets.GITHUB_TOKEN }}"
+      "token": "${{ secrets.RENOVATE_TOKEN }}"
     }
   ]
 }

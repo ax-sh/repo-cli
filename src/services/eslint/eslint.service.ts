@@ -30,10 +30,13 @@ export default antfu(
 )
 `
 export async function addEslint() {
-  const out = await exeCmdWithOutput('ni -D eslint @antfu/eslint-config')
+  const out = await exeCmdWithOutput('ni -D eslint @antfu/eslint-config eslint-config-biome @biomejs/biome')
   filesystem.write('./eslint.config.mjs', code)
   await addScriptToPackageJson('lint', 'eslint')
   await addScriptToPackageJson('lint:fix', 'eslint --fix')
+
+  // eslint --print-config eslint.config.mjs > .eslintrc.json && rimraf eslint.config.mjs
+  // biome migrate eslint --write --include-inspired
 
   return out
 }
