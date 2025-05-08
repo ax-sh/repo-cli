@@ -1,4 +1,7 @@
+import { protos } from '@google-analytics/admin'
 import { initializeGAAdmin } from './google-analytics'
+import IListPropertiesRequest = protos.google.analytics.admin.v1alpha.IListPropertiesRequest
+
 /**
  * List all available Google Analytics accounts
  * This will display the account IDs you need
@@ -7,6 +10,9 @@ import { initializeGAAdmin } from './google-analytics'
 async function listAccounts() {
   // NOTE ADDING THE SERVICE ACCOUNT TO GA4 PROPERTY
   // Go to https://analytics.google.com
+  // https://console.cloud.google.com/apis/library
+  // https://console.cloud.google.com/apis/library/analytics.googleapis.com
+  // https://console.cloud.google.com/iam-admin/serviceaccounts/details/
   //
   // Navigate to the target GA4 property
   //
@@ -14,14 +20,14 @@ async function listAccounts() {
   //
   // Add your service account client email analyticsadminclient<name>.iam.gserviceaccount.com from the json to  // Property access management
   // Assign the Editor role or full control
-  const client = await initializeGAAdmin();
+  const client = await initializeGAAdmin()
 
   try {
-    const [accounts] = await client.listAccounts();
-    return accounts;
+    const [accounts] = await client.listAccounts()
+    return accounts
   } catch (error) {
-    console.error('Error listing accounts:', error);
-    throw error;
+    console.error('Error listing accounts:', error)
+    throw error
   }
 }
 
