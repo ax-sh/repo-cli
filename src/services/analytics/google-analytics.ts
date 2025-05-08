@@ -2,7 +2,10 @@ import { AnalyticsAdminServiceClient, protos } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
 import { findOrCreateAccount } from './find-ga-account-id'
 import { executeGooglePromise } from './handle-google-error'
+
+// google types
 import IAccount = protos.google.analytics.admin.v1alpha.IAccount
+import ICreatePropertyRequest = protos.google.analytics.admin.v1alpha.ICreatePropertyRequest
 import IListPropertiesRequest = protos.google.analytics.admin.v1alpha.IListPropertiesRequest
 
 const fileName = process.env.GOOGLE_APPLICATION_CREDENTIALS_FILE as string
@@ -56,7 +59,7 @@ function parseGoogleAdminAccountId(account: IAccount): number {
   return Number(name.split('/')[1])
 }
 
-export async function generateNewToken() {
+export async function generateNewToken(displayName: string) {
   console.debug('Generating new token for new token:')
   const client = await initializeGAAdmin()
   const result = await executeGooglePromise(findOrCreateAccount(client))
@@ -65,6 +68,19 @@ export async function generateNewToken() {
   }
   const account = result.value!
   const accountId = parseGoogleAdminAccountId(account)
+
+  const createPropertyRequest: ICreatePropertyRequest = {
+    property: {
+      parent: account.name,
+      displayName,
+      industryCategory: 'TECHNOLOGY',
+      timeZone: 'America/Los_Angeles',
+      currencyCode: 'USD',
+    },
+  };
+  const property = client.createProperty(createPropertyRequest)
+  console.info(`Creating new token for ${accountId}`)
+  console.info(`Property: ${JSON.stringify(property)}`)
   console.info(accountId)
   console.info(account)
 }

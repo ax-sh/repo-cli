@@ -13,7 +13,8 @@ describe('[analytics] service test', () => {
   it('should list permissions for the service client_email', async () => {})
 
   it('should create new tracking token', async () => {
-    const measurementId = await generateNewToken()
+    const displayName = 'My Website'
+    const measurementId = await generateNewToken(displayName)
     console.info('ReactGA4 initialized with measurement ID:', measurementId)
     expect(measurementId).not.toEqual(undefined)
   })
