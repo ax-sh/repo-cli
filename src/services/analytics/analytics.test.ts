@@ -22,6 +22,7 @@ describe('[analytics] service test', () => {
     const client = await initializeGAAdmin()
     const properties = await listAccountProperties(client)
     expect(properties).toHaveLength(1)
+    console.table(properties)
   })
 
   // const measurementId = await getMeasurementId(propertyName);
