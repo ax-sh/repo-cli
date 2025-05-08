@@ -1,4 +1,5 @@
 import { listAccounts } from './find-ga-account-id'
+import { generateNewToken } from './google-analytics'
 
 vi.mock('../../lib/helpers/cmd/cli')
 
@@ -10,6 +11,12 @@ describe('[analytics] service test', () => {
     console.table(properties)
   })
   it('should list permissions for the service client_email', async () => {})
+
+  it('should create new tracking token', async () => {
+    const token = await generateNewToken()
+    expect(token).toBeDefined()
+    console.debug('token: ', token)
+  })
 
   // const measurementId = await getMeasurementId(propertyName);
   // it('should return results', async () => {

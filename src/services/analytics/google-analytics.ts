@@ -1,5 +1,6 @@
 import { AnalyticsAdminServiceClient } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
+import { executeGooglePromise } from './handle-google-error'
 
 // // Initialize ReactGA4 with the measurement ID
 // async function initializeReactGA(propertyName) {
@@ -45,7 +46,7 @@ export async function initializeGAAdmin() {
 }
 
 // Get all GA4 properties for your account
-async function getProperties() {
+export async function getProperties() {
   const client = await initializeGAAdmin()
 
   try {
@@ -88,4 +89,23 @@ export async function getMeasurementId(propertyName: string) {
   } else {
     throw new Error('No web data stream found for this property')
   }
+}
+
+export async function generateNewToken() {
+  const client = await initializeGAAdmin()
+  console.debug('Generating new token for new token:')
+  const result = await executeGooglePromise(client.listAccounts())
+  if (result.isErr()) {
+    console.error(
+      'Error creating new token for new token:',
+      result.error.message,
+    )
+    // console.debug(result.error)
+    return
+  }
+  // if (result.accounts?.length > 0) {
+  //   console.debug('Found existing accounts:', accounts);
+  //   return accounts[0]; // Return the first available account
+  // }
+  console.debug(result)
 }

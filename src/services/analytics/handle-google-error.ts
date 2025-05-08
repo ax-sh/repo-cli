@@ -1,8 +1,18 @@
-import { GoogleError, Status } from 'google-gax'
+import type { GoogleError } from 'google-gax'
+import { Status } from 'google-gax'
 import { ResultAsync } from 'neverthrow'
 
+function isLikelyGoogleError(err: unknown): err is GoogleError {
+  return (
+    typeof err === 'object'
+    && err instanceof Error // At least ensure it's an Error
+    && 'code' in err
+  ) // Check for the 'code' property
+  // && err.name === 'GoogleError' // GoogleError usually sets its name property
+}
+
 export function handleGoogleError(error: unknown): Error {
-  if (error instanceof GoogleError) {
+  if (isLikelyGoogleError(error)) {
     switch (error.code) {
       case Status.PERMISSION_DENIED:
         return new Error(
@@ -78,5 +88,5 @@ export function handleGoogleError(error: unknown): Error {
 }
 
 export function executeGooglePromise<T>(call: Promise<T>) {
-  return ResultAsync.fromPromise<T, GoogleError>(call, handleGoogleError)
+  return ResultAsync.fromPromise<T, Error>(call, handleGoogleError)
 }

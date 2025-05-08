@@ -30,17 +30,17 @@ export async function listAccounts() {
 }
 
 export async function getAccount(accountId: number) {
-  const client = await initializeGAAdmin();
+  const client = await initializeGAAdmin()
 
   try {
     const [account] = await client.getAccount({
       name: `accounts/${accountId}`,
-    });
+    })
 
     return account
   } catch (error) {
-    console.error(`Error getting account ${accountId}:`, error);
-    throw error;
+    console.error(`Error getting account ${accountId}:`, error)
+    throw error
   }
 }
 
@@ -48,21 +48,24 @@ export async function getAccount(accountId: number) {
  * Find or create a Google Analytics account
  * This will create a new account if none exists
  */
-export async function findOrCreateAccount(displayName = 'My Analytics Account', regionCode = 'US') {
+export async function findOrCreateAccount(
+  displayName = 'My Analytics Account',
+  regionCode = 'US',
+) {
   try {
     // First try to list existing accounts
-    const accounts = await listAccounts();
+    const accounts = await listAccounts()
 
     if (accounts?.length > 0) {
-      console.debug('Found existing accounts:', accounts);
-      return accounts[0]; // Return the first available account
+      console.debug('Found existing accounts:', accounts)
+      return accounts[0] // Return the first available account
     }
 
     // If no accounts exist, create a new one
-    console.debug('No accounts found. Creating a new account...');
+    console.debug('No accounts found. Creating a new account...')
     // return await createAccount(displayName, regionCode);
   } catch (error) {
-    console.error('Error finding or creating account:', error);
-    throw error;
+    console.error('Error finding or creating account:', error)
+    throw error
   }
 }
