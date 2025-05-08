@@ -63,13 +63,18 @@ export async function findOrCreateAccount(client: AnalyticsAdminServiceClient) {
   }
   const [accounts] = result.value
   if (accounts.length === 1) {
-    return accounts[0]; // Return the first available account
+    return accounts[0] // Return the first available account
   }
   if (accounts.length > 1) {
-    console.debug('Found multiple existing accounts:', accounts);
+    console.debug('Found multiple existing accounts:', accounts)
   }
-  const displayName = 'My Analytics Account';
-  const regionCode = 'US';
+  const displayName = 'My Analytics Account'
+  const regionCode = 'US'
   console.debug('No accounts found. Creating a new account...')
-  console.warn('TODO Creating new token for new token:', accounts, displayName, regionCode)
+  console.warn(
+    'TODO Creating new token for new token:',
+    accounts,
+    displayName,
+    regionCode,
+  )
 }

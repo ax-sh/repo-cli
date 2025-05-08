@@ -25,19 +25,19 @@ class RuntimeGoogleError extends Error implements GoogleErrorWithCause {
   /**
    * The underlying error that caused this runtime error.
    */
-  readonly cause: GoogleError;
+  readonly cause: GoogleError
 
   constructor(message: string, options: { cause: GoogleError }) {
-    super(message, { cause: options.cause });
+    super(message, { cause: options.cause })
 
     // Set the prototype chain to ensure `instanceof` works correctly
-    Object.setPrototypeOf(this, RuntimeGoogleError.prototype);
+    Object.setPrototypeOf(this, RuntimeGoogleError.prototype)
 
     // Set the error name explicitly for consistency and clarity
-    this.name = 'RuntimeGoogleError';
+    this.name = 'RuntimeGoogleError'
 
     // Assign the cause for type safety and programmatic access
-    this.cause = options.cause;
+    this.cause = options.cause
   }
 
   /**
@@ -54,7 +54,7 @@ class RuntimeGoogleError extends Error implements GoogleErrorWithCause {
         message: this.cause.message,
         stack: this.cause.stack,
       },
-    };
+    }
   }
 }
 
@@ -72,50 +72,95 @@ export function handleGoogleError(error: unknown): RuntimeGoogleError {
           { cause: error },
         )
       case Status.NOT_FOUND:
-        throw new RuntimeGoogleError('📭 Not found.  Resource not found.', { cause: error })
+        throw new RuntimeGoogleError('📭 Not found.  Resource not found.', {
+          cause: error,
+        })
       case undefined:
-        return new RuntimeGoogleError('❓ GoogleError with undefined code', { cause: error })
+        return new RuntimeGoogleError('❓ GoogleError with undefined code', {
+          cause: error,
+        })
       case Status.OK: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.OK case', { cause: error })
+        throw new RuntimeGoogleError('Not implemented yet: Status.OK case', {
+          cause: error,
+        })
       }
       case Status.CANCELLED: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.CANCELLED case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.CANCELLED case',
+          { cause: error },
+        )
       }
       case Status.UNKNOWN: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.UNKNOWN case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.UNKNOWN case',
+          { cause: error },
+        )
       }
       case Status.DEADLINE_EXCEEDED: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.DEADLINE_EXCEEDED case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.DEADLINE_EXCEEDED case',
+          { cause: error },
+        )
       }
       case Status.ALREADY_EXISTS: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.ALREADY_EXISTS case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.ALREADY_EXISTS case',
+          { cause: error },
+        )
       }
       case Status.RESOURCE_EXHAUSTED: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.RESOURCE_EXHAUSTED case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.RESOURCE_EXHAUSTED case',
+          { cause: error },
+        )
       }
       case Status.FAILED_PRECONDITION: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.FAILED_PRECONDITION case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.FAILED_PRECONDITION case',
+          { cause: error },
+        )
       }
       case Status.ABORTED: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.ABORTED case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.ABORTED case',
+          { cause: error },
+        )
       }
       case Status.OUT_OF_RANGE: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.OUT_OF_RANGE case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.OUT_OF_RANGE case',
+          { cause: error },
+        )
       }
       case Status.UNIMPLEMENTED: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.UNIMPLEMENTED case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.UNIMPLEMENTED case',
+          { cause: error },
+        )
       }
       case Status.INTERNAL: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.INTERNAL case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.INTERNAL case',
+          { cause: error },
+        )
       }
       case Status.UNAVAILABLE: {
-        throw new RuntimeGoogleError('🌐 Network/server issue. Retry might help.', { cause: error })
+        throw new RuntimeGoogleError(
+          '🌐 Network/server issue. Retry might help.',
+          { cause: error },
+        )
       }
       case Status.DATA_LOSS: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.DATA_LOSS case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.DATA_LOSS case',
+          { cause: error },
+        )
       }
       case Status.UNAUTHENTICATED: {
-        throw new RuntimeGoogleError('Not implemented yet: Status.UNAUTHENTICATED case', { cause: error })
+        throw new RuntimeGoogleError(
+          'Not implemented yet: Status.UNAUTHENTICATED case',
+          { cause: error },
+        )
       }
       default:
         return new RuntimeGoogleError(
@@ -135,5 +180,6 @@ export function handleGoogleError(error: unknown): RuntimeGoogleError {
 }
 
 export function executeGooglePromise<T>(call: PromiseLike<T>) {
-  return ResultAsync.fromPromise<T, RuntimeGoogleError>(call, e => handleGoogleError(e))
+  return ResultAsync.fromPromise<T, RuntimeGoogleError>(call, e =>
+    handleGoogleError(e))
 }

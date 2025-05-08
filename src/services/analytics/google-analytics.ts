@@ -34,8 +34,13 @@ export async function initializeGAAdmin() {
 }
 
 // Get all GA4 properties for your account
-export async function getProperties(client: AnalyticsAdminServiceClient, accountId: number) {
-  const params: IListPropertiesRequest = { filter: `parent:accounts/${accountId}` }
+export async function getProperties(
+  client: AnalyticsAdminServiceClient,
+  accountId: number,
+) {
+  const params: IListPropertiesRequest = {
+    filter: `parent:accounts/${accountId}`,
+  }
 
   const result = await executeGooglePromise(client.listProperties(params))
   if (result.isErr()) {
@@ -84,16 +89,28 @@ function parseGoogleAdminAccountId(account: IAccount): number {
 }
 
 export async function generateNewToken() {
-  const client = await initializeGAAdmin()
   console.debug('Generating new token for new token:')
-
+  const client = await initializeGAAdmin()
   const result = await executeGooglePromise(findOrCreateAccount(client))
   if (result.isErr()) {
     throw result.error
   }
   const account = result.value!
   const accountId = parseGoogleAdminAccountId(account)
-  console.debug(account)
+  console.info(accountId)
+  console.info(account)
+}
+
+export async function listAccountProperties(
+  client: AnalyticsAdminServiceClient,
+) {
+  const result = await executeGooglePromise(findOrCreateAccount(client))
+  if (result.isErr()) {
+    throw result.error
+  }
+  const account = result.value!
+  const accountId = parseGoogleAdminAccountId(account)
+
   const properties = await getProperties(client, accountId)
-  console.table(properties)
+  return properties
 }
