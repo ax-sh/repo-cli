@@ -71,7 +71,18 @@
         "noConfusingLabels": "error",
         "noConsole": {
           "level": "warn",
-          "options": { "allow": ["table", "debug", "warn", "error"] }
+          "options": {
+            "allow": [
+              "table",
+              "debug",
+              "warn",
+              "error",
+              "info",
+              "time",
+              "timeEnd",
+              "dir"
+            ]
+          }
         },
         "noControlCharactersInRegex": "error",
         "noDebugger": "error",
