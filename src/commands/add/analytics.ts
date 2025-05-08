@@ -3,6 +3,7 @@ import type { ExtendedToolbox } from '../../types'
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'analytics',
+  alias: ['ga'],
   run: async (toolbox) => {
     const { print, parameters, system } = toolbox
     const name = parameters.first

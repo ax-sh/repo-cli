@@ -1,12 +1,9 @@
-import { print } from 'gluegun'
-// name: 'analytics',
-async function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
+// import { getMeasurementId } from './google-analytics'
+
+// http://analytics.google.com/
 export async function run() {
-  await wait(1000)
-  console.debug('doing')
-  print.info('done')
+  console.debug('todo doing')
+
   const out = 'out'
   return out
 }

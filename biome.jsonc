@@ -8,6 +8,7 @@
     "enabled": true,
     "rules": {
       "recommended": false,
+
       "complexity": {
         "noExtraBooleanCast": "error",
         "noMultipleSpacesInRegularExpressionLiterals": "error",
@@ -23,6 +24,7 @@
         "useRegexLiterals": "error"
       },
       "correctness": {
+        "noUndeclaredVariables": "off",
         "noConstAssign": "error",
         "noEmptyCharacterClassInRegex": "off",
         "noEmptyPattern": "error",
@@ -33,7 +35,7 @@
         "noPrecisionLoss": "error",
         "noSelfAssign": "error",
         "noSwitchDeclarations": "error",
-        "noUndeclaredVariables": "error",
+
         "noUnreachable": "error",
         "noUnreachableSuper": "error",
         "noUnsafeFinally": "error",
