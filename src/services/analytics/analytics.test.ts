@@ -13,9 +13,9 @@ describe('[analytics] service test', () => {
   it('should list permissions for the service client_email', async () => {})
 
   it('should create new tracking token', async () => {
-    const token = await generateNewToken()
-    expect(token).toBeDefined()
-    console.debug('token: ', token)
+    const measurementId = await generateNewToken()
+    expect(measurementId).toBeDefined()
+    console.info('ReactGA4 initialized with measurement ID:', measurementId);
   })
 
   // const measurementId = await getMeasurementId(propertyName);

@@ -2,20 +2,6 @@ import { AnalyticsAdminServiceClient } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
 import { executeGooglePromise } from './handle-google-error'
 
-// // Initialize ReactGA4 with the measurement ID
-// async function initializeReactGA(propertyName) {
-//   try {
-//     // Initialize GA4
-//     ReactGA4.initialize(measurementId);
-//     console.log('ReactGA4 initialized with measurement ID:', measurementId);
-//
-//     return measurementId;
-//   } catch (error) {
-//     console.error('Error initializing ReactGA4:', error);
-//     throw error;
-//   }
-// }
-
 const fileName = process.env.GOOGLE_APPLICATION_CREDENTIALS_FILE as string
 const GOOGLE_APPLICATION_CREDENTIALS_FILE = appRootPath.resolve(fileName)
 
@@ -100,12 +86,13 @@ export async function generateNewToken() {
       'Error creating new token for new token:',
       result.error.message,
     )
-    // console.debug(result.error)
+
     return
   }
-  // if (result.accounts?.length > 0) {
-  //   console.debug('Found existing accounts:', accounts);
-  //   return accounts[0]; // Return the first available account
-  // }
-  console.debug(result)
+  const [accounts] = result.value
+
+  if (accounts?.length > 0) {
+    console.debug('Found existing accounts:', accounts);
+    // return accounts[0]; // Return the first available account
+  }
 }
