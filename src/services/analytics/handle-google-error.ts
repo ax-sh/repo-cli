@@ -40,7 +40,7 @@ export function handleGoogleError(error: unknown): RuntimeGoogleError {
   if (isLikelyGoogleError(error)) {
     switch (error.code) {
       case Status.PERMISSION_DENIED:
-        throw new RuntimeGoogleError(
+        return new RuntimeGoogleError(
           '🔒 Permission denied. Check your service account or OAuth token.',
           { cause: error },
         )
