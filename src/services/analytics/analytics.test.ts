@@ -1,9 +1,4 @@
-import { google } from '@google-analytics/admin/build/protos/protos'
-
-import { runFromPromise } from '../../errors'
-import { getProperties, listAccounts } from './find-ga-account-id'
-import { initializeGAAdmin } from './google-analytics'
-import ICreatePropertyRequest = google.analytics.admin.v1alpha.ICreatePropertyRequest
+import { listAccounts } from './find-ga-account-id'
 
 vi.mock('../../lib/helpers/cmd/cli')
 
