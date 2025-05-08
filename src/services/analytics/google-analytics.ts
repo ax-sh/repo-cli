@@ -51,38 +51,6 @@ export async function getProperties(
   return properties
 }
 
-// Get data streams for a specific property
-async function getDataStreams(propertyName) {
-  const client = await initializeGAAdmin()
-
-  try {
-    // List data streams (web, iOS, Android)
-    const [dataStreams] = await client.listDataStreams({
-      parent: propertyName,
-    })
-    return dataStreams
-  } catch (error) {
-    console.error('Error fetching data streams:', error)
-    throw error
-  }
-}
-
-// Get measurement ID from a web data stream
-export async function getMeasurementId(propertyName: string) {
-  const dataStreams = await getDataStreams(propertyName)
-
-  // Find the web data stream
-  const webStream = dataStreams.find(
-    stream => stream.type === 'WEB_DATA_STREAM',
-  )
-
-  if (webStream) {
-    return webStream.webStreamData?.measurementId
-  } else {
-    throw new Error('No web data stream found for this property')
-  }
-}
-
 function parseGoogleAdminAccountId(account: IAccount): number {
   const name = account?.name as string
   return Number(name.split('/')[1])
@@ -113,4 +81,36 @@ export async function listAccountProperties(
 
   const properties = await getProperties(client, accountId)
   return properties
+}
+
+// Get data streams for a specific property
+async function getDataStreams(propertyName: string) {
+  const client = await initializeGAAdmin()
+
+  try {
+    // List data streams (web, iOS, Android)
+    const [dataStreams] = await client.listDataStreams({
+      parent: propertyName,
+    })
+    return dataStreams
+  } catch (error) {
+    console.error('Error fetching data streams:', error)
+    throw error
+  }
+}
+
+// Get measurement ID from a web data stream
+export async function getMeasurementId(propertyName: string) {
+  const dataStreams = await getDataStreams(propertyName)
+
+  // Find the web data stream
+  const webStream = dataStreams.find(
+    stream => stream.type === 'WEB_DATA_STREAM',
+  )
+
+  if (webStream) {
+    return webStream.webStreamData?.measurementId
+  } else {
+    throw new Error('No web data stream found for this property')
+  }
 }
