@@ -10,29 +10,51 @@ function isLikelyGoogleError(err: unknown): err is GoogleError {
   ) // Check for the 'code' property
   // && err.name === 'GoogleError' // GoogleError usually sets its name property
 }
-
+/**
+ * Represents an error caused by another Google-related error.
+ */
 interface GoogleErrorWithCause extends Error {
-  // name: string
-  // message: string
-  cause: GoogleError
+  readonly cause: GoogleError
 }
 
+/**
+ * Represents a runtime error that occurs while interacting with Google services.
+ * This error wraps a lower-level Google-specific error (`cause`) for better context.
+ */
 class RuntimeGoogleError extends Error implements GoogleErrorWithCause {
-  // Declare the cause property with a specific type
+  /**
+   * The underlying error that caused this runtime error.
+   */
   readonly cause: GoogleError;
 
   constructor(message: string, options: { cause: GoogleError }) {
-    // Pass message and cause to the native Error constructor
     super(message, { cause: options.cause });
 
-    // Set the error name to match the class
+    // Set the prototype chain to ensure `instanceof` works correctly
+    Object.setPrototypeOf(this, RuntimeGoogleError.prototype);
+
+    // Set the error name explicitly for consistency and clarity
     this.name = 'RuntimeGoogleError';
 
-    // Assign cause for TypeScript type safety
+    // Assign the cause for type safety and programmatic access
     this.cause = options.cause;
+  }
 
-    // Optional: Ensure prototype chain is correct (for instanceof)
-    Object.setPrototypeOf(this, RuntimeGoogleError.prototype);
+  /**
+   * Returns a JSON-serializable representation of the error.
+   * This is particularly useful for logging or debugging.
+   */
+  toJSON(): Record<string, any> {
+    return {
+      name: this.name,
+      message: this.message,
+      stack: this.stack,
+      cause: {
+        name: this.cause.name,
+        message: this.cause.message,
+        stack: this.cause.stack,
+      },
+    };
   }
 }
 

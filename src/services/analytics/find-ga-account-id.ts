@@ -1,6 +1,6 @@
-import { protos } from '@google-analytics/admin'
+// import { protos } from '@google-analytics/admin'
 import { initializeGAAdmin } from './google-analytics'
-import IListPropertiesRequest = protos.google.analytics.admin.v1alpha.IListPropertiesRequest
+// import IListPropertiesRequest = protos.google.analytics.admin.v1alpha.IListPropertiesRequest
 
 /**
  * List all available Google Analytics accounts
@@ -48,9 +48,10 @@ export async function getAccount(accountId: number) {
  * This will create a new account if none exists
  */
 export async function findOrCreateAccount(
-  displayName = 'My Analytics Account',
-  regionCode = 'US',
+
 ) {
+  // const displayName = 'My Analytics Account';
+  //   const regionCode = 'US';
   try {
     // First try to list existing accounts
     const accounts = await listAccounts()
