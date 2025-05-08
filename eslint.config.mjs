@@ -37,6 +37,7 @@ const testLinterRules = {
   },
   rules: {
     '@typescript-eslint/no-unsafe-assignment': 'off',
+    'node/prefer-global/process': 'off',
   },
 };
 
