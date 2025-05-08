@@ -1,16 +1,18 @@
-import { AnalyticsAdminServiceClient } from '@google-analytics/admin'
+import { AnalyticsAdminServiceClient, protos } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
+import { findOrCreateAccount } from './find-ga-account-id'
 import { executeGooglePromise } from './handle-google-error'
+import IAccount = protos.google.analytics.admin.v1alpha.IAccount
+import IListPropertiesRequest = protos.google.analytics.admin.v1alpha.IListPropertiesRequest
 
 const fileName = process.env.GOOGLE_APPLICATION_CREDENTIALS_FILE as string
 const GOOGLE_APPLICATION_CREDENTIALS_FILE = appRootPath.resolve(fileName)
 
 // Authentication - create a service account key and download the JSON
 // https://console.cloud.google.com/iam-admin/serviceaccounts
-// Go to https://analytics.google.com
+// https://console.cloud.google.com/iam-admin/serviceaccounts/details/
 // https://console.cloud.google.com/apis/library
 // https://console.cloud.google.com/apis/library/analytics.googleapis.com
-// https://console.cloud.google.com/iam-admin/serviceaccounts/details/
 export async function initializeGAAdmin() {
   try {
     // Create a client
@@ -32,17 +34,16 @@ export async function initializeGAAdmin() {
 }
 
 // Get all GA4 properties for your account
-export async function getProperties() {
-  const client = await initializeGAAdmin()
+export async function getProperties(client: AnalyticsAdminServiceClient, accountId: number) {
+  const params: IListPropertiesRequest = { filter: `parent:accounts/${accountId}` }
 
-  try {
-    // List all Google Analytics properties
-    const [properties] = await client.listProperties({})
-    return properties
-  } catch (error) {
-    console.error('Error fetching GA properties:', error)
-    throw error
+  const result = await executeGooglePromise(client.listProperties(params))
+  if (result.isErr()) {
+    console.error('Error fetching GA properties:', result.error)
+    throw result.error
   }
+  const [properties] = result.value
+  return properties
 }
 
 // Get data streams for a specific property
@@ -77,23 +78,22 @@ export async function getMeasurementId(propertyName: string) {
   }
 }
 
+function parseGoogleAdminAccountId(account: IAccount): number {
+  const name = account?.name as string
+  return Number(name.split('/')[1])
+}
+
 export async function generateNewToken() {
   const client = await initializeGAAdmin()
   console.debug('Generating new token for new token:')
-  const result = await executeGooglePromise(client.listAccounts())
+
+  const result = await executeGooglePromise(findOrCreateAccount(client))
   if (result.isErr()) {
-    console.error(
-      'Error creating new token for new token:',
-      result.error.message,
-    )
-
-    console.error('Error listing accounts:', result.error.cause)
-    return
+    throw result.error
   }
-  const [accounts] = result.value
-
-  if (accounts?.length > 0) {
-    console.debug('Found existing accounts:', accounts);
-    // return accounts[0]; // Return the first available account
-  }
+  const account = result.value!
+  const accountId = parseGoogleAdminAccountId(account)
+  console.debug(account)
+  const properties = await getProperties(client, accountId)
+  console.table(properties)
 }

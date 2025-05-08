@@ -14,8 +14,8 @@ describe('[analytics] service test', () => {
 
   it('should create new tracking token', async () => {
     const measurementId = await generateNewToken()
-    expect(measurementId).toBeDefined()
     console.info('ReactGA4 initialized with measurement ID:', measurementId);
+    expect(measurementId).not.toEqual(undefined)
   })
 
   // const measurementId = await getMeasurementId(propertyName);
