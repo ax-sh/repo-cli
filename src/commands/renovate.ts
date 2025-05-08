@@ -16,13 +16,11 @@ const command: GluegunCommand<ExtendedToolbox> = {
       print.info('renovate')
       spinner.succeed('Done')
       print.highlight(out)
-    }
-    catch (e) {
+    } catch (e) {
       spinner.fail(`error ${e}`)
       const error = e as Error
       throw new KnownError(error.message)
-    }
-    finally {
+    } finally {
       spinner.stop()
     }
   },

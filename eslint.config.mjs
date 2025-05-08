@@ -1,6 +1,45 @@
 import * as path from 'node:path';
 import antfu from '@antfu/eslint-config';
 
+/** @type {import('eslint').Linter.Config} */
+const globalConfig = {
+  rules: {
+    'style/semi': ['off', 'never'],
+    'toml/array-bracket-newline': 'off',
+    'ts/no-misused-promises': ['off'],
+
+    'style/brace-style': 'off',
+    'ts/restrict-template-expressions': ['off'],
+    'no-console': ['warn', {
+      allow: [
+        'table',
+        'debug',
+        'warn',
+        'error',
+        'info',
+        'time',
+        'timeEnd',
+        'dir',
+      ],
+    }],
+  },
+};
+
+/** @type {import('eslint').Linter.Config} */
+const testLinterRules = {
+  languageOptions: {
+    parserOptions: {
+      projectService: {
+        allowDefaultProject: ['*.m?ts', '__tests__/cli-integration.test.ts'],
+      },
+      project: path.resolve('tsconfig.tests.json'),
+    },
+  },
+  rules: {
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+  },
+};
+
 export default antfu(
   {
     typescript: { tsconfigPath: 'tsconfig.json' },
@@ -10,32 +49,16 @@ export default antfu(
     ignores: ['vitest.config.ts', 'build/**', 'knip.config.ts', 'cliff.toml'],
   },
   //
-  // Below is the eslint flat config
-  {
-    // Without `files`, they are general rules for all files
-    rules: {
-      '@typescript-eslint/no-unsafe-assignment': 'off',
-      'toml/array-bracket-newline': 'off',
-      'style/semi': ['off', 'never'],
-      'ts/no-misused-promises': ['off'],
-      'no-console': ['warn', { allow: ['table', 'debug', 'warn', 'error'] }],
-    },
-  }, // test specific config
-  {
-    languageOptions: {
-      parserOptions: {
-        projectService: {
-          allowDefaultProject: ['*.m?ts', '__tests__/cli-integration.test.ts'],
-        },
-        project: path.resolve('tsconfig.tests.json'),
-      },
-    },
-  },
+  globalConfig,
+  testLinterRules, // test specific config
 );
-// /**
-//  * @type {import("eslint").Linter.Config}
-//  */
-// module.exports = {
+
+// /** @type {import('eslint').Linter.Config} */
+// const prettierLinterRules = {
+//   extends: ['prettier', "plugin:prettier/recommended"],
+// };
+// /** @type {import('eslint').Linter.Config} */
+// const defaultLinterConfig = {
 //   parser: '@typescript-eslint/parser',
 //
 //   parserOptions: {

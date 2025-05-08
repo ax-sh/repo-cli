@@ -5,6 +5,7 @@ const code = `
 // https://github.com/antfu/eslint-config
 import antfu from '@antfu/eslint-config'
 
+// Without "files", they are general rules for all files
 /** @type {import('eslint').Linter.Config} */
 const globalConfig = {
   rules: {
@@ -24,7 +25,8 @@ export default antfu(
     // \`.eslintignore\` is no longer supported in Flat config, use \`ignores\` instead
     ignores: [
       '**/fixtures',
-      './public'
+      './public',
+      './dist',
       // ...globs
     ],
   },
@@ -33,7 +35,9 @@ export default antfu(
 )
 `
 export async function addEslint() {
-  const out = await exeCmdWithOutput('ni -D eslint @antfu/eslint-config eslint-config-biome @biomejs/biome')
+  const out = await exeCmdWithOutput(
+    'ni -D eslint @antfu/eslint-config eslint-config-biome @biomejs/biome',
+  )
   const eslintConfigFile = './eslint.config.mjs'
   filesystem.write(eslintConfigFile, code)
   await addScriptToPackageJson('lint', 'eslint')
