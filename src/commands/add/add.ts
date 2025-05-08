@@ -5,17 +5,17 @@ const command: GluegunCommand<ExtendedToolbox> = {
   name: 'add',
   run: async (toolbox) => {
     const { print, parameters, system } = toolbox
-    const name = parameters.first?.trim()
-    if (name == null) {
-      console.log('dooo')
-      return 'sooo'
+    const commandName = parameters.first?.trim()
+    if (commandName == null) {
+      print.printHelp(toolbox)
+      print.highlight('USE repo --compiled-build TO USE BUILT VERSION')
+      return
     }
     const spinner = print.spin()
     const root = await import('../../services/analytics/analytics.service')
     const out = await root.run()
     spinner.succeed()
-    print.highlight(`aaaaRun Out analytics ${out}`)
-    print.highlight(`Todo analytics ${name}`)
+    print.highlight(`TODO Out ADD ${out}`)
     await system.run('echo ni -D husky')
   },
 }
