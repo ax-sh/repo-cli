@@ -23,7 +23,6 @@ export async function listAccounts() {
     const [accounts] = await client.listAccounts()
     return accounts
   } catch (error) {
-    console.error('Error listing accounts:', error)
     console.dir(error)
     throw error
   }

@@ -82,11 +82,13 @@ export async function generateNewToken() {
   console.debug('Generating new token for new token:')
   const result = await executeGooglePromise(client.listAccounts())
   if (result.isErr()) {
+    console.log(333)
     console.error(
       'Error creating new token for new token:',
       result.error.message,
     )
 
+    console.error('Error listing accounts:', result.error.cause)
     return
   }
   const [accounts] = result.value
