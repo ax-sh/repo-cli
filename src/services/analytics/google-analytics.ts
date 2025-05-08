@@ -1,8 +1,8 @@
 import { AnalyticsAdminServiceClient, protos } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
 import { findOrCreateAccount } from './find-ga-account-id'
-import { executeGooglePromise } from './handle-google-error'
 
+import { executeGooglePromise } from './handle-google-error'
 // google types
 import IAccount = protos.google.analytics.admin.v1alpha.IAccount
 import ICreatePropertyRequest = protos.google.analytics.admin.v1alpha.ICreatePropertyRequest
@@ -59,6 +59,23 @@ function parseGoogleAdminAccountId(account: IAccount): number {
   return Number(name.split('/')[1])
 }
 
+async function createPropertyWithDisplayName(client: AnalyticsAdminServiceClient, accountName: string, displayName: string) {
+  const createPropertyRequest: ICreatePropertyRequest = {
+    property: {
+      parent: accountName,
+      displayName,
+      industryCategory: 'TECHNOLOGY',
+      timeZone: 'America/Los_Angeles',
+      currencyCode: 'USD',
+    },
+  };
+  const result = await executeGooglePromise(client.createProperty(createPropertyRequest))
+  if (result.isErr()) {
+    throw result.error
+  }
+  console.info('process result', result)
+}
+
 export async function generateNewToken(displayName: string) {
   console.debug('Generating new token for new token:')
   const client = await initializeGAAdmin()
@@ -68,18 +85,15 @@ export async function generateNewToken(displayName: string) {
   }
   const account = result.value!
   const accountId = parseGoogleAdminAccountId(account)
+  const accountName = account.name
+  if (accountName === null || accountName === undefined) {
+    throw new Error('No account name provided')
+  }
 
-  const createPropertyRequest: ICreatePropertyRequest = {
-    property: {
-      parent: account.name,
-      displayName,
-      industryCategory: 'TECHNOLOGY',
-      timeZone: 'America/Los_Angeles',
-      currencyCode: 'USD',
-    },
-  };
-  const property = client.createProperty(createPropertyRequest)
+  const property = await createPropertyWithDisplayName(client, accountName, displayName)
+
   console.info(`Creating new token for ${accountId}`)
+
   console.info(`Property: ${JSON.stringify(property)}`)
   console.info(accountId)
   console.info(account)
