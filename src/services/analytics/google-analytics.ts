@@ -1,6 +1,7 @@
 import { AnalyticsAdminServiceClient } from '@google-analytics/admin';
 import appRootPath from 'app-root-path'
 
+const fileName = process.env.GOOGLE_APPLICATION_CREDENTIALS_FILE as string
 const GOOGLE_APPLICATION_CREDENTIALS_FILE = appRootPath.resolve(fileName)
 
 // Authentication - create a service account key and download the JSON
@@ -56,7 +57,7 @@ async function getDataStreams(propertyName) {
 }
 
 // Get measurement ID from a web data stream
-async function getMeasurementId(propertyName) {
+export async function getMeasurementId(propertyName: string) {
   const dataStreams = await getDataStreams(propertyName);
 
   // Find the web data stream
@@ -82,11 +83,3 @@ async function getMeasurementId(propertyName) {
 //     throw error;
 //   }
 // }
-
-export {
-  getDataStreams,
-  getMeasurementId,
-  getProperties,
-  initializeGAAdmin,
-  // initializeReactGA,
-};
