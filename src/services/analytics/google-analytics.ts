@@ -1,3 +1,4 @@
+import type { GoogleError } from 'google-gax';
 import { AnalyticsAdminServiceClient } from '@google-analytics/admin';
 import appRootPath from 'app-root-path'
 
@@ -6,6 +7,10 @@ const GOOGLE_APPLICATION_CREDENTIALS_FILE = appRootPath.resolve(fileName)
 
 // Authentication - create a service account key and download the JSON
 // https://console.cloud.google.com/iam-admin/serviceaccounts
+// Go to https://analytics.google.com
+// https://console.cloud.google.com/apis/library
+// https://console.cloud.google.com/apis/library/analytics.googleapis.com
+// https://console.cloud.google.com/iam-admin/serviceaccounts/details/
 export async function initializeGAAdmin() {
   try {
     // Create a client
@@ -83,3 +88,33 @@ export async function getMeasurementId(propertyName: string) {
 //     throw error;
 //   }
 // }
+
+export function handleAnalyticsError(error: GoogleError) {
+  if (error.code === undefined)
+    throw new Error('Unknown Error:', error);
+  // if (error instanceof Error) {
+  //  console.error('Generic Error:', error.message);
+  //  if (error.code) {
+  //    console.error(`API Error [${error.code}]:`, error.message);
+  //  } else {
+  //
+  //  }
+
+  // Optional: Custom response
+  switch (error.code) {
+    case 7: // PERMISSION_DENIED
+      console.error('🔒 Permission denied. Check your service account or OAuth token.');
+      break;
+    case 3: // INVALID_ARGUMENT
+      console.error('⚠️ Invalid request. Check input parameters.');
+      break;
+    case 5: // NOT_FOUND
+      console.error('📭 Resource not found.');
+      break;
+    case 14: // UNAVAILABLE
+      console.error('🌐 Network/server issue. Retry might help.');
+      break;
+    default:
+      console.error('🧨 Unexpected error:', error);
+  }
+}
