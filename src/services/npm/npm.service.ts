@@ -22,7 +22,7 @@ async function checkGithubAuthStatus() {
 
 async function exeCmdWithOutputWithGithubNpmAuth(cmd: string) {
   const auth = '--//npm.pkg.github.com/:_authToken="$(gh auth token)"'
-  // eslint-disable-next-line node/prefer-global/process
+
   process.env.NPM_CONFIG_REGISTRY = 'https://npm.pkg.github.com/'
   try {
     return await exeCmdWithOutput(`${cmd} ${auth}`)

@@ -30,9 +30,9 @@ export function enableConsoleDepth() {
     inspectOptions: {
       depth: null,
     },
-    // eslint-disable-next-line node/prefer-global/process
+
     stdout: process.stdout,
-    // eslint-disable-next-line node/prefer-global/process
+
     stderr: process.stderr,
   })
 }

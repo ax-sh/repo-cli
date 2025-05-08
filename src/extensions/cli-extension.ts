@@ -6,7 +6,6 @@ export default async (toolbox: GluegunToolbox) => {
   toolbox.lib = await import('../lib/index')
   const hasPy = toolbox.system.which('python')
   if (hasPy != null) {
-    // eslint-disable-next-line node/prefer-global/process
     process.env.PYTHON_BIN = hasPy
   }
   // enable this if you want to read configuration in from

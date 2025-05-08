@@ -15,7 +15,6 @@ const command: GluegunCommand<ExtendedToolbox> = {
     }
     const cliProjectPath = lib.appRootPath.path
 
-    // eslint-disable-next-line node/prefer-global/process
     process.chdir(cliProjectPath)
     const path = lib.generateNewCmdPath(name)
 

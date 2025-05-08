@@ -4,14 +4,12 @@ vi.mock('../../lib/helpers/cmd/cli')
 
 describe('[analytics] service test', () => {
   it('should list all authorized accounts for the service client_email', async () => {
-    const propertiesList = await listAccounts();
+    const propertiesList = await listAccounts()
     expect(propertiesList.length).toBeGreaterThan(0)
     const [properties] = propertiesList
-    console.table(properties);
+    console.table(properties)
   })
-  it('should list permissions for the service client_email', async () => {
-
-  })
+  it('should list permissions for the service client_email', async () => {})
 
   // const measurementId = await getMeasurementId(propertyName);
   // it('should return results', async () => {

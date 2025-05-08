@@ -9,10 +9,7 @@ import IListPropertiesRequest = protos.google.analytics.admin.v1alpha.IListPrope
 // List all available accounts
 export async function listAccounts() {
   // NOTE ADDING THE SERVICE ACCOUNT TO GA4 PROPERTY
-  // Go to https://analytics.google.com
-  // https://console.cloud.google.com/apis/library
-  // https://console.cloud.google.com/apis/library/analytics.googleapis.com
-  // https://console.cloud.google.com/iam-admin/serviceaccounts/details/
+
   //
   // Navigate to the target GA4 property
   //
@@ -27,6 +24,7 @@ export async function listAccounts() {
     return accounts
   } catch (error) {
     console.error('Error listing accounts:', error)
+    console.dir(error)
     throw error
   }
 }
