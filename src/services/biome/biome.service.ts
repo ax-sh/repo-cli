@@ -1,12 +1,15 @@
-import { print } from 'gluegun'
-// name: 'biome',
-async function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+import { exeCmdWithOutput } from '../../lib'
+
+export async function installBiomeLinter() {
+  const out = await exeCmdWithOutput('bun add --dev --exact @biomejs/biome && bunx biome init --jsonc')
+  return out
 }
-export async function run() {
-  await wait(1000)
-  console.debug('doing')
-  print.info('done')
-  const out = 'out'
+
+export async function runMigrate() {
+  let out: string
+  out = await exeCmdWithOutput(
+    'eslint --print-config eslint.config.mjs > .eslintrc.json && bunx rimraf eslint.config.mjs',
+  )
+  out = await exeCmdWithOutput('bunx biome migrate eslint --write --include-inspired')
   return out
 }

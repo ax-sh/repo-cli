@@ -9,7 +9,7 @@ describe('[biome] service test', () => {
     const mod = await import('./biome.service')
     expect(mod).toBeDefined()
 
-    const out = await mod.run()
+    const out = await mod.installBiomeLinter()
     console.warn(out)
   })
 })
