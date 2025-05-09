@@ -2,7 +2,7 @@ import { AnalyticsAdminServiceClient, protos } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
 
 import { createDataStreamForSite } from './analytics.service'
-import { findOrCreateAccount } from './find-ga-account-id'
+import { createOrMakeNewMainAccount, findOrCreateAccount } from './find-ga-account-id'
 import { executeGooglePromise } from './handle-google-error'
 // google types
 import IAccount = protos.google.analytics.admin.v1alpha.IAccount
@@ -83,7 +83,7 @@ async function createPropertyWithDisplayName(
   return result.value
 }
 
-async function listParentAccountProperties(client: AnalyticsAdminServiceClient, accountName) {
+export async function listParentAccountProperties(client: AnalyticsAdminServiceClient, accountName) {
   const result = await executeGooglePromise(client.listProperties({
     filter: `parent:${accountName}`,
   }));
@@ -96,11 +96,7 @@ async function listParentAccountProperties(client: AnalyticsAdminServiceClient, 
 export async function generateNewToken(displayName: string, url: string) {
   console.debug('Generating new token for new token:')
   const client = await initializeGAAdmin()
-  const result = await executeGooglePromise(findOrCreateAccount(client))
-  if (result.isErr()) {
-    throw result.error
-  }
-  const account = result.value!
+  const account = await createOrMakeNewMainAccount(client)
   const accountId = parseGoogleAdminAccountId(account)
   const mainAccountName = account.name
   if (mainAccountName === null || mainAccountName === undefined) {
@@ -129,11 +125,11 @@ export async function generateNewToken(displayName: string, url: string) {
 
   console.info(`Creating new token for ${accountId}`)
 
-  console.info(`Property: ${JSON.stringify(property)}`)
+  console.info(`Property: `, property)
   console.info(accountId)
   console.info(account)
-
-  const dataStream = await createDataStreamForSite({ client, accountName: property?.name, displayName, url })
+  const accountName = property?.name!
+  const dataStream = await createDataStreamForSite({ client, accountName, displayName, url })
 
   return dataStream
 }

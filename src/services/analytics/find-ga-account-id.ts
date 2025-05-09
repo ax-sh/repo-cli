@@ -68,13 +68,23 @@ export async function findOrCreateAccount(client: AnalyticsAdminServiceClient) {
   if (accounts.length > 1) {
     console.debug('Found multiple existing accounts:', accounts)
   }
-  const displayName = 'My Analytics Account'
-  const regionCode = 'US'
-  console.debug('No accounts found. Creating a new account...')
-  console.warn(
-    'TODO Creating new token for new token:',
-    accounts,
-    displayName,
-    regionCode,
-  )
+  throw new Error('Not implemented TODO Creating new account for new token:')
+  // const displayName = 'My Analytics Account'
+  // const regionCode = 'US'
+  // console.debug('No accounts found. Creating a new account...')
+  // console.warn(
+  //   'TODO Creating new token for new token:',
+  //   accounts,
+  //   displayName,
+  //   regionCode,
+  // )
+}
+
+export async function createOrMakeNewMainAccount(client: AnalyticsAdminServiceClient) {
+  const result = await executeGooglePromise(findOrCreateAccount(client))
+  if (result.isErr()) {
+    throw result.error
+  }
+  const account = result.value!
+  return account
 }
