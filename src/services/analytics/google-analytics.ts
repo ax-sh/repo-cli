@@ -1,7 +1,8 @@
 import { AnalyticsAdminServiceClient, protos } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
-import { findOrCreateAccount } from './find-ga-account-id'
 
+import { getDataStreams } from './analytics.service'
+import { findOrCreateAccount } from './find-ga-account-id'
 import { executeGooglePromise } from './handle-google-error'
 // google types
 import IAccount = protos.google.analytics.admin.v1alpha.IAccount
@@ -96,7 +97,17 @@ export async function generateNewToken(displayName: string) {
     throw new Error('No account name provided')
   }
 
-  const property = await createPropertyWithDisplayName(
+  // // 1. List existing properties under the account
+  // const [properties] = await client.listProperties({
+  //   filter: `parent:${parentAccount}`,
+  // });
+  //
+  // // 2. Check if a property with the same display name already exists
+  // const propertyExists = properties.some(
+  //   prop => prop.displayName === propertyNameToCheck,
+  // );
+
+  const [property] = await createPropertyWithDisplayName(
     client,
     accountName,
     displayName,
@@ -107,6 +118,8 @@ export async function generateNewToken(displayName: string) {
   console.info(`Property: ${JSON.stringify(property)}`)
   console.info(accountId)
   console.info(account)
+  const a = await getDataStreams(client, property?.name)
+  console.log(a, 6666)
 }
 
 export async function listAccountProperties(
@@ -122,36 +135,4 @@ export async function listAccountProperties(
 
   const properties = await getProperties(client, accountId)
   return properties
-}
-
-// Get data streams for a specific property
-async function getDataStreams(propertyName: string) {
-  const client = await initializeGAAdmin()
-
-  try {
-    // List data streams (web, iOS, Android)
-    const [dataStreams] = await client.listDataStreams({
-      parent: propertyName,
-    })
-    return dataStreams
-  } catch (error) {
-    console.error('Error fetching data streams:', error)
-    throw error
-  }
-}
-
-// Get measurement ID from a web data stream
-export async function getMeasurementId(propertyName: string) {
-  const dataStreams = await getDataStreams(propertyName)
-
-  // Find the web data stream
-  const webStream = dataStreams.find(
-    stream => stream.type === 'WEB_DATA_STREAM',
-  )
-
-  if (webStream) {
-    return webStream.webStreamData?.measurementId
-  } else {
-    throw new Error('No web data stream found for this property')
-  }
 }

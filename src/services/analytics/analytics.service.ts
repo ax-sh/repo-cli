@@ -1,5 +1,39 @@
 // import { getMeasurementId } from './google-analytics'
 
+// Get data streams for a specific property
+import type { AnalyticsAdminServiceClient } from '@google-analytics/admin'
+import { executeGooglePromise } from './handle-google-error'
+
+export async function getDataStreams(client: AnalyticsAdminServiceClient, propertyName: string) {
+  // List data streams (web, iOS, Android)
+  const result = await executeGooglePromise(client.listDataStreams({
+    parent: propertyName,
+  }))
+  if (result.isErr()) {
+    console.error('Error fetching data streams:', result.error)
+    throw result.error
+  }
+
+  const [dataStreams] = result.value
+  return dataStreams
+}
+
+// Get measurement ID from a web data stream
+export async function getMeasurementId(client: AnalyticsAdminServiceClient, propertyName: string) {
+  const dataStreams = await getDataStreams(client, propertyName)
+
+  // Find the web data stream
+  const webStream = dataStreams.find(
+    stream => stream.type === 'WEB_DATA_STREAM',
+  )
+
+  if (webStream) {
+    return webStream.webStreamData?.measurementId
+  } else {
+    throw new Error('No web data stream found for this property')
+  }
+}
+
 // http://analytics.google.com/
 export async function run() {
   console.debug('todo doing')
