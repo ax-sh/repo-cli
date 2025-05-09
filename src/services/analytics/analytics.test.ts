@@ -26,17 +26,19 @@ describe('[analytics] service test', () => {
 
   it('should delete all properties', async () => {
     const client = await initializeGAAdmin()
+    const parentAccount = process.env.MAIN_ANALYTICS_ACCOUNT
 
     const [properties] = await listAccountPropertiesWithAccountName(client, parentAccount)
-    for (const v of properties) {
-      console.debug('property', v)
+    const notDeleted = properties.filter(i => i.deleteTime !== null)
+    console.debug('property', notDeleted, properties)
+    for (const v of notDeleted) {
+      const r = await client.deleteProperty({ name: v.name })
+
+      console.log('deleted', r)
     }
-    // result.value.map((i) => {
-    //   console.log(i)
-    //  awai client.deleteProperty({})
-    // })
+
     expect(1).toBe(1)
-  })
+  }, { timeout: 400000 })
 
   it('should create new tracking token', async () => {
     const displayName = 'My Website'
