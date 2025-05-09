@@ -6,6 +6,103 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ### 🚀 Features
 
+- *(renovate)* Update command for GitHub platform usage [`7f734e5`](https://github.com/ax-sh/ax-sh.github.io/commit/7f734e5f39288c4ad9dbcdbf9b4a099adaa69f93)
+- *(vitest)* Add functions to modify tsconfig and config files [`edfef5c`](https://github.com/ax-sh/ax-sh.github.io/commit/edfef5cba9555f9248f68ff80c6eba47cd688006)
+- *(eslint)* Add biome support to eslint configuration command [`1b0d8d6`](https://github.com/ax-sh/ax-sh.github.io/commit/1b0d8d6c8bae2015e2440245b0f3596b5da3135f)
+- Add biome configuration and update eslint service [`8a6a067`](https://github.com/ax-sh/ax-sh.github.io/commit/8a6a067ec53c01e455aaa6a0b31a7b8bb0c1ccb3)
+- Update biome config [`7104376`](https://github.com/ax-sh/ax-sh.github.io/commit/7104376e22e2667b87c0f996e23935cf3fb77155)
+- *(analytics)* Add analytics command and service files [`50f2282`](https://github.com/ax-sh/ax-sh.github.io/commit/50f228245e95b48eeb9b80b9a4d8b00ab41f99bc)
+- *(biome)* Add new biome command implementation [`e463975`](https://github.com/ax-sh/ax-sh.github.io/commit/e46397530b66d438da22d7a289713bd2a23b61b6)
+- *(biome)* Add installBiomeLinter and migrate commands [`9302418`](https://github.com/ax-sh/ax-sh.github.io/commit/9302418e6bac66e41394d7571bfeae29c24e1506)
+- Add test [`62cab7f`](https://github.com/ax-sh/ax-sh.github.io/commit/62cab7fe6707b59a5d04d7bae045fe82a75137a0)
+- *(errors)* Add AppError class and runFromPromise function [`bd63105`](https://github.com/ax-sh/ax-sh.github.io/commit/bd631059ee2468e8e3d8efd86e6d96d35f2080ea)
+- Add links [`e92d208`](https://github.com/ax-sh/ax-sh.github.io/commit/e92d208c363e37baeedbe48fdd4dd11be3c8b5f1)
+- *(analytics)* Add error handling for Google Analytics API [`c0f8435`](https://github.com/ax-sh/ax-sh.github.io/commit/c0f8435c7682124d980cb87db2c2eeeba8f247b8)
+- *(analytics)* Update generateNewToken with displayName param [`38ef1c3`](https://github.com/ax-sh/ax-sh.github.io/commit/38ef1c31ce6aca21a74f07e63cd74522ad28b2f3)
+- *(analytics)* Add property creation for Google Analytics [`3aa34ad`](https://github.com/ax-sh/ax-sh.github.io/commit/3aa34ad779b6c467d0adf9a798d53cd237531bc4)
+- *(analytics)* Add data stream retrieval functions [`d5c34b4`](https://github.com/ax-sh/ax-sh.github.io/commit/d5c34b4f054dd88e2ff55fccce80ac711e976be0)
+- *(analytics)* Add webStreamData to data stream creation [`0d0fe4d`](https://github.com/ax-sh/ax-sh.github.io/commit/0d0fe4dbce78680d5df550bfbe2d8573c39ee0df)
+- *(analytics)* Add function to list account properties [`4c9bf71`](https://github.com/ax-sh/ax-sh.github.io/commit/4c9bf71730eb87f5b57c9d888cd26c6b4bc41c11)
+- *(analytics)* Add createDataStreamForSite function [`62d43c2`](https://github.com/ax-sh/ax-sh.github.io/commit/62d43c28403be67f7fb999a3fcea915943b74bbc)
+- Add function to create or make new main account [`8dd7868`](https://github.com/ax-sh/ax-sh.github.io/commit/8dd78683a64a41f35ac9d4ac433406013cb4e90d)
+
+### 🐛 Bug Fixes
+
+- *(renovate)* Handle errors in renovate command execution [`3542f93`](https://github.com/ax-sh/ax-sh.github.io/commit/3542f93a660bfe7412eb560bac739e66a71bab40)
+- *(renovate)* Improve error handling with message extraction [`8af35d8`](https://github.com/ax-sh/ax-sh.github.io/commit/8af35d86334f7d0ccb528acb969c64a16e3f0c6b)
+- *(analytics)* Return error instead of throwing it [`901a238`](https://github.com/ax-sh/ax-sh.github.io/commit/901a2389c676c2d66cba2bbc0bd364d8aa6daa12)
+
+### 🚜 Refactor
+
+- *(eslint)* Update console rules and config structure [`1943d45`](https://github.com/ax-sh/ax-sh.github.io/commit/1943d45c184f1cf7718f1ab689f4ce2f0f75e659)
+- Rename analytics command and add biome service [`0eaa1fe`](https://github.com/ax-sh/ax-sh.github.io/commit/0eaa1fef8df7046e02df4469eab0573c700f6d32)
+- *(add)* Rename variable for clarity and improve output [`40a9af1`](https://github.com/ax-sh/ax-sh.github.io/commit/40a9af1fbe08d5ee04abed9fc1a64381a634062d)
+- *(analytics)* Simplify account management functions [`288699a`](https://github.com/ax-sh/ax-sh.github.io/commit/288699a65d0dcd610a2e3dabdc657fa04821d075)
+- *(analytics)* Simplify account management functions [`202ef85`](https://github.com/ax-sh/ax-sh.github.io/commit/202ef85383825cde3eac69c378d019aa02f7ca44)
+- *(analytics)* Improve error handling for Google API [`caf0989`](https://github.com/ax-sh/ax-sh.github.io/commit/caf0989d3d99f1e562656172b5e890df439aef3c)
+- *(analytics)* Move handleGoogleError to new file [`e291af0`](https://github.com/ax-sh/ax-sh.github.io/commit/e291af072abf891c306513d8b1ba3336b3169518)
+- *(analytics)* Improve error handling and logging [`f218b6a`](https://github.com/ax-sh/ax-sh.github.io/commit/f218b6a98f296aa16e8b85e004ba3cf72fa817f8)
+- *(analytics)* Reorganize data stream functions [`2ffd39b`](https://github.com/ax-sh/ax-sh.github.io/commit/2ffd39b9eb930ca07e31ee36c4dadece62b5beb8)
+- *(analytics)* Simplify account management functions [`28e8aad`](https://github.com/ax-sh/ax-sh.github.io/commit/28e8aad607c620cea451dedf32065063bb78d902)
+- *(analytics)* Simplify account management functions [`483f0ff`](https://github.com/ax-sh/ax-sh.github.io/commit/483f0ff1b097d513636aa0fffd828eee71ccaaea)
+- *(analytics)* Reorganize analytics service structure [`be3d9ac`](https://github.com/ax-sh/ax-sh.github.io/commit/be3d9ac1cc019980a77c476b2f978e04f879158e)
+
+### 📚 Documentation
+
+- *(gh-pages)* Add comment for GitHub API usage in code [`3c34281`](https://github.com/ax-sh/ax-sh.github.io/commit/3c34281750d91ab0d893f6966f605cc7889927bb)
+
+### 🎨 Styling
+
+- Replace console.log with console.warn [`cf0f690`](https://github.com/ax-sh/ax-sh.github.io/commit/cf0f690f8280f96a684197302be95c27d61374c0)
+- Format catch blocks and update package.json [`e5b3331`](https://github.com/ax-sh/ax-sh.github.io/commit/e5b3331ab8306a2f713b95b9af3f0bfd0ca90868)
+- *(biome.jsonc)* Change indentation style to space [`f9fafe0`](https://github.com/ax-sh/ax-sh.github.io/commit/f9fafe0beb9b938406bba89775aadffdf93b6ff9)
+- Update eslint config and formatting changes [`6ee8a8f`](https://github.com/ax-sh/ax-sh.github.io/commit/6ee8a8fdc9730ee8725aca9ab75807283078310b)
+- Format code and improve readability [`c2d894e`](https://github.com/ax-sh/ax-sh.github.io/commit/c2d894e061866f8809b1668e0881efcb52032f8d)
+- Comment out unused imports and debug logs [`11cfbb8`](https://github.com/ax-sh/ax-sh.github.io/commit/11cfbb81661836d64087002d9c6570c2c2f39bae)
+- Format code and improve readability in files [`754a49b`](https://github.com/ax-sh/ax-sh.github.io/commit/754a49b0ca6822dab3ffe34339532d7acbaada63)
+- Improve code formatting and structure in tests and functions [`9320441`](https://github.com/ax-sh/ax-sh.github.io/commit/932044104e28f2bd15be28624a3f6d529a12bc33)
+- Format code for better readability and consistency [`3aaa6f4`](https://github.com/ax-sh/ax-sh.github.io/commit/3aaa6f4774c3a368cb38698bd201ae2228551e0b)
+
+### 🧪 Testing
+
+- *(analytics)* Add test for generating new tracking token [`f805272`](https://github.com/ax-sh/ax-sh.github.io/commit/f805272ae410f3d85bf8689dd60a3b9b334565b1)
+- *(analytics)* Update tracking token test with measurement ID [`b14bab5`](https://github.com/ax-sh/ax-sh.github.io/commit/b14bab5c7ca2d552aa2a7245b91707acb09faa22)
+- *(analytics)* Update tracking token test assertion [`7d666e3`](https://github.com/ax-sh/ax-sh.github.io/commit/7d666e37fa10c3720cc2127bf472dd25600d93bb)
+- *(analytics)* Add console log for properties in tests [`34d19ac`](https://github.com/ax-sh/ax-sh.github.io/commit/34d19ac804386bddeef5c676de790d1cd37d1d4f)
+- *(analytics)* Update tests for property deletion logic [`64e4ab3`](https://github.com/ax-sh/ax-sh.github.io/commit/64e4ab335d3e76426c0d6a29fb0f636da92ef71a)
+- *(analytics)* Disable mass delete properties test [`4ebe741`](https://github.com/ax-sh/ax-sh.github.io/commit/4ebe7418ee540fb4589a890ea8159acaa357bc20)
+- *(analytics)* Update tracking token display name in tests [`b37b955`](https://github.com/ax-sh/ax-sh.github.io/commit/b37b955bc92f13e0a32018bbcb03baf2e45ebfda)
+- *(analytics)* Add property to token generation test output [`2609c47`](https://github.com/ax-sh/ax-sh.github.io/commit/2609c47e8b8774e55a12809c847fcdaec38da36b)
+- *(analytics)* Mark tests as todos for implementation [`5bdc63b`](https://github.com/ax-sh/ax-sh.github.io/commit/5bdc63b716be00d85b77f7d8ca2f698bf0d34b11)
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove unused dependency from package.json [`047c7ed`](https://github.com/ax-sh/ax-sh.github.io/commit/047c7ede657d9bbdbc081ba871a617d7e2287832)
+- Remove RENOVATE_AUTODISCOVER from workflow config [`5a4a80f`](https://github.com/ax-sh/ax-sh.github.io/commit/5a4a80f23a94ac9903f9a3dc81821a424b5ab8c6)
+- Update Renovate workflow environment variables [`c3cfec5`](https://github.com/ax-sh/ax-sh.github.io/commit/c3cfec5ba908834a376ca6fda22bdfcdc229cd41)
+- Update Renovate config to recommended settings [`8f311e5`](https://github.com/ax-sh/ax-sh.github.io/commit/8f311e5f26bbb491c896960ad8075736c38b0cd2)
+- Update renovate config and fix code formatting [`c70b14e`](https://github.com/ax-sh/ax-sh.github.io/commit/c70b14eedd5debe48e7dda092d4e704be195e291)
+- *(eslint)* Update eslint config handling comments [`d181ca7`](https://github.com/ax-sh/ax-sh.github.io/commit/d181ca76e2a95285ff85eddba658551d7b33740d)
+- Update dependencies and renovate configuration [`65f5dc4`](https://github.com/ax-sh/ax-sh.github.io/commit/65f5dc401c79322a809b9a977cea1c43edf3e71a)
+- Enable some console linting rules [`eaf8119`](https://github.com/ax-sh/ax-sh.github.io/commit/eaf81193741f28de52dd727c020f2f7ac6b0b34f)
+- Add add command [`d16260d`](https://github.com/ax-sh/ax-sh.github.io/commit/d16260d0aa3ef0dd66d6d2e6749253f0c3503f94)
+- Add add command [`1aabb24`](https://github.com/ax-sh/ax-sh.github.io/commit/1aabb245da633574c430f260821b8e6b1facab05)
+- Fix gitignore [`5539016`](https://github.com/ax-sh/ax-sh.github.io/commit/55390167c58c357e81d0f72a3f5cf6b9613ae89c)
+- Load env file on vitest run [`4edec17`](https://github.com/ax-sh/ax-sh.github.io/commit/4edec1748e3bc4ac52894517a9031a522711ef2a)
+- Update gitignore [`bd8fdba`](https://github.com/ax-sh/ax-sh.github.io/commit/bd8fdba822093e2b44a175452db2a61466d39e63)
+- Update dependencies and clean up code formatting [`4f61f36`](https://github.com/ax-sh/ax-sh.github.io/commit/4f61f3633c981cb72785fa1e9bdfcbf63626c16e)
+- Format files before release [`9d6b59d`](https://github.com/ax-sh/ax-sh.github.io/commit/9d6b59d27360a3e2c53b73914042b1b11c000464)
+
+### Build
+
+- Add Google Analytics admin dependency [`4f280aa`](https://github.com/ax-sh/ax-sh.github.io/commit/4f280aa0fa58d2fd6b0f114850a4c8e5f86297c8)
+- Update Renovate GitHub Action version to v41.0.21 [`9a3f431`](https://github.com/ax-sh/ax-sh.github.io/commit/9a3f43194258f5a61599800b8ea8492712e93469)
+
+## [[0.13.0] - 2025-04-21](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.13.0)
+
+
+### 🚀 Features
+
 - Add zod validation for GitHub pages URL generation [`c8f0930`](https://github.com/ax-sh/ax-sh.github.io/commit/c8f0930c51b09632f174656ca2eef47263936790)
 - Add scripts for deploy and clean in gh-pages command [`ec10b65`](https://github.com/ax-sh/ax-sh.github.io/commit/ec10b65531fce65e577d907944489e76fa6e4d81)
 - *(eslint)* Add eslint command and service integration [`ff3c8b2`](https://github.com/ax-sh/ax-sh.github.io/commit/ff3c8b2e630d3bac862324f746da798b029ea252)
@@ -51,6 +148,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 - *(renovate)* Add reviewers to configuration file [`5bf62f7`](https://github.com/ax-sh/ax-sh.github.io/commit/5bf62f75fa0012a413132bb63b923947928b630f)
 - Add comment about tsconfig for vite-plugin-pages [`8256127`](https://github.com/ax-sh/ax-sh.github.io/commit/8256127e8a10bf54fc074829344cd0399ae81319)
 - Format files before release [`a2b9373`](https://github.com/ax-sh/ax-sh.github.io/commit/a2b9373ae9b8ff4037eff10e71f0417c4e87a670)
+- Add CHANGELOG [`dbff945`](https://github.com/ax-sh/ax-sh.github.io/commit/dbff945179ec805cd1b7a58f65b5874e3036cf2a)
 
 ### Build
 
