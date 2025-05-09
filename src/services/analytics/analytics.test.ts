@@ -1,5 +1,9 @@
 import { listAccounts } from './find-ga-account-id'
-import { generateNewToken, initializeGAAdmin, listAccountProperties } from './google-analytics'
+import {
+  generateNewToken,
+  initializeGAAdmin,
+  listAccountProperties,
+} from './google-analytics'
 
 vi.mock('../../lib/helpers/cmd/cli')
 
@@ -21,8 +25,8 @@ describe('[analytics] service test', () => {
   it('should list properties from the found account', async () => {
     const client = await initializeGAAdmin()
     const properties = await listAccountProperties(client)
-    expect(properties).toHaveLength(1)
     console.table(properties)
+    expect(properties).toHaveLength(1)
   })
 
   // const measurementId = await getMeasurementId(propertyName);

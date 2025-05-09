@@ -59,7 +59,11 @@ function parseGoogleAdminAccountId(account: IAccount): number {
   return Number(name.split('/')[1])
 }
 
-async function createPropertyWithDisplayName(client: AnalyticsAdminServiceClient, accountName: string, displayName: string) {
+async function createPropertyWithDisplayName(
+  client: AnalyticsAdminServiceClient,
+  accountName: string,
+  displayName: string,
+) {
   const createPropertyRequest: ICreatePropertyRequest = {
     property: {
       parent: accountName,
@@ -68,12 +72,14 @@ async function createPropertyWithDisplayName(client: AnalyticsAdminServiceClient
       timeZone: 'America/Los_Angeles',
       currencyCode: 'USD',
     },
-  };
-  const result = await executeGooglePromise(client.createProperty(createPropertyRequest))
+  }
+  const result = await executeGooglePromise(
+    client.createProperty(createPropertyRequest),
+  )
   if (result.isErr()) {
     throw result.error
   }
-  console.info('process result', result)
+  return result.value
 }
 
 export async function generateNewToken(displayName: string) {
@@ -90,7 +96,11 @@ export async function generateNewToken(displayName: string) {
     throw new Error('No account name provided')
   }
 
-  const property = await createPropertyWithDisplayName(client, accountName, displayName)
+  const property = await createPropertyWithDisplayName(
+    client,
+    accountName,
+    displayName,
+  )
 
   console.info(`Creating new token for ${accountId}`)
 
@@ -108,6 +118,7 @@ export async function listAccountProperties(
   }
   const account = result.value!
   const accountId = parseGoogleAdminAccountId(account)
+  console.info('using account', account)
 
   const properties = await getProperties(client, accountId)
   return properties
