@@ -16,12 +16,6 @@ describe('[analytics] service test', () => {
   })
   it('should list permissions for the service client_email', async () => {})
 
-  it('should create new tracking token', async () => {
-    const displayName = 'My Website'
-    const measurementId = await generateNewToken(displayName)
-    console.info('ReactGA4 initialized with measurement ID:', measurementId)
-    expect(measurementId).not.toEqual(undefined)
-  })
   it('should list properties from the found account', async () => {
     const client = await initializeGAAdmin()
     const properties = await listAccountProperties(client)
@@ -29,6 +23,12 @@ describe('[analytics] service test', () => {
     expect(properties).toHaveLength(1)
   })
 
+  it('should create new tracking token', async () => {
+    const displayName = 'My Website'
+    const measurementId = await generateNewToken(displayName)
+    console.info('ReactGA4 initialized with measurement ID:', measurementId)
+    expect(measurementId).not.toEqual(undefined)
+  })
   // const measurementId = await getMeasurementId(propertyName);
   // it('should return results', async () => {
   //   const fn = vi.mocked(exeCmdWithOutput)
