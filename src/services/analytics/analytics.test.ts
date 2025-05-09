@@ -1,9 +1,9 @@
-import { listAccounts } from './find-ga-account-id'
+import { listAccounts } from './track-google-analytics/find-ga-account-id'
 import {
   generateNewToken,
   initializeGAAdmin,
   listAccountProperties,
-} from './google-analytics'
+} from './track-google-analytics/google-analytics'
 
 vi.mock('../../lib/helpers/cmd/cli')
 

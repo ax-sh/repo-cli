@@ -1,7 +1,7 @@
 import { AnalyticsAdminServiceClient, protos } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
 
-import { createDataStreamForSite } from './analytics.service'
+import { createDataStreamForSite } from '../analytics.service'
 import { createOrMakeNewMainAccount, findOrCreateAccount } from './find-ga-account-id'
 import { executeGooglePromise } from './handle-google-error'
 // google types

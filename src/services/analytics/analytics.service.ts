@@ -2,7 +2,7 @@
 
 // Get data streams for a specific property
 import type { AnalyticsAdminServiceClient } from '@google-analytics/admin'
-import { executeGooglePromise } from './handle-google-error'
+import { executeGooglePromise } from './track-google-analytics/handle-google-error'
 
 export async function listAccountPropertiesWithAccountName(client: AnalyticsAdminServiceClient,
   // format => accounts/333
