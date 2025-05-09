@@ -14,12 +14,20 @@ export async function listAccountPropertiesWithAccountName(client: AnalyticsAdmi
   return result.value
 }
 
-export async function createDataStreams(client: AnalyticsAdminServiceClient, accountName: string, displayName: string) {
+interface CreateDataStreamForSiteOptions {
+  client: AnalyticsAdminServiceClient
+  accountName: string
+  displayName: string
+  url: string
+
+}
+
+export async function createDataStreamForSite({ client, url, accountName, displayName }: CreateDataStreamForSiteOptions) {
   // List data streams (web, iOS, Android)
   const result = await executeGooglePromise(client.createDataStream({
     parent: accountName,
 
-    dataStream: { type: 'WEB_DATA_STREAM', displayName, webStreamData: { defaultUri: 'http://example.foo' } },
+    dataStream: { type: 'WEB_DATA_STREAM', displayName, webStreamData: { defaultUri: url } },
   }))
   if (result.isErr()) {
     console.error('Error creating data streams:', result.error)

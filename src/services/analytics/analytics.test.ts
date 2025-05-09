@@ -42,8 +42,11 @@ describe('[analytics] service test', () => {
 
   it('should create new tracking token', async () => {
     const displayName = 'My Website'
-    const measurementId = await generateNewToken(displayName)
-    console.info('ReactGA4 initialized with measurement ID:', measurementId.webStreamData)
+    const url = 'http://example.foo'
+    const dataStream = await generateNewToken(displayName, url)
+    console.debug('Final data =>', dataStream)
+    console.info('ReactGA4 initialized with measurement ID:', dataStream?.webStreamData)
+    const measurementId = dataStream?.webStreamData
     expect(measurementId).not.toEqual(undefined)
   }, { timeout: 500000 })
   // const measurementId = await getMeasurementId(propertyName);
