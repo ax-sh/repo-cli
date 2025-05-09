@@ -102,51 +102,71 @@ export async function listParentAccountProperties(
   return result.value
 }
 
-function checkIfAccountNameExists(mainAccountName) {
-  if (mainAccountName === null || mainAccountName === undefined) {
-    throw new Error('No main account name provided')
-  }
-}
-
 const validateName = z.string()
 
-export async function generateNewToken(displayName: string, url: string) {
-  console.debug('Generating new token for new token:')
-  const client = await initializeGAAdmin()
+async function findMainAccount(client: AnalyticsAdminServiceClient) {
   const account = await createOrMakeNewMainAccount(client)
-  const accountId = parseGoogleAdminAccountId(account)
-  const mainAccountName = validateName.parse(account.name)
 
-  checkIfAccountNameExists(mainAccountName)
+  return validateName.parse(account.name)
+}
 
+// Define the schema for a property
+const propertySchema = z.object({
+  displayName: z.string(),
+  // Add other properties as needed
+});
+
+// Define the schema for the input that includes an array of properties
+const inputSchema = z.object({
+  properties: z.array(propertySchema),
+  displayName: z.string(),
+}).refine(
+  (data) => {
+    if (data.properties.length > 0) {
+      const propertyNameToCheck = data.displayName;
+      const propertyExists = data.properties.some(
+        prop => prop.displayName === propertyNameToCheck,
+      );
+
+      if (propertyExists) {
+        return false
+      //   throw new Error(`Property Exists [${propertyNameToCheck}] aborting to not create duplicate property.`);
+      }
+    }
+    return true;
+  },
+  {
+    message: 'Validation failed: duplicate property',
+  },
+);
+
+export async function generateNewToken(displayName: string, url: string) {
+  console.debug(`Generating new tracking token property for ${displayName} with => ${url}`)
+  const client = await initializeGAAdmin()
+  const mainAccountName = await findMainAccount(client)
+
+  console.info(`Creating new tracking token property for ${mainAccountName}`)
   // 1. List existing properties under the account
   const [properties] = await listParentAccountProperties(
     client,
     mainAccountName,
   )
-  if (properties.length > 0) {
-    // console.log(properties)
-    // 2. Check if a property with the same display name already exists
-    const propertyNameToCheck = displayName
-    const propertyExists = properties.some(
-      prop => prop.displayName === propertyNameToCheck,
-    )
-    if (propertyExists) {
-      throw new Error(`not creating new [${displayName}] as propertyExists`)
-    }
-  }
+  console.info(`Validating new property for ${mainAccountName}`)
+  // throw error if validation failed
+  inputSchema.parse({
+    properties,
+    displayName,
+  });
 
   const [property] = await createPropertyWithDisplayName(
     client,
     mainAccountName,
     displayName,
   )
+  // const accountId = parseGoogleAdminAccountId(account)
 
-  console.info(`Creating new token for ${accountId}`)
+  // accountId should match property.parent
 
-  console.info(`Property: `, property)
-  console.info(accountId)
-  console.info(account)
   const accountName = validateName.parse(property.name)
   const dataStream = await createDataStreamForSite({
     client,
@@ -155,7 +175,7 @@ export async function generateNewToken(displayName: string, url: string) {
     url,
   })
 
-  return dataStream
+  return { property, dataStream }
 }
 
 export async function listAccountProperties(

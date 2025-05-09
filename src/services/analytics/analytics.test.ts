@@ -42,7 +42,7 @@ describe('[analytics] service test', () => {
   it(
     'should create new tracking token',
     async () => {
-      const displayName = 'My Website'
+      const displayName = 'My Website alpha'
       const url = 'http://example.foo'
       const dataStream = await generateNewToken(displayName, url)
       console.debug('Final data =>', dataStream)
