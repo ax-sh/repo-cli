@@ -80,7 +80,9 @@ export async function findOrCreateAccount(client: AnalyticsAdminServiceClient) {
   // )
 }
 
-export async function createOrMakeNewMainAccount(client: AnalyticsAdminServiceClient) {
+export async function createOrMakeNewMainAccount(
+  client: AnalyticsAdminServiceClient,
+) {
   const result = await executeGooglePromise(findOrCreateAccount(client))
   if (result.isErr()) {
     throw result.error

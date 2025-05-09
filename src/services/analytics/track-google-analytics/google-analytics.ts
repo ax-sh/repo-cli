@@ -1,8 +1,12 @@
 import { AnalyticsAdminServiceClient, protos } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
 
+import z from 'zod'
 import { createDataStreamForSite } from '../analytics.service'
-import { createOrMakeNewMainAccount, findOrCreateAccount } from './find-ga-account-id'
+import {
+  createOrMakeNewMainAccount,
+  findOrCreateAccount,
+} from './find-ga-account-id'
 import { executeGooglePromise } from './handle-google-error'
 // google types
 import IAccount = protos.google.analytics.admin.v1alpha.IAccount
@@ -83,35 +87,50 @@ async function createPropertyWithDisplayName(
   return result.value
 }
 
-export async function listParentAccountProperties(client: AnalyticsAdminServiceClient, accountName) {
-  const result = await executeGooglePromise(client.listProperties({
-    filter: `parent:${accountName}`,
-  }));
+export async function listParentAccountProperties(
+  client: AnalyticsAdminServiceClient,
+  accountName: string,
+) {
+  const result = await executeGooglePromise(
+    client.listProperties({
+      filter: `parent:${accountName}`,
+    }),
+  )
   if (result.isErr()) {
     throw result.error
   }
   return result.value
 }
 
+function checkIfAccountNameExists(mainAccountName) {
+  if (mainAccountName === null || mainAccountName === undefined) {
+    throw new Error('No main account name provided')
+  }
+}
+
+const validateName = z.string()
+
 export async function generateNewToken(displayName: string, url: string) {
   console.debug('Generating new token for new token:')
   const client = await initializeGAAdmin()
   const account = await createOrMakeNewMainAccount(client)
   const accountId = parseGoogleAdminAccountId(account)
-  const mainAccountName = account.name
-  if (mainAccountName === null || mainAccountName === undefined) {
-    throw new Error('No main account name provided')
-  }
+  const mainAccountName = validateName.parse(account.name)
+
+  checkIfAccountNameExists(mainAccountName)
 
   // 1. List existing properties under the account
-  const [properties] = await listParentAccountProperties(client, mainAccountName)
+  const [properties] = await listParentAccountProperties(
+    client,
+    mainAccountName,
+  )
   if (properties.length > 0) {
     // console.log(properties)
     // 2. Check if a property with the same display name already exists
     const propertyNameToCheck = displayName
     const propertyExists = properties.some(
       prop => prop.displayName === propertyNameToCheck,
-    );
+    )
     if (propertyExists) {
       throw new Error(`not creating new [${displayName}] as propertyExists`)
     }
@@ -128,8 +147,13 @@ export async function generateNewToken(displayName: string, url: string) {
   console.info(`Property: `, property)
   console.info(accountId)
   console.info(account)
-  const accountName = property?.name!
-  const dataStream = await createDataStreamForSite({ client, accountName, displayName, url })
+  const accountName = validateName.parse(property.name)
+  const dataStream = await createDataStreamForSite({
+    client,
+    accountName,
+    displayName,
+    url,
+  })
 
   return dataStream
 }

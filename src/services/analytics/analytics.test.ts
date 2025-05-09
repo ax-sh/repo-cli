@@ -39,15 +39,22 @@ describe('[analytics] service test', () => {
   //   expect(1).toBe(1)
   // }, { timeout: 400000 })
 
-  it('should create new tracking token', async () => {
-    const displayName = 'My Website'
-    const url = 'http://example.foo'
-    const dataStream = await generateNewToken(displayName, url)
-    console.debug('Final data =>', dataStream)
-    console.info('ReactGA4 initialized with measurement ID:', dataStream?.webStreamData)
-    const measurementId = dataStream?.webStreamData
-    expect(measurementId).not.toEqual(undefined)
-  }, { timeout: 500000 })
+  it(
+    'should create new tracking token',
+    async () => {
+      const displayName = 'My Website'
+      const url = 'http://example.foo'
+      const dataStream = await generateNewToken(displayName, url)
+      console.debug('Final data =>', dataStream)
+      console.info(
+        'ReactGA4 initialized with measurement ID:',
+        dataStream?.webStreamData,
+      )
+      const measurementId = dataStream?.webStreamData
+      expect(measurementId).not.toEqual(undefined)
+    },
+    { timeout: 500000 },
+  )
   // const measurementId = await getMeasurementId(propertyName);
   // it('should return results', async () => {
   //   const fn = vi.mocked(exeCmdWithOutput)
