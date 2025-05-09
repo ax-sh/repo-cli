@@ -92,6 +92,8 @@ All notable changes to ax-sh webpage will be documented in this file.
 - Update gitignore [`bd8fdba`](https://github.com/ax-sh/ax-sh.github.io/commit/bd8fdba822093e2b44a175452db2a61466d39e63)
 - Update dependencies and clean up code formatting [`4f61f36`](https://github.com/ax-sh/ax-sh.github.io/commit/4f61f3633c981cb72785fa1e9bdfcbf63626c16e)
 - Format files before release [`9d6b59d`](https://github.com/ax-sh/ax-sh.github.io/commit/9d6b59d27360a3e2c53b73914042b1b11c000464)
+- Add CHANGELOG [`75ff551`](https://github.com/ax-sh/ax-sh.github.io/commit/75ff551b764afadc1010ba11b5a69f6634a91e26)
+- Format files before release [`4a4987d`](https://github.com/ax-sh/ax-sh.github.io/commit/4a4987d3a38aafc2ba2900dfaf6003d52880bf4f)
 
 ### Build
 
