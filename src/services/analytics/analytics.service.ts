@@ -4,6 +4,16 @@
 import type { AnalyticsAdminServiceClient } from '@google-analytics/admin'
 import { executeGooglePromise } from './handle-google-error'
 
+export async function listAccountPropertiesWithAccountName(client: AnalyticsAdminServiceClient,
+  // format => accounts/333
+  accountName: string) {
+  const result = await executeGooglePromise(client.listProperties({ filter: `parent:${accountName}` }))
+  if (result.isErr()) {
+    throw result.error
+  }
+  return result.value
+}
+
 export async function createDataStreams(client: AnalyticsAdminServiceClient, accountName: string, displayName: string) {
   // List data streams (web, iOS, Android)
   const result = await executeGooglePromise(client.createDataStream({

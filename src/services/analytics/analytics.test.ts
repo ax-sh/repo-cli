@@ -1,3 +1,4 @@
+import { listAccountPropertiesWithAccountName } from './analytics.service'
 import { listAccounts } from './find-ga-account-id'
 import {
   generateNewToken,
@@ -21,6 +22,20 @@ describe('[analytics] service test', () => {
     const properties = await listAccountProperties(client)
     console.table(properties)
     expect(properties).toHaveLength(1)
+  })
+
+  it('should delete all properties', async () => {
+    const client = await initializeGAAdmin()
+
+    const [properties] = await listAccountPropertiesWithAccountName(client, parentAccount)
+    for (const v of properties) {
+      console.debug('property', v)
+    }
+    // result.value.map((i) => {
+    //   console.log(i)
+    //  awai client.deleteProperty({})
+    // })
+    expect(1).toBe(1)
   })
 
   it('should create new tracking token', async () => {
