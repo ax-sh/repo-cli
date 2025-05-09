@@ -26,9 +26,9 @@ describe('[analytics] service test', () => {
   it('should create new tracking token', async () => {
     const displayName = 'My Website'
     const measurementId = await generateNewToken(displayName)
-    console.info('ReactGA4 initialized with measurement ID:', measurementId)
+    console.info('ReactGA4 initialized with measurement ID:', measurementId.webStreamData)
     expect(measurementId).not.toEqual(undefined)
-  })
+  }, { timeout: 500000 })
   // const measurementId = await getMeasurementId(propertyName);
   // it('should return results', async () => {
   //   const fn = vi.mocked(exeCmdWithOutput)

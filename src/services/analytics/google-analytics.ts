@@ -120,7 +120,8 @@ export async function generateNewToken(displayName: string) {
   console.info(account)
 
   const dataStream = await createDataStreams(client, property?.name, displayName)
-  console.debug(dataStream, 6666)
+  console.log('Final data =>', dataStream)
+  return dataStream
 }
 
 export async function listAccountProperties(

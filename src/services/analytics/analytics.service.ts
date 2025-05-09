@@ -8,10 +8,12 @@ export async function createDataStreams(client: AnalyticsAdminServiceClient, acc
   // List data streams (web, iOS, Android)
   const result = await executeGooglePromise(client.createDataStream({
     parent: accountName,
-    dataStream: { type: 'WEB_DATA_STREAM', displayName },
+
+    dataStream: { type: 'WEB_DATA_STREAM', displayName, webStreamData: { defaultUri: 'http://example.foo' } },
   }))
   if (result.isErr()) {
-    console.error('Error fetching data streams:', result.error)
+    console.error('Error creating data streams:', result.error)
+    console.error('Error creating data streams:', result.error.cause)
     throw result.error
   }
 
