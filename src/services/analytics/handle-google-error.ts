@@ -67,7 +67,7 @@ export function handleGoogleError(error: unknown): RuntimeGoogleError {
           { cause: error },
         )
       case Status.INVALID_ARGUMENT:
-        throw new RuntimeGoogleError(
+        return new RuntimeGoogleError(
           '⚠️ Invalid argument. Invalid request. Check input parameters.',
           { cause: error },
         )

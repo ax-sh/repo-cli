@@ -4,6 +4,21 @@
 import type { AnalyticsAdminServiceClient } from '@google-analytics/admin'
 import { executeGooglePromise } from './handle-google-error'
 
+export async function createDataStreams(client: AnalyticsAdminServiceClient, accountName: string, displayName: string) {
+  // List data streams (web, iOS, Android)
+  const result = await executeGooglePromise(client.createDataStream({
+    parent: accountName,
+    dataStream: { type: 'WEB_DATA_STREAM', displayName },
+  }))
+  if (result.isErr()) {
+    console.error('Error fetching data streams:', result.error)
+    throw result.error
+  }
+
+  const [dataStreams] = result.value
+  return dataStreams
+}
+
 export async function getDataStreams(client: AnalyticsAdminServiceClient, propertyName: string) {
   // List data streams (web, iOS, Android)
   const result = await executeGooglePromise(client.listDataStreams({

@@ -1,7 +1,7 @@
 import { AnalyticsAdminServiceClient, protos } from '@google-analytics/admin'
 import appRootPath from 'app-root-path'
 
-import { getDataStreams } from './analytics.service'
+import { createDataStreams } from './analytics.service'
 import { findOrCreateAccount } from './find-ga-account-id'
 import { executeGooglePromise } from './handle-google-error'
 // google types
@@ -118,8 +118,9 @@ export async function generateNewToken(displayName: string) {
   console.info(`Property: ${JSON.stringify(property)}`)
   console.info(accountId)
   console.info(account)
-  const a = await getDataStreams(client, property?.name)
-  console.log(a, 6666)
+
+  const dataStream = await createDataStreams(client, property?.name, displayName)
+  console.debug(dataStream, 6666)
 }
 
 export async function listAccountProperties(
