@@ -1,4 +1,3 @@
-import { listAccountPropertiesWithAccountName } from './analytics.service'
 import { listAccounts } from './find-ga-account-id'
 import {
   generateNewToken,
@@ -23,22 +22,22 @@ describe('[analytics] service test', () => {
     console.table(properties)
     expect(properties).toHaveLength(1)
   })
-
-  it('should delete all properties', async () => {
-    const client = await initializeGAAdmin()
-    const parentAccount = process.env.MAIN_ANALYTICS_ACCOUNT
-
-    const [properties] = await listAccountPropertiesWithAccountName(client, parentAccount)
-    const notDeleted = properties.filter(i => i.deleteTime !== null)
-    console.debug('property', notDeleted, properties)
-    for (const v of notDeleted) {
-      const r = await client.deleteProperty({ name: v.name })
-
-      console.log('deleted', r)
-    }
-
-    expect(1).toBe(1)
-  }, { timeout: 400000 })
+  // only enable to mass delete properties
+  // it.todo('should delete all properties', async () => {
+  //   const client = await initializeGAAdmin()
+  //   // const parentAccount = process.env.MAIN_ANALYTICS_ACCOUNT
+  //
+  //   const [properties] = await listAccountPropertiesWithAccountName(client, parentAccount)
+  //   const notDeleted = properties.filter(i => i.deleteTime !== null)
+  //   console.debug('property', notDeleted, properties)
+  //   for (const v of notDeleted) {
+  //     const r = await client.deleteProperty({ name: v.name })
+  //
+  //     console.log('deleted', r)
+  //   }
+  //
+  //   expect(1).toBe(1)
+  // }, { timeout: 400000 })
 
   it('should create new tracking token', async () => {
     const displayName = 'My Website'
