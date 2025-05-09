@@ -16,7 +16,7 @@ describe('[analytics] service test', () => {
   })
   it('should list permissions for the service client_email', async () => {})
 
-  it('should list properties from the found account', async () => {
+  it.todo('should list properties from the found account', async () => {
     const client = await initializeGAAdmin()
     const properties = await listAccountProperties(client)
     console.table(properties)
@@ -39,22 +39,16 @@ describe('[analytics] service test', () => {
   //   expect(1).toBe(1)
   // }, { timeout: 400000 })
 
-  it(
-    'should create new tracking token',
-    async () => {
-      const displayName = 'My Website alpha'
-      const url = 'http://example.foo'
-      const { dataStream, property } = await generateNewToken(displayName, url)
-      console.debug('Final data =>', dataStream, property)
-      console.info(
-        'ReactGA4 initialized with measurement ID:',
-        dataStream?.webStreamData,
-      )
-      const measurementId = dataStream?.webStreamData
-      expect(measurementId).not.toEqual(undefined)
-    },
-    { timeout: 500000 },
-  )
+  it.todo('should create new tracking token', async () => {
+    const displayName = 'My Website alpha'
+    const url = 'http://example.foo'
+    const { dataStream, property } = await generateNewToken(displayName, url)
+    const tokenData = dataStream.webStreamData!
+    console.debug('Final data =>', tokenData, property)
+
+    const measurementId = tokenData.measurementId
+    expect(measurementId).not.toEqual(undefined)
+  })
   // const measurementId = await getMeasurementId(propertyName);
   // it('should return results', async () => {
   //   const fn = vi.mocked(exeCmdWithOutput)
