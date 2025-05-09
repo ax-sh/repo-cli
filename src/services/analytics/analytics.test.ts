@@ -44,8 +44,8 @@ describe('[analytics] service test', () => {
     async () => {
       const displayName = 'My Website alpha'
       const url = 'http://example.foo'
-      const dataStream = await generateNewToken(displayName, url)
-      console.debug('Final data =>', dataStream)
+      const { dataStream, property } = await generateNewToken(displayName, url)
+      console.debug('Final data =>', dataStream, property)
       console.info(
         'ReactGA4 initialized with measurement ID:',
         dataStream?.webStreamData,
