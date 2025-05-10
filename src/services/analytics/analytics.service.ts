@@ -81,7 +81,7 @@ export async function getMeasurementId(
 
   // Find the web data stream
   const webStream = dataStreams.find(
-    stream => stream.type === 'WEB_DATA_STREAM',
+    (stream) => stream.type === 'WEB_DATA_STREAM',
   )
 
   if (webStream) {

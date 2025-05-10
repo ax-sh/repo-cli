@@ -114,34 +114,38 @@ async function findMainAccount(client: AnalyticsAdminServiceClient) {
 const propertySchema = z.object({
   displayName: z.string(),
   // Add other properties as needed
-});
+})
 
 // Define the schema for the input that includes an array of properties
-const inputSchema = z.object({
-  properties: z.array(propertySchema),
-  displayName: z.string(),
-}).refine(
-  (data) => {
-    if (data.properties.length > 0) {
-      const propertyNameToCheck = data.displayName;
-      const propertyExists = data.properties.some(
-        prop => prop.displayName === propertyNameToCheck,
-      );
+const inputSchema = z
+  .object({
+    properties: z.array(propertySchema),
+    displayName: z.string(),
+  })
+  .refine(
+    (data) => {
+      if (data.properties.length > 0) {
+        const propertyNameToCheck = data.displayName
+        const propertyExists = data.properties.some(
+          (prop) => prop.displayName === propertyNameToCheck,
+        )
 
-      if (propertyExists) {
-        return false
-      //   throw new Error(`Property Exists [${propertyNameToCheck}] aborting to not create duplicate property.`);
+        if (propertyExists) {
+          return false
+          //   throw new Error(`Property Exists [${propertyNameToCheck}] aborting to not create duplicate property.`);
+        }
       }
-    }
-    return true;
-  },
-  {
-    message: 'Validation failed: duplicate property',
-  },
-);
+      return true
+    },
+    {
+      message: 'Validation failed: duplicate property',
+    },
+  )
 
 export async function generateNewToken(displayName: string, url: string) {
-  console.debug(`Generating new tracking token property for ${displayName} with => ${url}`)
+  console.debug(
+    `Generating new tracking token property for ${displayName} with => ${url}`,
+  )
   const client = await initializeGAAdmin()
   const mainAccountName = await findMainAccount(client)
 
@@ -156,7 +160,7 @@ export async function generateNewToken(displayName: string, url: string) {
   inputSchema.parse({
     properties,
     displayName,
-  });
+  })
 
   const [property] = await createPropertyWithDisplayName(
     client,

@@ -12,7 +12,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
 
     // enableConsoleDepth()
     const now = spacetime.now()
-    const items = out.map(i => ({
+    const items = out.map((i) => ({
       ...i,
       //
       createdAt: now.since(spacetime(i.createdAt)).rounded,

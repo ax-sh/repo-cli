@@ -14,6 +14,7 @@ export class KnownError extends Error {
 export class AppError extends Error {}
 
 export function runFromPromise<T>(p: Promise<T>) {
-  return ResultAsync.fromPromise<T, AppError>(p, e =>
-    e instanceof Error ? e : new AppError(String(e)))
+  return ResultAsync.fromPromise<T, AppError>(p, (e) =>
+    e instanceof Error ? e : new AppError(String(e)),
+  )
 }
