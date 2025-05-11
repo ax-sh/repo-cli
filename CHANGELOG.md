@@ -6,6 +6,43 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ### 🚀 Features
 
+- Add env configuration with validation schema [`1f9fc60`](https://github.com/ax-sh/ax-sh.github.io/commit/1f9fc60213b06463b54f094efde87b7cfc4c2c86)
+- Add url command [`0f9c2c9`](https://github.com/ax-sh/ax-sh.github.io/commit/0f9c2c9c4373f0ecaa3ea6f19e87d1520cbc7941)
+- Add dep install command [`6a292a4`](https://github.com/ax-sh/ax-sh.github.io/commit/6a292a4b40dd7c638eb2f69a26bfa4facdefc02d)
+- Add todo [`4963077`](https://github.com/ax-sh/ax-sh.github.io/commit/4963077a1cfe92ddaf666deb622beb8c3b1f8e7d)
+- Add imports to templates [`d8f65e0`](https://github.com/ax-sh/ax-sh.github.io/commit/d8f65e05b8e28db624b6d1335b260870bfd6371f)
+- Better error handler [`c1a1810`](https://github.com/ax-sh/ax-sh.github.io/commit/c1a1810fb139817da8ccd0f16cb71a17df4b7ca6)
+- Add better error handler [`e8b61a4`](https://github.com/ax-sh/ax-sh.github.io/commit/e8b61a46c45fae043fa34762dc24c0fa6f488a44)
+- Add better error handling [`7864e76`](https://github.com/ax-sh/ax-sh.github.io/commit/7864e761b2f04d41bc43cf00bf163d8985794a8f)
+- Add knip command [`2d4da33`](https://github.com/ax-sh/ax-sh.github.io/commit/2d4da339cca8426f6838e0d772d2bcaf15f62f67)
+- *(knip)* Add Knip configuration file and settings [`11ee59f`](https://github.com/ax-sh/ax-sh.github.io/commit/11ee59fe7f5aa63213b31d01dbdee2332e298317)
+
+### 🚜 Refactor
+
+- *(url)* Rename error handling functions and classes [`7e87097`](https://github.com/ax-sh/ax-sh.github.io/commit/7e87097628c72c448e99eb7ae2a1e917d40b338a)
+- Simplify promise handling in url commands [`3eb72e5`](https://github.com/ax-sh/ax-sh.github.io/commit/3eb72e5f9aebf6a7ac36543971615087cebdae19)
+- *(service)* Simplify input error check logic [`5686697`](https://github.com/ax-sh/ax-sh.github.io/commit/5686697a08d39e3763c56a3682770885772b47de)
+- Clean up knip configuration and update services [`4363640`](https://github.com/ax-sh/ax-sh.github.io/commit/4363640db20df713693c5f7856a71b26aefdc581)
+- *(commands)* Rename and update import paths for knip [`16b7b85`](https://github.com/ax-sh/ax-sh.github.io/commit/16b7b854a72bbefd43dc0f9a43ccb740e4f2e136)
+- *(knip.service.ts)* Simplify addKnip function output [`765d02f`](https://github.com/ax-sh/ax-sh.github.io/commit/765d02f8c3a7597db1fd3773756eeda161972e24)
+- Update knip config and test error handling [`3bb8426`](https://github.com/ax-sh/ax-sh.github.io/commit/3bb84268638d2277cfaa7cb1d2ebf794b4dc8cb2)
+
+### 🎨 Styling
+
+- *(errors)* Clean up comments and formatting in errors.ts [`ceaf599`](https://github.com/ax-sh/ax-sh.github.io/commit/ceaf5994a6e76d77c7c6e5b8d726ad26d320682f)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update linting command to include formatting [`30ae696`](https://github.com/ax-sh/ax-sh.github.io/commit/30ae6960a20d333a6403fecc3a846b247bfa72c9)
+- *(knip.config.ts)* Update configuration options and paths [`bc00d74`](https://github.com/ax-sh/ax-sh.github.io/commit/bc00d74d60d098f0dd9732999ff5354f723189a4)
+- *(knip.service.ts)* Disable cspell configuration option [`f468a7d`](https://github.com/ax-sh/ax-sh.github.io/commit/f468a7dea0e308e684436446c2fc4779e09eed4c)
+- Format files before release [`cb4fb2f`](https://github.com/ax-sh/ax-sh.github.io/commit/cb4fb2fc4807102b8b3f554e9cdfbe2596e90bc1)
+
+## [[0.15.0] - 2025-05-09](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.15.0)
+
+
+### 🚀 Features
+
 - *(renovate)* Update command for GitHub platform usage [`7f734e5`](https://github.com/ax-sh/ax-sh.github.io/commit/7f734e5f39288c4ad9dbcdbf9b4a099adaa69f93)
 - *(vitest)* Add functions to modify tsconfig and config files [`edfef5c`](https://github.com/ax-sh/ax-sh.github.io/commit/edfef5cba9555f9248f68ff80c6eba47cd688006)
 - *(eslint)* Add biome support to eslint configuration command [`1b0d8d6`](https://github.com/ax-sh/ax-sh.github.io/commit/1b0d8d6c8bae2015e2440245b0f3596b5da3135f)
@@ -94,6 +131,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 - Format files before release [`9d6b59d`](https://github.com/ax-sh/ax-sh.github.io/commit/9d6b59d27360a3e2c53b73914042b1b11c000464)
 - Add CHANGELOG [`75ff551`](https://github.com/ax-sh/ax-sh.github.io/commit/75ff551b764afadc1010ba11b5a69f6634a91e26)
 - Format files before release [`4a4987d`](https://github.com/ax-sh/ax-sh.github.io/commit/4a4987d3a38aafc2ba2900dfaf6003d52880bf4f)
+- Add CHANGELOG [`bd13f6a`](https://github.com/ax-sh/ax-sh.github.io/commit/bd13f6a6f04c57733343fe3e69e7863c0bf81a93)
 
 ### Build
 
