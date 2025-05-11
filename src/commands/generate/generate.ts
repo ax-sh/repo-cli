@@ -43,7 +43,8 @@ const command: GluegunCommand<ExtendedToolbox> = {
     })
     const result = await lib.runFromPromiseWithErrorHandlerWrapper(system.run('nr lint:fix && nr format'))
     if (result.isErr()) {
-      throw result.error
+      print.error(result.error.cause.stdout)
+      return
     }
     print.success(result.value)
 

@@ -6,7 +6,7 @@ async function wait(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-export async function run(input?: unknown) {
+export async function run<%= props.name %>(input?: unknown) {
  const hasError = Boolean(input)
  if (hasError) {
   await wait(1000)

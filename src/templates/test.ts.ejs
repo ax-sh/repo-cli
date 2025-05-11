@@ -9,7 +9,7 @@ describe('[<%= props.name %>] service test', () => {
         const mod = await import('./<%= props.name %>.service')
         expect(mod).toBeDefined()
 
-        const result = await runFromPromiseWithErrorHandlerWrapper(mod.run())
+        const result = await runFromPromiseWithErrorHandlerWrapper(mod.run<%= props.name %>())
         if (result.isErr()) {
             throw result.error
         }
