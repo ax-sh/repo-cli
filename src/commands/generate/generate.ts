@@ -41,7 +41,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
       target: path.test,
       props,
     })
-    await system.run('nr lint:fix')
+    await system.run('nr lint:fix && nr format')
     print.printCommands(toolbox)
   },
 }
