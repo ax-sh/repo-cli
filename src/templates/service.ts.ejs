@@ -1,16 +1,20 @@
 import { print } from 'gluegun'
 import { ResultAsync, ok, err } from 'neverthrow'
 
-
 // name: '<%= props.name %>',
 async function wait(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms))
 }
-export async function run() {
- await wait(1000)
+
+export async function run(input?: string) {
+ const hasError = input?.trim()
+ if (hasError) {
+  await wait(1000)
+  return err('todo handle <%= props.name %> error')
+ }
+
  console.debug('doing')
- err("error")
  print.info("done")
- const out = "out"
+ const out = "todo handle success <%= props.name %> out"
  return ok(out)
 }
