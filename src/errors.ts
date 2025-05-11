@@ -30,7 +30,7 @@ function defaultErrorMapper(e: unknown): RuntimeAppError {
     return new RuntimeAppError(e.message) // Capture stack trace and message from standard errors
   }
 
-  return new RuntimeAppError(String(e))// Handle non-Error objects
+  return new RuntimeAppError(String(e)) // Handle non-Error objects
 }
 
 // Improved function to convert promises to ResultAsync
