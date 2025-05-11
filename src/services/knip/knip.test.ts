@@ -4,6 +4,7 @@ import {
 } from '../../lib'
 
 vi.mock('../../lib/helpers/cmd/cli')
+vi.mock('gluegun')
 
 describe('[knip] service test', () => {
   it('should return results', async () => {
