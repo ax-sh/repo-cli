@@ -1,23 +1,21 @@
 import { print } from 'gluegun'
-import { err, ok } from 'neverthrow'
+import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
 
-// name: 'pkgroll',
-async function wait(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
+export async function addPkgrollDeps() {
+  const spinner = print.spin(`Adding pkgroll`)
 
-export async function runpkgroll(input?: unknown) {
-  const hasError = Boolean(input)
-  if (hasError) {
-    await wait(1000)
-    const error = 'todo handle error pkgroll '
-    return err(error)
+  await exeCmdWithOutput('ni -D pkgroll rimraf')
+  await addScriptToPackageJson(
+    'pub',
+    'nr prepublishOnly && npm publish --scope=@ax-sh --registry=https://npm.pkg.github.com',
+  )
+  await addScriptToPackageJson('pub:dry', 'nr pub --dry-run')
+
+  try {
+    await addScriptToPackageJson('clean', 'rimraf dist')
+  } catch (e: unknown) {
+    console.error('addScriptToPackageJson error adding clean command', e)
   }
 
-  console.debug('doing')
-  print.info('done')
-  let out: string
-  out = 'Run something pkgroll out'
-  out = 'todo handle success pkgroll out'
-  return ok(out)
+  spinner.succeed(`Added pkgroll`)
 }
