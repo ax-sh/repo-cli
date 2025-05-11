@@ -7,7 +7,7 @@ async function wait(ms: number) {
 }
 
 export async function run(input?: unknown) {
- const hasError = input
+ const hasError = Boolean(input)
  if (hasError) {
   await wait(1000)
   const error = 'todo handle error <%= props.name %> '
@@ -17,6 +17,7 @@ export async function run(input?: unknown) {
  console.debug('doing')
  print.info("done")
  let out: string
+ out = "Run something <%= props.name %> out"
  out = "todo handle success <%= props.name %> out"
  return ok(out)
 }
