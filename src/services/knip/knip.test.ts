@@ -6,7 +6,7 @@ import {
 vi.mock('../../lib/helpers/cmd/cli')
 vi.mock('gluegun')
 
-describe('[knip] service test', () => {
+describe('[knip] service knip test', () => {
   it('should return results', async () => {
     const fn = vi.mocked(exeCmdWithOutput)
     fn.mockImplementation(async (args: string) => args)
