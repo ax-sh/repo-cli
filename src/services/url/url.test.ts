@@ -1,5 +1,5 @@
 import { expect } from 'vitest'
-import { runFromPromiseWithErrorAppErrorHandling } from '../../errors'
+import { runFromPromiseWithErrorHandlerWrapper } from '../../errors'
 import { exeCmdWithOutput } from '../../lib'
 
 vi.mock('../../lib/helpers/cmd/cli')
@@ -11,7 +11,7 @@ describe('[url] service test', () => {
     const mod = await import('./url.service')
     expect(mod).toBeDefined()
 
-    const result = await runFromPromiseWithErrorAppErrorHandling(
+    const result = await runFromPromiseWithErrorHandlerWrapper(
       mod.getRepoUrl(),
     )
     if (result.isErr()) {

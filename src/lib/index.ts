@@ -1,6 +1,6 @@
 import appRootPath from 'app-root-path'
 
-export { runFromPromiseWithErrorAppErrorHandling } from '../errors'
+export { runFromPromiseWithErrorHandlerWrapper } from '../errors'
 
 export { elapsedTime } from './date-utils'
 
