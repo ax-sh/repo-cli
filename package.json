@@ -56,6 +56,7 @@
     "google-gax": "^4.6.0",
     "jsonc-parser": "^3.3.1",
     "kolorist": "^1.8.0",
+    "lodash": "^4.17.21",
     "neverthrow": "^8.2.0",
     "spacetime": "^7.10.0",
     "zod": "^3.24.4"
@@ -63,6 +64,7 @@
   "devDependencies": {
     "@release-it/bumper": "^7.0.5",
     "@release-it/conventional-changelog": "^10.0.1",
+    "@types/lodash": "^4.17.16",
     "@types/node": "^22.15.17",
     "@typescript-eslint/eslint-plugin": "^8.32.0",
     "@typescript-eslint/parser": "^8.32.0",
