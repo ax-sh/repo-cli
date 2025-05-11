@@ -27,7 +27,9 @@ function defaultErrorMapper(e: unknown): RuntimeAppError {
   if (e instanceof RuntimeAppError) {
     return e // Return custom errors as-is to preserve their specific type
   } else if (e instanceof Error) {
-    return new RuntimeAppError(e.message) // Capture stack trace and message from standard errors
+    const error = new RuntimeAppError(e.message) // Capture stack trace and message from standard errors
+    error.cause = e
+    return error
   }
 
   return new RuntimeAppError(String(e)) // Handle non-Error objects
