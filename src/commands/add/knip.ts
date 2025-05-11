@@ -1,5 +1,5 @@
 import type { GluegunCommand } from 'gluegun'
-import type { ExtendedToolbox } from '../types'
+import type { ExtendedToolbox } from '../../types'
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'knip',
@@ -7,7 +7,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const { print, lib } = toolbox
 
     const spinner = print.spin()
-    const root = await import('../services/knip/knip.service')
+    const root = await import('../../services/knip/knip.service')
     const result = await lib.runFromPromiseWithErrorHandlerWrapper(
       root.addKnip(),
     )
