@@ -9,7 +9,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const name = parameters.first
     const spinner = print.spin()
     const root = await import('../../services/analytics/analytics.service')
-    const out = await root.run()
+    const out = await root.addAnalyticsDeps()
     spinner.succeed()
     print.highlight(`Run Out analytics ${out}`)
     print.highlight(`Todo analytics ${name}`)

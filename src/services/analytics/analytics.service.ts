@@ -1,7 +1,5 @@
-// import { getMeasurementId } from './google-analytics'
-
-// Get data streams for a specific property
 import type { AnalyticsAdminServiceClient } from '@google-analytics/admin'
+import { exeCmdWithOutput } from '../../lib'
 import { executeGooglePromise } from './track-google-analytics/handle-google-error'
 
 export async function listAccountPropertiesWithAccountName(
@@ -92,9 +90,13 @@ export async function getMeasurementId(
 }
 
 // http://analytics.google.com/
-export async function run() {
+export async function addAnalyticsDeps() {
   console.debug('todo doing')
 
-  const out = 'out'
+  const cmd = 'ni --save-dev vite-plugin-radar'
+  const out = exeCmdWithOutput(cmd)
+  // // import { getMeasurementId } from './google-analytics'
+  // // Get data streams for a specific property
+
   return out
 }

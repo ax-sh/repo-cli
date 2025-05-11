@@ -1,7 +1,7 @@
 import { print } from 'gluegun'
 // name: 'url',
 async function wait(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 export async function run() {
   await wait(1000)
