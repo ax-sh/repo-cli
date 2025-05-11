@@ -1,9 +1,14 @@
-import { exeCmdWithOutput } from '../../lib'
+import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
 
 export async function installBiomeLinter() {
   const out = await exeCmdWithOutput(
     'bun add --dev --exact @biomejs/biome && bunx biome init --jsonc',
   )
+  await addScriptToPackageJson('format', 'nlx @biomejs/biome format --write')
+  // for linting
+  //  nlx @biomejs/biome lint --apply ./src
+  // biome migrate prettier --write
+  // biome migrate eslint --write
   return out
 }
 

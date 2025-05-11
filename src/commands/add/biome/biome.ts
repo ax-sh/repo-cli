@@ -7,7 +7,6 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const {
       print,
 
-      system,
     } = toolbox
 
     const spinner = print.spin()
@@ -16,8 +15,6 @@ const command: GluegunCommand<ExtendedToolbox> = {
     spinner.succeed()
 
     print.highlight(`Run Out biome ${out}`)
-
-    await system.run('echo ni -D husky')
   },
 }
 
