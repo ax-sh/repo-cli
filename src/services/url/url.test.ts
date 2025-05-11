@@ -11,9 +11,7 @@ describe('[url] service test', () => {
     const mod = await import('./url.service')
     expect(mod).toBeDefined()
 
-    const result = await runFromPromiseWithErrorHandlerWrapper(
-      mod.getRepoUrl(),
-    )
+    const result = await runFromPromiseWithErrorHandlerWrapper(mod.getRepoUrl())
     if (result.isErr()) {
       throw result.error
     }

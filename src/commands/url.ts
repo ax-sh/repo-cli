@@ -8,12 +8,14 @@ const command: GluegunCommand<ExtendedToolbox> = {
 
     const spinner = print.spin()
     const root = await import('../services/url/url.service')
-    const result = await lib.runFromPromiseWithErrorHandlerWrapper(root.getRepoUrl())
+    const result = await lib.runFromPromiseWithErrorHandlerWrapper(
+      root.getRepoUrl(),
+    )
+    spinner.info('Getting repo url')
     if (result.isErr()) {
       spinner.fail()
       throw result.error
     }
-    spinner.info('Getting repo url')
 
     const repoUrl = result.value
     spinner.succeed(repoUrl)
