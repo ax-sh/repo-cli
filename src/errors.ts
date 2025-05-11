@@ -25,15 +25,12 @@ export class RuntimeAppError extends Error {
 // Default error mapper with better type checking and preservation
 function defaultErrorMapper(e: unknown): RuntimeAppError {
   if (e instanceof RuntimeAppError) {
-    // Return custom errors as-is to preserve their specific type
-    return e
+    return e // Return custom errors as-is to preserve their specific type
   } else if (e instanceof Error) {
-    // Capture stack trace and message from standard errors
-    return new RuntimeAppError(e.message)
-  } else {
-    // Handle non-Error objects
-    return new RuntimeAppError(String(e))
+    return new RuntimeAppError(e.message) // Capture stack trace and message from standard errors
   }
+
+  return new RuntimeAppError(String(e))// Handle non-Error objects
 }
 
 // Improved function to convert promises to ResultAsync
