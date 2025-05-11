@@ -4,7 +4,7 @@ import { configDefaults, defineConfig } from 'vitest/config'
 import { loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
-  console.info('Vitest running=>', mode)
+  console.info('Vitest running environment =>', mode)
   return {
     plugins: [tsconfigPaths()],
     test: {

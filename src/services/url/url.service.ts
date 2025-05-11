@@ -1,16 +1,6 @@
-import { print } from 'gluegun'
-import { err, ok } from 'neverthrow'
+import { exeCmdWithOutput } from '../../lib'
 
-export async function getRepoUrl(input?: unknown) {
-  const hasError = input
-  if (hasError) {
-    console.debug(
-      'todo add ability to get git repo url the fastest way possible',
-    )
-    return err('getRepoUrl')
-  }
-
-  print.info('done')
-  const out = 'out'
-  return ok(out)
+export async function getRepoUrl() {
+  const out = await exeCmdWithOutput('git remote get-url origin')
+  return out
 }

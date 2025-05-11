@@ -1,3 +1,5 @@
+import { expect } from 'vitest'
+import { runFromPromiseWithErrorAppErrorHandling } from '../../errors'
 import { exeCmdWithOutput } from '../../lib'
 
 vi.mock('../../lib/helpers/cmd/cli')
@@ -9,11 +11,13 @@ describe('[url] service test', () => {
     const mod = await import('./url.service')
     expect(mod).toBeDefined()
 
-    const result = await mod.getRepoUrl(false)
+    const result = await runFromPromiseWithErrorAppErrorHandling(
+      mod.getRepoUrl(),
+    )
     if (result.isErr()) {
       throw result.error
     }
     const value = result.value
-    console.warn(value)
+    expect(value).toBe('git remote get-url origin')
   })
 })

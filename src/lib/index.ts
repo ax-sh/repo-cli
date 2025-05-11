@@ -1,5 +1,7 @@
 import appRootPath from 'app-root-path'
 
+export { runFromPromiseWithErrorAppErrorHandling } from '../errors'
+
 export { elapsedTime } from './date-utils'
 
 export { addScriptToPackageJson, exeCmdWithOutput } from './helpers/cmd/cli'

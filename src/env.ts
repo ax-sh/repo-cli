@@ -1,6 +1,6 @@
+import appRootPath from 'app-root-path'
 import { config } from 'dotenv'
 import { z } from 'zod'
-import appRootPath from 'app-root-path'
 
 // config({
 //   path: path.resolve(import.meta.dirname, "../../../.env"),
@@ -28,4 +28,3 @@ if (!result.success) {
 }
 
 export const env = result.data
-console.log(env)
