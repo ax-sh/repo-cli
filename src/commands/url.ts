@@ -4,19 +4,14 @@ import type { ExtendedToolbox } from '../types'
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'url',
   run: async (toolbox) => {
-    const { print, parameters, system } = toolbox
-
-    const name = parameters.first
+    const { print } = toolbox
 
     const spinner = print.spin()
     const root = await import('../services/url/url.service')
-    const out = await root.run()
+    const repoUrl = await root.getRepoUrl()
     spinner.succeed()
 
-    print.highlight(`Run Out url ${out}`)
-    print.highlight(`Todo url ${name}`)
-
-    await system.run('echo ni -D husky')
+    print.highlight(`todo get repo url  ${repoUrl}`)
   },
 }
 
