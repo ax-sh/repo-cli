@@ -41,7 +41,12 @@ const command: GluegunCommand<ExtendedToolbox> = {
       target: path.test,
       props,
     })
-    await system.run('nr lint:fix && nr format')
+    const result = await lib.runFromPromiseWithErrorHandlerWrapper(system.run('nr lint:fix && nr format'))
+    if (result.isErr()) {
+      throw result.error
+    }
+    print.success(result.value)
+
     print.printCommands(toolbox)
   },
 }
