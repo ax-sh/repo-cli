@@ -12,6 +12,7 @@ const config: KnipConfig = {
   ],
   prettier: true,
   storybook: false,
+  cspell: false,
   lefthook: false,
   drizzle: false,
   playwright: false,
