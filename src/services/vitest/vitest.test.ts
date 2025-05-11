@@ -39,7 +39,7 @@ describe('[vitest] service test', () => {
     expect(fn).toHaveResolvedTimes(2)
     expect(fn).toHaveNthResolvedWith(
       1,
-      'ni -D vitest msw@latest @faker-js/faker vite-tsconfig-paths',
+      'ni -D dotenv @vitest/ui vitest msw@latest @faker-js/faker vite-tsconfig-paths',
     )
     expect(fn).toHaveNthResolvedWith(
       2,

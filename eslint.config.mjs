@@ -9,6 +9,7 @@ const globalConfig = {
     'ts/no-misused-promises': ['off'],
 
     'style/brace-style': 'off',
+    'style/operator-linebreak': 'off',
     'ts/restrict-template-expressions': ['off'],
     'no-console': ['warn', {
       allow: [

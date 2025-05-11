@@ -4,9 +4,9 @@ import { ResultAsync } from 'neverthrow'
 
 function isLikelyGoogleError(err: unknown): err is GoogleError {
   return (
-    typeof err === 'object'
-    && err instanceof Error // At least ensure it's an Error
-    && 'code' in err
+    typeof err === 'object' &&
+    err instanceof Error && // At least ensure it's an Error
+    'code' in err
   ) // Check for the 'code' property
   // && err.name === 'GoogleError' // GoogleError usually sets its name property
 }
