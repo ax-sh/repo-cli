@@ -5,16 +5,14 @@ import {
 
 vi.mock('../../lib/helpers/cmd/cli')
 
-describe('[pkgroll] service test', () => {
+describe('[unocss] service test', () => {
   it('should return results', async () => {
     const fn = vi.mocked(exeCmdWithOutput)
     fn.mockImplementation(async (args: string) => args)
-    const mod = await import('./pkgroll.service')
+    const mod = await import('./unocss.service')
     expect(mod).toBeDefined()
 
-    const result = await runFromPromiseWithErrorHandlerWrapper(
-      mod.addPkgrollDeps(),
-    )
+    const result = await runFromPromiseWithErrorHandlerWrapper(mod.rununocss())
     if (result.isErr()) {
       throw result.error
     }
