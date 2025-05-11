@@ -5,14 +5,14 @@ import {
 
 vi.mock('../../lib/helpers/cmd/cli')
 
-describe('[knip] service test', () => {
+describe('[pkgroll] service test', () => {
   it('should return results', async () => {
     const fn = vi.mocked(exeCmdWithOutput)
     fn.mockImplementation(async (args: string) => args)
-    const mod = await import('./knip.service')
+    const mod = await import('./pkgroll.service')
     expect(mod).toBeDefined()
 
-    const result = await runFromPromiseWithErrorHandlerWrapper(mod.addKnip())
+    const result = await runFromPromiseWithErrorHandlerWrapper(mod.runpkgroll())
     if (result.isErr()) {
       throw result.error
     }

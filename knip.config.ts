@@ -1,4 +1,3 @@
-
 import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
@@ -48,4 +47,3 @@ const config: KnipConfig = {
   ],
 }
 export default config
-

@@ -42,9 +42,13 @@ const command: GluegunCommand<ExtendedToolbox> = {
       props,
     })
     const cmd = 'nr lint:fix && nr format'
-    const result = await lib.runFromPromiseWithErrorHandlerWrapper(system.run(cmd))
+    const result = await lib.runFromPromiseWithErrorHandlerWrapper(
+      system.run(cmd),
+    )
     if (result.isErr()) {
-      print.highlight('Error occurred when linting and formatting generated code.')
+      print.highlight(
+        'Error occurred when linting and formatting generated code.',
+      )
       const cause = result.error.cause
       print.warning(cause.cmd)
       print.highlight(cause.stdout)
