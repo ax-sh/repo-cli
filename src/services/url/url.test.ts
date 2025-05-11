@@ -9,7 +9,11 @@ describe('[url] service test', () => {
     const mod = await import('./url.service')
     expect(mod).toBeDefined()
 
-    const out = await mod.getRepoUrl()
-    console.warn(out)
+    const result = await mod.getRepoUrl(false)
+    if (result.isErr()) {
+      throw result.error
+    }
+    const value = result.value
+    console.warn(value)
   })
 })

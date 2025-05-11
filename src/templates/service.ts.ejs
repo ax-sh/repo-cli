@@ -6,15 +6,17 @@ async function wait(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-export async function run(input?: string) {
- const hasError = input?.trim()
+export async function run(input?: unknown) {
+ const hasError = input
  if (hasError) {
   await wait(1000)
-  return err('todo handle <%= props.name %> error')
+  const error = 'todo handle error <%= props.name %> '
+  return err(error)
  }
 
  console.debug('doing')
  print.info("done")
- const out = "todo handle success <%= props.name %> out"
+ let out: string
+ out = "todo handle success <%= props.name %> out"
  return ok(out)
 }

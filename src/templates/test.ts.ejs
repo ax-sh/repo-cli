@@ -9,7 +9,11 @@ describe('[<%= props.name %>] service test', () => {
         const mod = await import('./<%= props.name %>.service')
         expect(mod).toBeDefined()
 
-        const out = await mod.run()
+        const result = await mod.run()
+        if (result.isErr()) {
+            throw result.error
+        }
+        const out = result.value
         console.warn(out)
     });
 });
