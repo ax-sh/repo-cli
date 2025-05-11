@@ -1,4 +1,7 @@
 import { print } from 'gluegun'
+import { ResultAsync, ok, err } from 'neverthrow'
+
+
 // name: '<%= props.name %>',
 async function wait(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms))
@@ -6,7 +9,8 @@ async function wait(ms: number) {
 export async function run() {
  await wait(1000)
  console.debug('doing')
+ err("error")
  print.info("done")
  const out = "out"
- return out
+ return ok(out)
 }
