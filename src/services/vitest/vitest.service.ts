@@ -52,7 +52,7 @@ export async function writeVitestConfig() {
 
 export async function addVitestDeps() {
   const out = await exeCmdWithOutput(
-    'ni -D @vitest/ui vitest msw@latest @faker-js/faker vite-tsconfig-paths',
+    'ni -D dotenv @vitest/ui vitest msw@latest @faker-js/faker vite-tsconfig-paths',
   )
   await addScriptToPackageJson('test', 'dotenv -- vitest run')
   // await toolbox.addScriptToPackageJson('test', 'vitest run')
