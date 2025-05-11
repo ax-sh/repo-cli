@@ -12,11 +12,15 @@ export class KnownError extends Error {
   }
 }
 
-interface MiscErrorMap {
+type MiscErrorMap = Error & {
   stderr: string
+  stdout: string
+  cmd: string
+  killed: string
   [key: string]: string
 }
 export class RuntimeAppError extends Error {
+  cause: MiscErrorMap
   constructor(
     message: string,
     public readonly code?: string,
@@ -24,11 +28,6 @@ export class RuntimeAppError extends Error {
     super(message)
     this.name = 'AppError'
     this.code = code ?? 'UNKNOWN'
-  }
-
-  // Add a getter for type safety
-  get cause(): MiscErrorMap {
-    return (this as Error & { cause: MiscErrorMap }).cause
   }
 }
 
@@ -40,8 +39,7 @@ function defaultErrorMapper(e: unknown): RuntimeAppError {
     const error = new RuntimeAppError(e.message) // Capture stack trace and message from standard errors
     // (error as RuntimeAppError & { cause: unknown }).cause = e;
 
-    // @ts-expect-error not sure how to do this type-safely asignment
-    error.cause = e
+    error.cause = e as MiscErrorMap
     return error
   }
 
