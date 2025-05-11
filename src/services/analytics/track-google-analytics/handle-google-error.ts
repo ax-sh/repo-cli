@@ -4,9 +4,9 @@ import { ResultAsync } from 'neverthrow'
 
 function isLikelyGoogleError(err: unknown): err is GoogleError {
   return (
-    typeof err === 'object' &&
-    err instanceof Error && // At least ensure it's an Error
-    'code' in err
+    typeof err === 'object'
+    && err instanceof Error // At least ensure it's an Error
+    && 'code' in err
   ) // Check for the 'code' property
   // && err.name === 'GoogleError' // GoogleError usually sets its name property
 }
@@ -180,7 +180,6 @@ export function handleGoogleError(error: unknown): RuntimeGoogleError {
 }
 
 export function executeGooglePromise<T>(call: PromiseLike<T>) {
-  return ResultAsync.fromPromise<T, RuntimeGoogleError>(call, (e) =>
-    handleGoogleError(e),
-  )
+  return ResultAsync.fromPromise<T, RuntimeGoogleError>(call, e =>
+    handleGoogleError(e))
 }

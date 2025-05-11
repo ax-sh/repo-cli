@@ -31,7 +31,7 @@ export function parseTsconfigJsonc(rawJsonString: string): TsconfigContent {
     const error: Error = e
     throw new KnownError(
       `Failed to parse tsconfig: ${error.message} ${errors
-        .map((e) => e.error)
+        .map(e => e.error)
         .join(', ')}`,
     )
   }
