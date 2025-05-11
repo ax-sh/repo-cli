@@ -1,23 +1,34 @@
 import { print } from 'gluegun'
-import { err, ok } from 'neverthrow'
+import { exeCmdWithOutput } from '../../lib'
 
-// name: 'unocss',
-async function wait(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
+export async function addUnoCssToRepo() {
+  const spinner = print.spin(`Adding unocss`)
 
-export async function rununocss(input?: unknown) {
-  const hasError = Boolean(input)
-  if (hasError) {
-    await wait(1000)
-    const error = 'todo handle error unocss '
-    return err(error)
-  }
+  print.info(`Todo unocss`)
+  // https://unocss.dev/integrations/eslint
+  await exeCmdWithOutput('ni -D unocss @unocss/eslint-config')
+  await exeCmdWithOutput('ni @unocss/reset')
+  // vite.config.ts
+  // import UnoCSS from 'unocss/vite'
+  // import { defineConfig } from 'vite'
+  //
+  // export default defineConfig({
+  //   plugins: [
+  //     UnoCSS(),
+  //   ],
+  // })
+  // // uno.config.ts
+  //
+  // import { defineConfig } from 'unocss'
+  //
+  // export default defineConfig({
+  //   // ...UnoCSS options
+  // })
+  // https://unocss.dev/integrations/vite
+  // // main.ts
+  // import '@unocss/reset/tailwind.css'
+  // or import '@unocss/reset/tailwind-compat.css'
+  // import 'virtual:uno.css'
 
-  console.debug('doing')
-  print.info('done')
-  let out: string
-  out = 'Run something unocss out'
-  out = 'todo handle success unocss out'
-  return ok(out)
+  spinner.succeed(`Added unocss`)
 }

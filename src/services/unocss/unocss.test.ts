@@ -12,7 +12,7 @@ describe('[unocss] service test', () => {
     const mod = await import('./unocss.service')
     expect(mod).toBeDefined()
 
-    const result = await runFromPromiseWithErrorHandlerWrapper(mod.rununocss())
+    const result = await runFromPromiseWithErrorHandlerWrapper(mod.addUnoCssToRepo())
     if (result.isErr()) {
       throw result.error
     }
