@@ -6,6 +6,47 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ### 🚀 Features
 
+- Improve error handling [`c1fd040`](https://github.com/ax-sh/ax-sh.github.io/commit/c1fd0403f3f225df55108324b3eed91426a56cc0)
+- Add generic support for service run function [`9c271e3`](https://github.com/ax-sh/ax-sh.github.io/commit/9c271e36b5e75f73820e6f69f1d35d97079b2b05)
+- Extend type [`2b791eb`](https://github.com/ax-sh/ax-sh.github.io/commit/2b791ebc9c60724b8d369b172fbc3d58e1b5593b)
+- Add pkgroll command [`270f044`](https://github.com/ax-sh/ax-sh.github.io/commit/270f04441e5f3d9ea695909c406060533011a80b)
+- Add unocss command [`327b2c9`](https://github.com/ax-sh/ax-sh.github.io/commit/327b2c932a7d45d67505c0f46c55d676548655e1)
+- *(vitest)* Add UI option for Vitest commands [`ba399e0`](https://github.com/ax-sh/ax-sh.github.io/commit/ba399e0a32caa2603821982c84084478e9e97f1a)
+
+### 🐛 Bug Fixes
+
+- Correct error output handling in generate command [`2a4c1da`](https://github.com/ax-sh/ax-sh.github.io/commit/2a4c1da4fe3fc0e042d26e6af4115a6786073d3a)
+
+### 🚜 Refactor
+
+- *(generate)* Handle errors in lint and format command [`d58ee87`](https://github.com/ax-sh/ax-sh.github.io/commit/d58ee87ceb64cc326d16f047b4c6c4fe5ba43621)
+- *(pkgroll)* Update pkgroll commands and methods [`b0dff77`](https://github.com/ax-sh/ax-sh.github.io/commit/b0dff77fe51e5e97bb93c478124e63ab5c2285d1)
+- *(unocss)* Rename rununocss to addUnoCssToRepo [`97ab246`](https://github.com/ax-sh/ax-sh.github.io/commit/97ab24637dd9ea3952bbbb8f71a1bbed3f953a61)
+- Clean up unused imports and comments [`37048df`](https://github.com/ax-sh/ax-sh.github.io/commit/37048dfdb5f19795d93898398c614032e1f263b3)
+
+### 🎨 Styling
+
+- Format code and update ESLint rules [`53ca7da`](https://github.com/ax-sh/ax-sh.github.io/commit/53ca7da6a254818dc007739150f73ece34198400)
+
+### 🧪 Testing
+
+- *(knip)* Add mock for gluegun in tests [`b88c0d1`](https://github.com/ax-sh/ax-sh.github.io/commit/b88c0d13d2ac2aff6bfcd505d5adaf686a0c2698)
+- *(knip)* Improve test description for clarity [`b3b89b3`](https://github.com/ax-sh/ax-sh.github.io/commit/b3b89b3bad1a7104642e79ab019a5da3a6ca5fa8)
+
+### ⚙️ Miscellaneous Tasks
+
+- Format files before release [`ba11ae3`](https://github.com/ax-sh/ax-sh.github.io/commit/ba11ae384b8f277f2fe13ab8d496e7aeb080a76c)
+
+### Build
+
+- Add lodash and its types as dependencies [`f5e4aea`](https://github.com/ax-sh/ax-sh.github.io/commit/f5e4aea9abe3b8398a51a3f7188177607243d6a2)
+- Add dotenv dependency to vitest setup command [`0575d6c`](https://github.com/ax-sh/ax-sh.github.io/commit/0575d6c488ed521b3346467c081eba055a21e689)
+
+## [[0.16.0] - 2025-05-11](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.16.0)
+
+
+### 🚀 Features
+
 - Add env configuration with validation schema [`1f9fc60`](https://github.com/ax-sh/ax-sh.github.io/commit/1f9fc60213b06463b54f094efde87b7cfc4c2c86)
 - Add url command [`0f9c2c9`](https://github.com/ax-sh/ax-sh.github.io/commit/0f9c2c9c4373f0ecaa3ea6f19e87d1520cbc7941)
 - Add dep install command [`6a292a4`](https://github.com/ax-sh/ax-sh.github.io/commit/6a292a4b40dd7c638eb2f69a26bfa4facdefc02d)
@@ -37,6 +78,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 - *(knip.config.ts)* Update configuration options and paths [`bc00d74`](https://github.com/ax-sh/ax-sh.github.io/commit/bc00d74d60d098f0dd9732999ff5354f723189a4)
 - *(knip.service.ts)* Disable cspell configuration option [`f468a7d`](https://github.com/ax-sh/ax-sh.github.io/commit/f468a7dea0e308e684436446c2fc4779e09eed4c)
 - Format files before release [`cb4fb2f`](https://github.com/ax-sh/ax-sh.github.io/commit/cb4fb2fc4807102b8b3f554e9cdfbe2596e90bc1)
+- Add CHANGELOG [`0e593de`](https://github.com/ax-sh/ax-sh.github.io/commit/0e593deaf7504475271badb8d78775a536888e50)
 
 ## [[0.15.0] - 2025-05-09](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.15.0)
 
