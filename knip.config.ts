@@ -1,3 +1,4 @@
+
 import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
@@ -9,6 +10,7 @@ const config: KnipConfig = {
   ],
   prettier: true,
   storybook: false,
+  cspell: false,
   lefthook: false,
   drizzle: false,
   playwright: false,
@@ -46,3 +48,4 @@ const config: KnipConfig = {
   ],
 }
 export default config
+

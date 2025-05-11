@@ -1,4 +1,4 @@
-import { exeCmdWithOutput } from '../../lib'
+import { exeCmdWithOutput, runFromPromiseWithErrorHandlerWrapper } from '../../lib'
 
 vi.mock('../../lib/helpers/cmd/cli')
 
@@ -9,7 +9,7 @@ describe('[knip] service test', () => {
     const mod = await import('./knip.service')
     expect(mod).toBeDefined()
 
-    const result = await mod.addKnip()
+    const result = await runFromPromiseWithErrorHandlerWrapper(mod.addKnip())
     if (result.isErr()) {
       throw result.error
     }

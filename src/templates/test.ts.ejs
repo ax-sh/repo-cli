@@ -1,5 +1,5 @@
 import { run } from './<%= props.name %>.service'
-import { exeCmdWithOutput } from '../../lib';
+import { exeCmdWithOutput, runFromPromiseWithErrorHandlerWrapper } from '../../lib';
 vi.mock('../../lib/helpers/cmd/cli')
 
 describe('[<%= props.name %>] service test', () => {
@@ -9,7 +9,7 @@ describe('[<%= props.name %>] service test', () => {
         const mod = await import('./<%= props.name %>.service')
         expect(mod).toBeDefined()
 
-        const result = await mod.run()
+        const result = await runFromPromiseWithErrorHandlerWrapper(mod.run())
         if (result.isErr()) {
             throw result.error
         }
