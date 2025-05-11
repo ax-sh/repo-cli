@@ -1,37 +1,35 @@
 import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
-  // "entry": ["src/index.ts", "scripts/{build,create}.js"],
-  eslint: {
-    config: ['eslint.config.mjs'],
-  },
-  ignore: ['.github/**/*', 'vitest.config.ts'],
-  ignoreDependencies: [
-    // Needed by eslint.
-    '@typescript-eslint/.*',
-    'eslint-.*',
-    'git-cliff',
-    'is-ci',
-    '@release-it/conventional-changelog',
-    'oxlint',
-    'tsx',
+  $schema: 'https://unpkg.com/knip@5/schema.json',
+  entry: ['index.{js,ts}', 'src/**/*.{ts,js,mjs,cjs}'],
+  project: [
+    'tsconfig.base.json', // Essential for resolving path aliases
   ],
-  vitest: {
-    config: [
-      'vitest.config.{js,mjs,ts,cjs,mts,cts}',
-      'vitest.{workspace,projects}.{js,mjs,ts,cjs,mts,cts,json}',
-    ],
-    entry: ['**/*.{bench,test,test-d,spec}.?(c|m)[jt]s?(x)'],
-  },
-  ignoreBinaries: ['rimraf', 'nr', 'gh'],
-  // ignoreBinaries: ['tsx','rimraf', 'nlx', 'nr', 'act', 'storybook'],
-  entry: [
-    // 'index.{js,ts}',
-    // 'src/index.{js,ts}',
-    'src/**/*.{js,ts}',
-    // '**/*.{js,ts}'
-  ],
-  project: ['**/*.{js,ts}'],
-}
 
+  typescript: true,
+  vite: true,
+  vitest: true,
+  eslint: true,
+  'release-it': true,
+  ignore: ['**/fixtures', './public'],
+  ignoreBinaries: [
+    'nr',
+    'rimraf',
+    'gh',
+    // CLI is often a dev dependency used in scripts
+  ],
+  ignoreDependencies: [
+    // Add other dev tools or type packages here if Knip reports them as unused
+    // but they are necessary for your development workflow.
+    'tsx',
+    '@typescript-eslint/*',
+    '@release-it/*',
+    'eslint-*',
+    'vite',
+    'oxlint',
+    'is-ci',
+    'git-cliff',
+  ],
+}
 export default config

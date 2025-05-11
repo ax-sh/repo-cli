@@ -6,21 +6,17 @@ const command: GluegunCommand<ExtendedToolbox> = {
   run: async (toolbox) => {
     const { print, lib } = toolbox
 
-    const name = toolbox.parameters.first
-
     const spinner = print.spin()
     const root = await import('../services/knip/knip.service')
-    const result = await lib.runFromPromiseWithErrorHandlerWrapper(root.addKnip())
+    const result = await lib.runFromPromiseWithErrorHandlerWrapper(
+      root.addKnip(),
+    )
     if (result.isErr()) {
       spinner.fail()
       throw result.error
     }
     const out = result.value
-    spinner.succeed(`Todo knip ${name}`)
-
-    print.highlight(`Run Out knip ${out}`)
-
-    await toolbox.system.run('echo ni -D husky')
+    spinner.succeed(`Run Out knip ${out}`)
   },
 }
 
