@@ -12,9 +12,7 @@ describe('[pkgroll] service test', () => {
     const mod = await import('./pkgroll.service')
     expect(mod).toBeDefined()
 
-    const result = await runFromPromiseWithErrorHandlerWrapper(
-      mod.addPkgrollDeps(),
-    )
+    const result = await runFromPromiseWithErrorHandlerWrapper(mod.runpkgroll())
     if (result.isErr()) {
       throw result.error
     }
