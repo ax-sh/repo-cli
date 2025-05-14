@@ -39,7 +39,7 @@ async function addDependencies(force: boolean) {
   if (!force) {
     console.debug('todo do without checking doing')
   }
-  await exeCmdWithOutput('npm i -D pkgroll')
+  await exeCmdWithOutput('ni -D pkgroll')
   await addScriptToPackageJson('build', 'pkgroll')
   await exeCmdWithOutput('npm pkg set main="./dist/index.cjs"')
   await exeCmdWithOutput('npm pkg set module="./dist/index.mjs"')
