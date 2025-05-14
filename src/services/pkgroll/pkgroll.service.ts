@@ -35,6 +35,7 @@ import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
 // if [ "$(npm pkg get exports.import.default)" = "undefined" ]; then
 //   npm pkg set exports.import.default="./dist/index.mjs"
 // fi
+// https://github.com/privatenumber/pkgroll
 async function addDependencies(force: boolean) {
   if (!force) {
     console.debug('todo do without checking doing')
