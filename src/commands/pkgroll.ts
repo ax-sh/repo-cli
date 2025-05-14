@@ -11,7 +11,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const spinner = print.spin()
     const root = await import('../services/pkgroll/pkgroll.service')
     const result = await lib.runFromPromiseWithErrorHandlerWrapper(
-      root.runpkgroll(),
+      root.installPkgrollToRepo(),
     )
     if (result.isErr()) {
       spinner.fail()

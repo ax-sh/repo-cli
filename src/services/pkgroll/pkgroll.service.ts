@@ -1,5 +1,5 @@
-import { print } from 'gluegun'
 import { err, ok } from 'neverthrow'
+import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
 
 // # Check and set main
 // if [ "$(npm pkg get main)" = "undefined" ]; then
@@ -35,26 +35,28 @@ import { err, ok } from 'neverthrow'
 // if [ "$(npm pkg get exports.import.default)" = "undefined" ]; then
 //   npm pkg set exports.import.default="./dist/index.mjs"
 // fi
-async function addDependencies(force: number) {
-  // npm pkg set main="./dist/index.cjs"
-  // npm pkg set module="./dist/index.mjs"
-  // npm pkg set types="./dist/index.d.cts"
-  // npm pkg set exports.require.types="./dist/index.d.cts"
-  // npm pkg set exports.require.default="./dist/index.cjs"
-  // npm pkg set exports.import.types="./dist/index.d.mts"
-  // npm pkg set exports.import.default="./dist/index.mjs"
+async function addDependencies(force: boolean) {
+  if (!force) {
+    console.debug('todo do without checking doing')
+  }
+  await exeCmdWithOutput('npm i -D pkgroll')
+  await addScriptToPackageJson('build', 'pkgroll')
+  await exeCmdWithOutput('npm pkg set main="./dist/index.cjs"')
+  await exeCmdWithOutput('npm pkg set module="./dist/index.mjs"')
+  await exeCmdWithOutput('npm pkg set types="./dist/index.d.cts"')
+  await exeCmdWithOutput('npm pkg set exports.require.types="./dist/index.d.cts"')
+  await exeCmdWithOutput('npm pkg set exports.require.default="./dist/index.cjs"')
+  await exeCmdWithOutput('npm pkg set exports.import.types="./dist/index.d.mts"')
+  await exeCmdWithOutput('npm pkg set exports.import.default="./dist/index.mjs"')
 }
 
-export async function runpkgroll(input?: unknown) {
+export async function installPkgrollToRepo(input?: unknown) {
   const hasError = Boolean(input)
   if (hasError) {
-    await addDependencies(1000)
     const error = 'todo handle error pkgroll '
     return err(error)
   }
-
-  console.debug('doing')
-  print.info('done')
+  await addDependencies(false)
   let out: string
   out = 'Run something pkgroll out'
   out = 'todo handle success pkgroll out'
