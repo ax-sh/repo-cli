@@ -4,6 +4,7 @@ import { addScriptToPackageJson, exeCmdWithOutput } from '../../lib'
 const code = `
 // https://github.com/antfu/eslint-config
 import antfu from '@antfu/eslint-config'
+import "eslint-plugin-only-warn"
 
 // Without "files", they are general rules for all files
 /** @type {import('eslint').Linter.Config} */
