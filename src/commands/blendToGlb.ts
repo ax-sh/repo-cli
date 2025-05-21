@@ -3,6 +3,7 @@ import type { ExtendedToolbox } from '../types'
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'blendToGlb',
+  alias: ['btog'],
   run: async (toolbox) => {
     const { print, lib, parameters } = toolbox
 
@@ -19,7 +20,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
       throw result.error
     }
     const out = result.value
-    spinner.succeed(`Todo blendToGlb ${blenderFile}`)
+    spinner.succeed(`Done blend to glb ${blenderFile}`)
 
     print.highlight(`Run Out blendToGlb ${out}`)
 

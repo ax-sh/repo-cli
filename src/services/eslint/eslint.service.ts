@@ -36,7 +36,7 @@ export default antfu(
 `
 export async function addEslint() {
   const out = await exeCmdWithOutput(
-    'ni -D eslint @antfu/eslint-config eslint-config-biome @biomejs/biome',
+    'ni -D eslint @antfu/eslint-config eslint-config-biome @biomejs/biome eslint-plugin-only-warn',
   )
   const eslintConfigFile = './eslint.config.mjs'
   filesystem.write(eslintConfigFile, code)

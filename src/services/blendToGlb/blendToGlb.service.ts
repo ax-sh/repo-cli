@@ -19,10 +19,16 @@ export async function makeBlendFileToGlb(
     // console.log(input)
     const outputPath = `${path.basename(input)}.glb`
     if (filesystem.isFile(outputPath)) {
-      throw new Error('path exists not implemented')
+      throw new KnownError('path exists not implemented')
     }
     output = outputPath
   }
   const cmd = `${blenderPath} -b ${input} --python-expr "import bpy; bpy.ops.export_scene.gltf(filepath='${output}')"`
-  return exeCmdWithOutput(cmd)
+  const blenderConvertBlendToGlb = await exeCmdWithOutput(cmd)
+  console.info(blenderConvertBlendToGlb)
+  const dracoOutputPath = `${path.basename(input)}.glb`
+  const dracoCmd = `bunx gltf-pipeline -i ${output} -o ${dracoOutputPath}.draco.glb`
+  const dracoCmdOutput = await exeCmdWithOutput(dracoCmd)
+  console.info(dracoCmdOutput)
+  return dracoCmdOutput
 }

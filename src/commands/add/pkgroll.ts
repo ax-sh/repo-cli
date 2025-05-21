@@ -1,5 +1,5 @@
 import type { GluegunCommand } from 'gluegun'
-import type { ExtendedToolbox } from '../types'
+import type { ExtendedToolbox } from '../../types'
 
 const command: GluegunCommand<ExtendedToolbox> = {
   name: 'pkgroll',
@@ -9,7 +9,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const name = toolbox.parameters.first
 
     const spinner = print.spin()
-    const root = await import('../services/pkgroll/pkgroll.service')
+    const root = await import('../../services/pkgroll/pkgroll.service')
     const result = await lib.runFromPromiseWithErrorHandlerWrapper(
       root.installPkgrollToRepo(),
     )
