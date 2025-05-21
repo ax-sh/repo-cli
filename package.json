@@ -51,6 +51,7 @@
     "@faker-js/faker": "^9.7.0",
     "@google-analytics/admin": "^8.2.0",
     "app-root-path": "^3.1.0",
+    "eslint-plugin-only-warn": "^1.1.0",
     "execa": "^9.5.3",
     "gluegun": "^5.2.0",
     "google-gax": "^4.6.0",

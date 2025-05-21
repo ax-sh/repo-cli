@@ -22,11 +22,11 @@ module.exports = {
     requireUpstream: true,
     requireCommits: false,
     requireCommitsFail: true,
-    commitsPath: '',
+    commitsPath: "",
     addUntrackedFiles: false,
     commit: true,
     // eslint-disable-next-line no-template-curly-in-string
-    commitMessage: 'Release ${version}',
+    commitMessage: "Release ${version}",
     commitArgs: [],
     tag: true,
     tagExclude: null,
@@ -34,40 +34,40 @@ module.exports = {
     tagMatch: null,
     getLatestTagFromAllRefs: false,
     // eslint-disable-next-line no-template-curly-in-string
-    tagAnnotation: 'Release ${version}',
+    tagAnnotation: "Release ${version}",
     tagArgs: [],
     push: true,
-    pushArgs: ['--follow-tags'],
-    pushRepo: '',
+    pushArgs: ["--follow-tags"],
+    pushRepo: "",
   },
   hooks: {
-    'before:init': [
-      'nr test',
-      'nr lint:fix',
+    "before:init": [
+      "nr test",
+      "nr lint:fix",
       'git commit --allow-empty -am "ci: format files before release"',
     ],
-    'before:beforeBump': [
+    "before:beforeBump": [
       // eslint-disable-next-line no-template-curly-in-string
-      'echo \uD83D\uDC4A ${name} before:bump latestVersion=v${version} previousVersion=v${latestVersion}',
+      "echo \uD83D\uDC4A ${name} before:bump latestVersion=v${version} previousVersion=v${latestVersion}",
     ],
-    'after:bump': [
-      'nr git-cliff -o CHANGELOG.md && git add CHANGELOG.md',
+    "after:bump": [
+      "nr git-cliff -o CHANGELOG.md && git add CHANGELOG.md",
       'git commit  --allow-empty -am "ci: add CHANGELOG"',
       // eslint-disable-next-line no-template-curly-in-string
-      'echo \uD83D\uDC4A ${name} after:bump version=v${version} latestVersion=v${latestVersion}',
+      "echo \uD83D\uDC4A ${name} after:bump version=v${version} latestVersion=v${latestVersion}",
     ],
-    'after:release': [
+    "after:release": [
       // eslint-disable-next-line no-template-curly-in-string
-      'echo \uD83D\uDE4C Successfully released ${name} v${version} to ${repo.repository}.',
+      "echo \uD83D\uDE4C Successfully released ${name} v${version} to ${repo.repository}.",
       'nr is-ci && echo "running in ci" || git push origin HEAD',
-      'git push origin refs/heads/master:master',
+      "git push origin refs/heads/master:master",
       // 'git push origin refs/heads/develop:develop',
     ],
   },
   plugins: {
-    '@release-it/bumper': {
-      in: 'CURRENT_VERSION.txt',
-      out: 'CURRENT_VERSION.txt',
+    "@release-it/bumper": {
+      in: "CURRENT_VERSION.txt",
+      out: "CURRENT_VERSION.txt",
     },
   },
 };

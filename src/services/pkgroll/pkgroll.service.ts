@@ -45,10 +45,18 @@ async function addDependencies(force: boolean) {
   await exeCmdWithOutput('npm pkg set main="./dist/index.cjs"')
   await exeCmdWithOutput('npm pkg set module="./dist/index.mjs"')
   await exeCmdWithOutput('npm pkg set types="./dist/index.d.cts"')
-  await exeCmdWithOutput('npm pkg set exports.require.types="./dist/index.d.cts"')
-  await exeCmdWithOutput('npm pkg set exports.require.default="./dist/index.cjs"')
-  await exeCmdWithOutput('npm pkg set exports.import.types="./dist/index.d.mts"')
-  await exeCmdWithOutput('npm pkg set exports.import.default="./dist/index.mjs"')
+  await exeCmdWithOutput(
+    'npm pkg set exports.require.types="./dist/index.d.cts"',
+  )
+  await exeCmdWithOutput(
+    'npm pkg set exports.require.default="./dist/index.cjs"',
+  )
+  await exeCmdWithOutput(
+    'npm pkg set exports.import.types="./dist/index.d.mts"',
+  )
+  await exeCmdWithOutput(
+    'npm pkg set exports.import.default="./dist/index.mjs"',
+  )
 }
 
 export async function installPkgrollToRepo(input?: unknown) {

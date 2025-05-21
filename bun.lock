@@ -9,6 +9,7 @@
         "@faker-js/faker": "^9.7.0",
         "@google-analytics/admin": "^8.2.0",
         "app-root-path": "^3.1.0",
+        "eslint-plugin-only-warn": "^1.1.0",
         "execa": "^9.5.3",
         "gluegun": "^5.2.0",
         "google-gax": "^4.6.0",
@@ -812,6 +813,8 @@
     "eslint-plugin-neverthrow": ["eslint-plugin-neverthrow@1.1.4", "", { "dependencies": { "@types/eslint-utils": "^3.0.0", "eslint-utils": "3.0.0", "tsutils": "3.21.0" }, "peerDependencies": { "@typescript-eslint/parser": ">=4.20.0", "eslint": ">=5.16.0" } }, "sha512-+8zsE5rDqsDfKYAOq0Fr2jbuxHXTmntIWWJqJA3ms1GAKcVCjl0ycetzOu/hTxot9ctr+WYQpCBgB3F2HATR7A=="],
 
     "eslint-plugin-no-only-tests": ["eslint-plugin-no-only-tests@3.3.0", "", {}, "sha512-brcKcxGnISN2CcVhXJ/kEQlNa0MEfGRtwKtWA16SkqXHKitaKIMrfemJKLKX1YqDU5C/5JY3PvZXd5jEW04e0Q=="],
+
+    "eslint-plugin-only-warn": ["eslint-plugin-only-warn@1.1.0", "", {}, "sha512-2tktqUAT+Q3hCAU0iSf4xAN1k9zOpjK5WO8104mB0rT/dGhOa09582HN5HlbxNbPRZ0THV7nLGvzugcNOSjzfA=="],
 
     "eslint-plugin-perfectionist": ["eslint-plugin-perfectionist@4.12.3", "", { "dependencies": { "@typescript-eslint/types": "^8.31.0", "@typescript-eslint/utils": "^8.31.0", "natural-orderby": "^5.0.0" }, "peerDependencies": { "eslint": ">=8.45.0" } }, "sha512-V0dmpq6fBbn0BYofHsiRuuY9wgkKMDkdruM0mIRBIJ8XZ8vEaTAZqFsywm40RuWNVnduWBt5HO1ZZ+flE2yqjg=="],
 
