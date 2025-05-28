@@ -5,9 +5,10 @@ const command: GluegunCommand<ExtendedToolbox> = {
   name: 'info',
   run: async (toolbox) => {
     const { print } = toolbox
+    const spinner = print.spin()
     const root = await import('../services/info/info.service')
     await root.getInfo()
-    print.info('done')
+    spinner.succeed('done')
   },
 }
 
