@@ -1,4 +1,7 @@
-import { getGithubPagesUrlForRepo, getGithubRepoInfo } from '../gh-pages/gh-pages.service'
+import {
+  getGithubPagesUrlForRepo,
+  getGithubRepoInfo,
+} from '../gh-pages/gh-pages.service'
 
 export async function getInfo() {
   const json = await getGithubRepoInfo()
