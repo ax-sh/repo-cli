@@ -13,12 +13,12 @@ describe('[react] service test', () => {
     expect(mod).toBeDefined()
 
     const result = await runFromPromiseWithErrorHandlerWrapper(
-      mod.makeReactProject(),
+      mod.makeReactProject('foo'),
     )
     if (result.isErr()) {
       throw result.error
     }
     const out = result.value
-    console.warn(out)
+    expect(out).toEqual('bun create vite --template react-swc-ts foo && cd foo && bun create storybook@latest')
   })
 })

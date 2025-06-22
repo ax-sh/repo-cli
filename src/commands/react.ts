@@ -11,7 +11,7 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const spinner = print.spin()
     const root = await import('../services/react/react.service')
     const result = await lib.runFromPromiseWithErrorHandlerWrapper(
-      root.makeReactProject(),
+      root.makeReactProject(name),
     )
     if (result.isErr()) {
       spinner.fail()
