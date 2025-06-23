@@ -19,6 +19,8 @@ describe('[react] service test', () => {
       throw result.error
     }
     const out = result.value
-    expect(out).toEqual('bun create vite --template react-swc-ts foo && cd foo && bun create storybook@latest')
+    expect(out).toEqual(
+      'bun create vite --template react-swc-ts foo && cd foo && bun create storybook@latest',
+    )
   })
 })
