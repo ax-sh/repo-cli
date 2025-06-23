@@ -20,6 +20,8 @@ describe('[sandbox] service test', () => {
       throw result.error
     }
     const out = result.value
+    // uv venv && source .venv/bin/activate && uv pip install nbdime matplotlib pillow jupyterlab && touch sandbox.ipynb && pycharm sandbox.ipynb
+    // uv venv && source .venv/bin/activate && uv pip install nbdime matplotlib pillow jupyterlab && touch sandbox.ipynb && uv run --with jupyter jupyter lab
     expect(out).toEqual('uv venv && source .venv/bin/activate && uv pip install nbdime matplotlib pillow jupyterlab && touch sandbox.ipynb && pycharm . &')
   })
 })
