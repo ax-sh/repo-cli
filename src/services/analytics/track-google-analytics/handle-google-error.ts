@@ -180,7 +180,6 @@ export function handleGoogleError(error: unknown): RuntimeGoogleError {
 }
 
 export function executeGooglePromise<T>(call: PromiseLike<T>) {
-  return ResultAsync.fromPromise<T, RuntimeGoogleError>(call, (e) =>
-    handleGoogleError(e),
-  )
+  return ResultAsync.fromPromise<T, RuntimeGoogleError>(call, e =>
+    handleGoogleError(e))
 }

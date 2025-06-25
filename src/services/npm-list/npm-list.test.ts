@@ -32,7 +32,7 @@ describe('[npm-list] service test', () => {
     })
     console.debug(arr)
     expect(arr).toHaveLength(3)
-    console.debug(arr.map((i) => i.name))
+    console.debug(arr.map(i => i.name))
     expect(arr.length).toEqual(3)
     const [pkg] = arr
 
