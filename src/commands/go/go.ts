@@ -7,10 +7,12 @@ const command: GluegunCommand<ExtendedToolbox> = {
     const { print, parameters, system } = toolbox
     const name = parameters.first
     const root = await import('../../services/go/go.service')
-    const out = await root.addCodeQualityTools()
+    let out: string
+    out = await root.addGoLibs()
+    print.info(out)
+    out = await root.addCodeQualityTools()
     print.highlight(`Run Out go ${out}`)
     print.highlight(`Todo go ${name}`)
-    await system.run('echo ni -D husky')
   },
 }
 

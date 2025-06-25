@@ -38,8 +38,11 @@ export async function addGoLibs() {
     'go get github.com/go-cmd/cmd',
 
   ]
-  const out = await exeCmdWithOutput(libs.join('&&'))
-  print.info(out)
+  for (const lib of libs) {
+    const output = await exeCmdWithOutput(lib)
+    print.highlight(`Added ${lib} ${output}`)
+  }
+  return libs.join('\n')
 }
 
 const GO_GITIGNORE = `# If you prefer the allow list template instead of the deny list, see community template:
@@ -72,8 +75,9 @@ go.work.sum
 .env
 
 # Editor/IDE
-# .idea/
-# .vscode/`
+.idea/
+.vscode/
+`
 export async function addGoGitIgnore() {
   print.info(`Adding go .gitignore `)
   filesystem.write('./.gitignore', GO_GITIGNORE)
