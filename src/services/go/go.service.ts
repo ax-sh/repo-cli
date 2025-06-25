@@ -32,8 +32,12 @@ export async function addGoLibs() {
     // tui
     'go get github.com/charmbracelet/bubbletea',
     'go get github.com/charmbracelet/huh',
-    'go get github.com/charmbracelet/glow',
+    'go get github.com/charmbracelet/glamour',
+    'go get github.com/charmbracelet/log@latest',
     'go get github.com/charmbracelet/fang',
+    'go get github.com/charmbracelet/lipgloss',
+    'go get github.com/charmbracelet/bubbles',
+    // script runner
     'go get github.com/bitfield/script',
     'go get github.com/go-cmd/cmd',
 
