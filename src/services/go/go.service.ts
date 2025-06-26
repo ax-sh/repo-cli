@@ -10,7 +10,7 @@ export async function makeGoCobraCli(name: string) {
   } catch (e) {
     print.highlight(`[Skipped] go.mod already exists ${e}`)
   }
-  out = await exeCmdWithOutput('go install github.com/spf13/cobra-cli@latest && cobra-cli init')
+  out = await exeCmdWithOutput('go install github.com/spf13/cobra-cli@latest && cobra-cli init --viper --author ax-sh')
   print.info(out)
 }
 
