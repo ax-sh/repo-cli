@@ -93,6 +93,14 @@ export async function addCodeQualityTools() {
     throw new KnownError('not go repo')
   }
   let out: string
+  out = await exeCmdWithOutput(
+    'go get -tool gotest.tools/gotestsum@latest',
+  )
+  print.info(out)
+  out = await exeCmdWithOutput(
+    'go get -tool github.com/golang/mock/mockgen',
+  )
+  print.info(out)
 
   out = await exeCmdWithOutput(
     'go get -tool github.com/golangci/golangci-lint/cmd/golangci-lint',
