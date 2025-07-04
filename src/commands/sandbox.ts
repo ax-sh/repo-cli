@@ -18,11 +18,9 @@ const command: GluegunCommand<ExtendedToolbox> = {
       throw result.error
     }
     const out = result.value
-    spinner.succeed(`Todo sandbox ${name}`)
+    spinner.succeed(`sandbox path on: ${name}`)
 
-    print.highlight(`Run Out sandbox ${out}`)
-
-    await toolbox.system.run('echo ni -D husky')
+    print.highlight(`Sandbox Output ${out}`)
   },
 }
 
