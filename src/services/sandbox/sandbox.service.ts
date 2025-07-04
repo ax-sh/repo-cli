@@ -1,13 +1,11 @@
-import { execa } from 'execa'
 import { exeCmdWithOutput } from '../../lib'
 
 export async function makePythonSandbox() {
   const cmd = `uv venv && source .venv/bin/activate && uv pip install nbdime matplotlib pillow jupyterlab && touch sandbox.ipynb && pycharm . &`
   return exeCmdWithOutput(cmd)
 }
-//
-// #!/usr/bin/env tsx
 
+// #!/usr/bin/env tsx
 export async function runPySandboxSetup() {
   const command =
     'uv venv && source .venv/bin/activate && uv pip install nbdime matplotlib pillow jupyterlab && touch sandbox.ipynb'
@@ -15,6 +13,7 @@ export async function runPySandboxSetup() {
   console.info('🚀 Running sandbox setup...')
   console.info(`📝 Command: ${command}`)
   console.info('─'.repeat(50))
+  const { execa } = await import('execa')
 
   try {
     // Execute the one-liner command
