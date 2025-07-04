@@ -1,13 +1,15 @@
 import { exeCmdWithOutput } from '../../lib'
 
-export async function makePythonSandbox() {
-  const cmd = `uv venv && source .venv/bin/activate && uv pip install nbdime matplotlib pillow jupyterlab && touch sandbox.ipynb && pycharm . &`
-  return exeCmdWithOutput(cmd)
-}
-
 export async function makePythonUVSandbox() {
   const cmd = `uv venv && source .venv/bin/activate && uv init && uv add pip nbdime marimo numpy matplotlib pillow jupyterlab && touch sandbox.ipynb && pycharm . &`
   return exeCmdWithOutput(cmd)
+}
+
+export async function makePythonSandbox() {
+  return makePythonUVSandbox()
+  // the below works the same but does not inclue the things like project.toml
+  // const cmd = `uv venv && source .venv/bin/activate && uv pip install nbdime matplotlib pillow jupyterlab && touch sandbox.ipynb && pycharm . &`
+  // return exeCmdWithOutput(cmd)
 }
 
 // #!/usr/bin/env tsx
