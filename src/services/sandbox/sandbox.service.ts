@@ -5,6 +5,11 @@ export async function makePythonSandbox() {
   return exeCmdWithOutput(cmd)
 }
 
+export async function makePythonUVSandbox() {
+  const cmd = `uv venv && source .venv/bin/activate && uv init && uv add pip nbdime marimo numpy matplotlib pillow jupyterlab && touch sandbox.ipynb && pycharm . &`
+  return exeCmdWithOutput(cmd)
+}
+
 // #!/usr/bin/env tsx
 export async function runPySandboxSetup() {
   const command =

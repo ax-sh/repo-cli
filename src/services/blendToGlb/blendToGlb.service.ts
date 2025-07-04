@@ -1,5 +1,6 @@
 import path from 'node:path'
 import { filesystem } from 'gluegun'
+import { KnownError } from '../../errors'
 import { exeCmdWithOutput } from '../../lib'
 
 // /Applications/Blender.app/Contents/MacOS/Blender is the path to the Blender executable.

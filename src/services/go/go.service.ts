@@ -12,7 +12,7 @@ export async function makeGoCobraCli(name: string) {
   }
   try {
     out = await exeCmdWithOutput('go install github.com/spf13/cobra-cli@latest')
-  } catch (e) {
+  } catch {
     print.highlight('Warn updating cobra-cli using old one')
   }
 
