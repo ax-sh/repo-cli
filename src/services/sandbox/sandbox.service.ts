@@ -3,6 +3,7 @@ import { exeCmdWithOutput } from '../../lib'
 // https://docs.astral.sh/uv/guides/integration/jupyter/
 // https://docs.astral.sh/uv/guides/integration/marimo/
 // https://docs.astral.sh/uv/guides/integration/fastapi/
+// https://github.com/joeyespo/pytest-watch
 export async function makePythonUVSandbox() {
   const cmd = `uv venv && source .venv/bin/activate && uv init && uv add pip pytest pytest-watch pytest-sugar nbdime pandas marimo numpy matplotlib pillow jupyterlab && touch sandbox.ipynb && pycharm . &`
   return exeCmdWithOutput(cmd)
