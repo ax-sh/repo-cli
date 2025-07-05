@@ -13,7 +13,7 @@ describe('[eslint] service test', () => {
 
     const out = await mod.addEslint()
     expect(out).toEqual(
-      'ni -D eslint @antfu/eslint-config eslint-config-biome @biomejs/biome',
+      'ni -D eslint @antfu/eslint-config eslint-config-biome @biomejs/biome eslint-config-biome eslint-plugin-only-warn',
     )
   })
 })
