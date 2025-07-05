@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker/locale/ar'
+import { expect } from 'vitest'
 import { exeCmdWithOutput } from '../../lib'
 import { getJsonFromCmd } from '../../lib/helpers/cmd/cli'
 import { listNPMPackagesFromGithubRegistry } from './npm-list.service'
@@ -11,7 +12,6 @@ describe('[npm-list] service test', () => {
     fn.mockImplementation(async (args: string) => args)
     const mod = await import('./npm-list.service')
     expect(mod).toBeDefined()
-    //
     // const out = await mod.run()
     // console.warn(out)
   })
@@ -30,13 +30,14 @@ describe('[npm-list] service test', () => {
       delete i.owner
       return i
     })
-    console.debug(arr)
+    expect(arr).toMatchObject([{ name: expect.stringMatching(/\w/) }, { name: expect.stringMatching(/\w/) }, { name: expect.stringMatching(/\w/) }])
+
     expect(arr).toHaveLength(3)
-    console.debug(arr.map(i => i.name))
+    // console.debug(,arr.map(i => i.name))
     expect(arr.length).toEqual(3)
     const [pkg] = arr
 
-    console.debug(pkg.owner)
-    console.debug(pkg.package_type)
+    expect(pkg.owner).not.toBeDefined()
+    expect(pkg.package_type).not.toBeDefined()
   })
 })

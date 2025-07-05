@@ -75,7 +75,7 @@ export interface GithubNpmPackages {
   id: number
   name: string
   package_type: string
-  owner: GithubOwner
+  owner?: GithubOwner
   repository: GithubRepository
   version_count: number
   visibility: string
