@@ -75,7 +75,8 @@ export async function getGithubRepoInfo() {
     'updatedAt',
   ] as const
   const cmd = `gh repo view --json ${props.join(',')}`
-  return getJsonFromCmd<MappedString<(typeof props)[number]>>(cmd)
+  type GithubRepoInfo = MappedString<(typeof props)[number]>
+  return await getJsonFromCmd<Partial<GithubRepoInfo>>(cmd) ?? {}
 }
 
 export async function getGithubPagesUrlForRepo(nameWithOwner: string) {
