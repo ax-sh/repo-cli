@@ -11,6 +11,7 @@ import { exeCmdWithOutput } from '../../lib'
 // bpy.ops.export_scene.gltf is the Blender API function that exports the scene as a binary glTF.
 // filepath='output.glb' tells Blender to save the exported file as output.glb.
 
+export const macBlenderPath = '/Applications/Blender.app/Contents/MacOS/Blender'
 export async function makeBlendFileToGlb(
   input: string,
   output?: string | undefined,
@@ -24,7 +25,7 @@ export async function makeBlendFileToGlb(
     }
     output = outputPath
   }
-  const cmd = `${blenderPath} -b ${input} --python-expr "import bpy; bpy.ops.export_scene.gltf(filepath='${output}')"`
+  const cmd = `${macBlenderPath} -b ${input} --python-expr "import bpy; bpy.ops.export_scene.gltf(filepath='${output}')"`
   const blenderConvertBlendToGlb = await exeCmdWithOutput(cmd)
   console.info(blenderConvertBlendToGlb)
   const dracoOutputPath = `${path.basename(input)}.glb`
