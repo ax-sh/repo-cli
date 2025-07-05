@@ -16,7 +16,6 @@ export async function makeBlendFileToGlb(
   input: string,
   output?: string | undefined,
 ) {
-  const blenderPath = '/Applications/Blender.app/Contents/MacOS/Blender'
   if (output === undefined) {
     // console.log(input)
     const outputPath = `${path.basename(input)}.glb`
