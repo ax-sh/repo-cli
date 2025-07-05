@@ -16,7 +16,9 @@ export async function makeGoCobraCli(name: string) {
     print.highlight('Warn updating cobra-cli using old one')
   }
 
-  out = await exeCmdWithOutput('cobra-cli init --viper --author ax-sh && cobra-cli add config')
+  out = await exeCmdWithOutput(
+    'cobra-cli init --viper --author ax-sh && cobra-cli add config',
+  )
   print.info(out)
 }
 
@@ -46,7 +48,6 @@ export async function addGoLibs() {
     // script runner
     'go get github.com/bitfield/script',
     'go get github.com/go-cmd/cmd',
-
   ]
   for (const lib of libs) {
     const output = await exeCmdWithOutput(lib)
@@ -99,13 +100,9 @@ export async function addCodeQualityTools() {
     throw new KnownError('not go repo')
   }
   let out: string
-  out = await exeCmdWithOutput(
-    'go get -tool gotest.tools/gotestsum@latest',
-  )
+  out = await exeCmdWithOutput('go get -tool gotest.tools/gotestsum@latest')
   print.info(out)
-  out = await exeCmdWithOutput(
-    'go get -tool github.com/golang/mock/mockgen',
-  )
+  out = await exeCmdWithOutput('go get -tool github.com/golang/mock/mockgen')
   print.info(out)
 
   out = await exeCmdWithOutput(

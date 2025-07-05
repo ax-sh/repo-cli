@@ -41,8 +41,14 @@ export async function addEslint() {
   )
   const eslintConfigFile = './eslint.config.mjs'
   filesystem.write(eslintConfigFile, code)
+
   await addScriptToPackageJson('lint', 'eslint')
   await addScriptToPackageJson('lint:fix', 'eslint --fix')
+  await addScriptToPackageJson(
+    'format',
+    'biome check --apply-unsafe . && eslint --fix .',
+  )
+  await addScriptToPackageJson('format:check', 'biome check . && eslint .')
 
   return out
 }
