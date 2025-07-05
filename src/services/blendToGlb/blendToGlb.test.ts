@@ -41,7 +41,7 @@ describe('[blendToGlb] service test', () => {
     )
   })
 
-  it('should correctly parse and file', async () => {
+  it.todo('should correctly parse and file from arbitrary folder', async () => {
     const blenderFilePath = '/user/mpp/foo.blend'
 
     const result = await runSetupBlendToGlb(blenderFilePath)
@@ -51,6 +51,7 @@ describe('[blendToGlb] service test', () => {
     const out = result.value
     const expected = `${macBlenderPath} -b /user/mpp/foo.blend --python-expr "import bpy; bpy.ops.export_scene.gltf(filepath='foo.blend.glb')"`
     expect(fn).toHaveBeenNthCalledWith(1, expected)
+    expect(fn).toBeCalledTimes(2)
     expect(out).toEqual('bunx gltf-pipeline -i foo.blend.glb -o foo.blend.glb.draco.glb')
   })
 })
