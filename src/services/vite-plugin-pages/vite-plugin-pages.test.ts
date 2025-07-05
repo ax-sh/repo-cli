@@ -10,12 +10,14 @@ const code = `export default defineConfig({
 });`
 
 describe('[vite-plugin-pages] service test', () => {
-  it('should return results', async () => {
+  it('should addVitePluginPages to vite.config.ts', async () => {
     const mockedOpenAsSourceFile = vi.mocked(openAsSourceFile)
     mockedOpenAsSourceFile.mockReturnValue(await createTestSourceFile(code))
     console.warn(mockedOpenAsSourceFile.mock.calls)
+
     const fn = vi.mocked(exeCmdWithOutput)
     fn.mockImplementation(async (args: string) => args)
+
     const mod = await import('./vite-plugin-pages.service')
     expect(mod).toBeDefined()
 
