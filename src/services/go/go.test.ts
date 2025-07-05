@@ -23,7 +23,7 @@ describe('[go] service test', () => {
     fn.mockImplementation(async (args: string) => args)
     const out = await mod.addCodeQualityTools()
     expect(fn).toBeCalled()
-    expect(fn).toHaveBeenCalledTimes(4)
+    expect(fn).toHaveBeenCalledTimes(6)
     expect(fn).toHaveResolved()
     expect(out).toMatchSnapshot()
   })
