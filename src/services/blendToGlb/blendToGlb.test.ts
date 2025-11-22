@@ -52,6 +52,8 @@ describe('[blendToGlb] service test', () => {
     const expected = `${macBlenderPath} -b /user/mpp/foo.blend --python-expr "import bpy; bpy.ops.export_scene.gltf(filepath='foo.blend.glb')"`
     expect(fn).toHaveBeenNthCalledWith(1, expected)
     expect(fn).toBeCalledTimes(2)
-    expect(out).toEqual('bunx gltf-pipeline -i foo.blend.glb -o foo.blend.glb.draco.glb')
+    expect(out).toEqual(
+      'bunx gltf-pipeline -i foo.blend.glb -o foo.blend.glb.draco.glb',
+    )
   })
 })

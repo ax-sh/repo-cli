@@ -27,6 +27,7 @@
     "lint:types": "tsc --noEmit",
     "lintt": "nr lint --format=pretty",
     "format": "prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
+    "fmt": "nr format && nr lintt --fix",
     "test": "vitest run",
     "watch": "vitest",
     "snapupdate": "vitest --update",

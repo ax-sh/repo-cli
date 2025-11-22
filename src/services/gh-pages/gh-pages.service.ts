@@ -76,7 +76,7 @@ export async function getGithubRepoInfo() {
   ] as const
   const cmd = `gh repo view --json ${props.join(',')}`
   type GithubRepoInfo = MappedString<(typeof props)[number]>
-  return await getJsonFromCmd<Partial<GithubRepoInfo>>(cmd) ?? {}
+  return (await getJsonFromCmd<Partial<GithubRepoInfo>>(cmd)) ?? {}
 }
 
 export async function getGithubPagesUrlForRepo(nameWithOwner: string) {

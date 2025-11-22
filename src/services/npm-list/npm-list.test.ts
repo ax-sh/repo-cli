@@ -30,7 +30,11 @@ describe('[npm-list] service test', () => {
       delete i.owner
       return i
     })
-    expect(arr).toMatchObject([{ name: expect.stringMatching(/\w/) }, { name: expect.stringMatching(/\w/) }, { name: expect.stringMatching(/\w/) }])
+    expect(arr).toMatchObject([
+      { name: expect.stringMatching(/\w/) },
+      { name: expect.stringMatching(/\w/) },
+      { name: expect.stringMatching(/\w/) },
+    ])
 
     expect(arr).toHaveLength(3)
     // console.debug(,arr.map(i => i.name))
