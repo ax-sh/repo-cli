@@ -18,11 +18,9 @@ const command: GluegunCommand<ExtendedToolbox> = {
       throw result.error
     }
     const out = result.value
-    spinner.succeed(`Todo mono ${name}`)
+    spinner.succeed(`Done mono ${name}`)
 
     print.highlight(out)
-
-    await toolbox.system.run('echo ni -D husky')
   },
 }
 

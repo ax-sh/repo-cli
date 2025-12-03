@@ -40,8 +40,8 @@ export async function addScriptToPackageJson(scriptName: string, cmd: string) {
 
   return script.set(cmd)
 }
-export async function exeCmdWithOutput(cmd: string): Promise<string> {
-  return system.run(cmd, { trim: true })
+export async function exeCmdWithOutput(cmd: string, cwd?: string): Promise<string> {
+  return system.run(cmd, { trim: true, cwd })
 }
 
 export async function getJsonFromCmd<T = JSONValue>(cmd: string) {
