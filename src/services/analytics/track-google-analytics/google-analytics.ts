@@ -127,7 +127,7 @@ const inputSchema = z
       if (data.properties.length > 0) {
         const propertyNameToCheck = data.displayName
         const propertyExists = data.properties.some(
-          prop => prop.displayName === propertyNameToCheck,
+          (prop) => prop.displayName === propertyNameToCheck,
         )
 
         if (propertyExists) {

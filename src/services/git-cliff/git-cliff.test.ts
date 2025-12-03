@@ -2,7 +2,7 @@ import { filesystem } from 'gluegun'
 
 function generateConfigsFromTemplate() {
   const files = ['cliff.toml']
-  const fileConfigs = files.map(fileName => ({
+  const fileConfigs = files.map((fileName) => ({
     // directory: "CONFIGS/tailwind",
     template: `/CONFIGS/git-cliff/${fileName}`,
     target: filesystem.path('.', fileName),
