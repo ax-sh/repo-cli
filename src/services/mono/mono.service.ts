@@ -35,7 +35,7 @@ export async function makeDefaultMonoRepoWorkspace(projectWorkspaceName?: string
   print.highlight(out)
 
   print.info('🖥️  Generating CLI Application...');
-  const makeAppCmd = `nx g @nx/node:application ${appName} --directory=apps/${appName} --framework=none --bundler=esbuild --e2eTestRunner=none --docker=false --linter=eslint --unitTestRunner=none`
+  const makeAppCmd = `nx g @nx/node:application ${appName} --directory=apps/${appName} --useProjectJson=false --framework=none --bundler=esbuild --e2eTestRunner=none --docker=false --linter=eslint --unitTestRunner=none`
   out = await exeCmdInDir(makeAppCmd, projectWorkspaceName)
   print.success('makeAppCmd')
   print.highlight(out)
@@ -50,6 +50,11 @@ export async function makeDefaultMonoRepoWorkspace(projectWorkspaceName?: string
   const makeLibCmd = `nx g @nx/node:library ${libName} --directory=libs/${libName} --importPath=@${projectWorkspaceName}/${libName} --unitTestRunner=none --bundler=swc --linter=eslint`
   out = await exeCmdInDir(makeLibCmd, projectWorkspaceName)
   print.success('makeLibCmd')
+  print.highlight(out)
+
+  print.info('🛠️  Generating Core Library test setup...');
+  out = await exeCmdInDir('nx g @nx/vitest:configuration --project core', projectWorkspaceName)
+  print.success('vitest core')
   print.highlight(out)
 
   print.info('📦 Adding helper scripts CLI Application...');
