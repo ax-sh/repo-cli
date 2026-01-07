@@ -6,6 +6,23 @@ All notable changes to ax-sh webpage will be documented in this file.
 
 ### 🚀 Features
 
+- *(commands)* Add mono command and style improvements [`f09b472`](https://github.com/ax-sh/ax-sh.github.io/commit/f09b472906c3b81f7b81f759f0856dee3d496f39)
+- *(mono)* Setup monorepo with core lib and cli [`cf34524`](https://github.com/ax-sh/ax-sh.github.io/commit/cf3452469224a8af3948ddd92fbd6858f17d7543)
+- *(mono)* Setup monorepo with core lib and cli [`8f458c4`](https://github.com/ax-sh/ax-sh.github.io/commit/8f458c4ccd79a7907f70a3ae8ddfb55ea961b7a4)
+
+### 🎨 Styling
+
+- Fix formatting and code structure [`9958b1b`](https://github.com/ax-sh/ax-sh.github.io/commit/9958b1bcb01c934d6d4578e1bdf3189057ba54ae)
+
+### ⚙️ Miscellaneous Tasks
+
+- Format files before release [`11b776e`](https://github.com/ax-sh/ax-sh.github.io/commit/11b776e1262f38f0b7058537dba4c933d46f61f6)
+
+## [[0.18.0] - 2025-11-24](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.18.0)
+
+
+### 🚀 Features
+
 - *(pkgroll)* Rename function and update dependencies logic [`f8c26b4`](https://github.com/ax-sh/ax-sh.github.io/commit/f8c26b498b0021772f9edee74f91c8188bf312f5)
 - *(blendToGlb)* Enhance file output handling logic [`2fc5f83`](https://github.com/ax-sh/ax-sh.github.io/commit/2fc5f837244111b57cd22f940458bdb2ccf8fc9b)
 - Wip [`c931e0b`](https://github.com/ax-sh/ax-sh.github.io/commit/c931e0b123e2719d2cf4d1cf5eb6611bd3f86bdc)
@@ -73,6 +90,7 @@ All notable changes to ax-sh webpage will be documented in this file.
 - Update Go libraries in addGoLibs function [`35f40d5`](https://github.com/ax-sh/ax-sh.github.io/commit/35f40d5553c7cf6555a6eeb5ad7332bec374f9b8)
 - Update package dependencies and manager version [`543f001`](https://github.com/ax-sh/ax-sh.github.io/commit/543f001d3c35819bb667fc7e93de4849e0a83e2c)
 - Format files before release [`22e34ec`](https://github.com/ax-sh/ax-sh.github.io/commit/22e34eca60aa7a617ee24312aa6ee1a3c01d0836)
+- Add CHANGELOG [`07b45e6`](https://github.com/ax-sh/ax-sh.github.io/commit/07b45e695e3da84f107a16aab1bfc53e653fdfa2)
 
 ## [[0.17.0] - 2025-05-11](https://github.com/ax-sh/ax-sh.github.io/releases/tag/0.17.0)
 
