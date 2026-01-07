@@ -49,13 +49,13 @@ export async function makeDefaultMonoRepoWorkspace(
   print.highlight(out)
 
   out = await exeCmdInDir(
-    `bun add -D @nx/node @nx/vitest vitest msw @biomejs/biome @nx/workspace typescript eslint-plugin-only-warn @types/node`,
+    `bun add -D @nx/node @nx/vitest vitest msw @biomejs/biome @nx/workspace typescript eslint-plugin-only-warn @types/node drizzle-kit @types/bun @typescript/native-preview oxfmt oxlint oxlint-tsgolint@latest`,
     projectWorkspaceName,
   )
   print.highlight(out)
 
   out = await exeCmdInDir(
-    `bun add zod neverthrow picocolors @logtape/file @logtape/logtape @logtape/pretty app-root-path`,
+    `bun add zod neverthrow picocolors @logtape/file @logtape/logtape @logtape/pretty app-root-path drizzle-orm @electric-sql/pglite spacetime`,
     projectWorkspaceName,
   )
   print.highlight(out)
@@ -67,7 +67,11 @@ export async function makeDefaultMonoRepoWorkspace(
   print.highlight(out)
 
   print.info('🛠️  Generating logger Library...')
-  const makeLoggerLibCmd = `nx g @nx/js:library logger --directory=libs/logger --importPath=@${projectWorkspaceName}/logger --unitTestRunner=vitest --bundler=swc --linter=eslint`
+  const makeLoggerLibCmd = createMonorepoLib({
+    projectWorkspaceName,
+    libraryName: 'logger',
+    bundler: 'swc',
+  })
   out = await exeCmdInDir(makeLoggerLibCmd, projectWorkspaceName)
   print.success('makeLoggerLibCmd')
   print.highlight(out)
@@ -77,7 +81,6 @@ export async function makeDefaultMonoRepoWorkspace(
     projectWorkspaceName,
     libraryName: 'database',
   })
-  // `nx g @nx/js:library database --directory=libs/database --importPath=@${projectWorkspaceName}/database --unitTestRunner=vitest --bundler=none --linter=eslint`
   out = await exeCmdInDir(makeDatabaseLibCmd, projectWorkspaceName)
   print.success('makeDatabaseLibCmd')
   print.highlight(out)
@@ -97,7 +100,8 @@ export async function makeDefaultMonoRepoWorkspace(
   print.highlight(out)
 
   print.info('📦 Adding helper scripts CLI Application...')
-  out = await addScript('fmt', 'deno fmt', projectWorkspaceName)
+  out = await addScript('fmt', 'oxfmt', projectWorkspaceName)
+  out = await addScript('lint', 'oxlint --type-aware', projectWorkspaceName)
   out = await addScript(
     'show',
     'nx show projects --json | jq',
