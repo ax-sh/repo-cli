@@ -48,6 +48,46 @@ async function addMonorepoDevDeps(projectWorkspaceName: string) {
   print.highlight(out)
 }
 
+async function createMandatoryLibs(projectWorkspaceName: string) {
+  const list = [
+    {
+      projectWorkspaceName,
+      libraryName: 'logger',
+      bundler: 'swc',
+    },
+    {
+      projectWorkspaceName,
+      libraryName: 'database',
+      bundler: 'none',
+    },
+  ] as const
+  for (const lib of list) {
+    print.info(`🛠 Generating ${lib.libraryName} Library...`)
+    let out = await exeCmdInDir(createMonorepoLib(lib), projectWorkspaceName)
+    out = await exeCmdInDir(
+      `nx g @nx/vitest:configuration --project ${lib.libraryName}`,
+      projectWorkspaceName,
+    )
+    print.success(`Generated ${lib.libraryName} `)
+    print.highlight(out)
+  }
+  // let out: string
+  //
+  // const makeLoggerLibCmd = createMonorepoLib()
+  // out = await exeCmdInDir(makeLoggerLibCmd, projectWorkspaceName)
+  //
+  // print.highlight(out)
+  //
+  // print.info('🛠️  Generating database Library...')
+  // const makeDatabaseLibCmd = createMonorepoLib({
+  //   projectWorkspaceName,
+  //   libraryName: 'database',
+  // })
+  // out = await exeCmdInDir(makeDatabaseLibCmd, projectWorkspaceName)
+  // print.success('makeDatabaseLibCmd')
+  //
+}
+
 export async function makeDefaultMonoRepoWorkspace(
   projectWorkspaceName?: string,
 ) {
@@ -75,26 +115,7 @@ export async function makeDefaultMonoRepoWorkspace(
   out = await exeCmdInDir(makeAppCmd, projectWorkspaceName)
   print.success('makeAppCmd')
   print.highlight(out)
-
-  print.info('🛠️  Generating logger Library...')
-  const makeLoggerLibCmd = createMonorepoLib({
-    projectWorkspaceName,
-    libraryName: 'logger',
-    bundler: 'swc',
-  })
-  out = await exeCmdInDir(makeLoggerLibCmd, projectWorkspaceName)
-  print.success('makeLoggerLibCmd')
-  print.highlight(out)
-
-  print.info('🛠️  Generating database Library...')
-  const makeDatabaseLibCmd = createMonorepoLib({
-    projectWorkspaceName,
-    libraryName: 'database',
-  })
-  out = await exeCmdInDir(makeDatabaseLibCmd, projectWorkspaceName)
-  print.success('makeDatabaseLibCmd')
-  print.highlight(out)
-
+  await createMandatoryLibs(projectWorkspaceName)
   print.info('🛠️  Generating Core Library...')
   const makeLibCmd = `nx g @nx/node:library ${libName} --directory=libs/${libName} --importPath=@${projectWorkspaceName}/${libName} --unitTestRunner=none --bundler=swc --linter=eslint`
   out = await exeCmdInDir(makeLibCmd, projectWorkspaceName)
@@ -112,6 +133,7 @@ export async function makeDefaultMonoRepoWorkspace(
   print.info('📦 Adding helper scripts CLI Application...')
   out = await addScript('fmt', 'oxfmt', projectWorkspaceName)
   out = await addScript('lint', 'oxlint --type-aware', projectWorkspaceName)
+  out = await addScript('format', 'nr fmt && nr lint', projectWorkspaceName)
   out = await addScript(
     'show',
     'nx show projects --json | jq',
