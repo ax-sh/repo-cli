@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`[mono] service test > should return results without error 1`] = `
+[
+  "nx g @nx/js:library core --directory=libs/core --importPath=@projectWorkspaceName/core --unitTestRunner=vitest --bundler=none --linter=eslint",
+  "nx g @nx/js:library database --directory=libs/database --importPath=@projectWorkspaceName/database --unitTestRunner=vitest --bundler=none --linter=eslint",
+  "nx g @nx/js:library logging --directory=libs/logging --importPath=@projectWorkspaceName/logging --unitTestRunner=vitest --bundler=none --linter=eslint",
+]
+`;

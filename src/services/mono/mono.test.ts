@@ -2,6 +2,7 @@ import {
   exeCmdWithOutput,
   runFromPromiseWithErrorHandlerWrapper,
 } from '../../lib'
+import { batchCreateLibs } from './mono.service'
 
 vi.mock('../../lib/helpers/cmd/cli')
 
@@ -20,5 +21,14 @@ describe('[mono] service test', () => {
     }
     const out = result.value
     console.warn(out)
+  })
+  it('should return results without error', async () => {
+    const projectWorkspaceName = 'projectWorkspaceName'
+    const cmds = batchCreateLibs([
+      { projectWorkspaceName, libraryName: 'core' },
+      { projectWorkspaceName, libraryName: 'database' },
+      { projectWorkspaceName, libraryName: 'logging' },
+    ])
+    expect(cmds).toMatchSnapshot()
   })
 })

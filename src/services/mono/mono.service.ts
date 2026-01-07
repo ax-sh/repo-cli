@@ -29,6 +29,10 @@ function createMonorepoLib({
   return `nx g @nx/js:library ${libraryName} --directory=libs/${libraryName} --importPath=@${projectWorkspaceName}/${libraryName} --unitTestRunner=vitest --bundler=${bundler} --linter=eslint`
 }
 
+export function batchCreateLibs(list: NxLibConfigOptions[]) {
+  return list.map(createMonorepoLib)
+}
+
 export async function makeDefaultMonoRepoWorkspace(
   projectWorkspaceName?: string,
 ) {
