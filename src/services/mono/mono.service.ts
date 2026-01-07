@@ -134,6 +134,12 @@ export async function makeDefaultMonoRepoWorkspace(
   out = await addScript('fmt', 'oxfmt', projectWorkspaceName)
   out = await addScript('lint', 'oxlint --type-aware', projectWorkspaceName)
   out = await addScript('format', 'nr fmt && nr lint', projectWorkspaceName)
+  out = await addScript('test', 'nx run-many -t test', projectWorkspaceName)
+
+  //  "lint": "nx run-many -t lint",
+  //     "lint:fix": "nx run-many -t lint --fix",
+  //     "test": "nx run-many -t test"
+
   out = await addScript(
     'show',
     'nx show projects --json | jq',
