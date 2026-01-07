@@ -33,6 +33,21 @@ export function batchCreateLibs(list: NxLibConfigOptions[]) {
   return list.map(createMonorepoLib)
 }
 
+async function addMonorepoDeps(projectWorkspaceName: string) {
+  const out = await exeCmdInDir(
+    `bun add zod neverthrow picocolors @logtape/file @logtape/logtape @logtape/pretty app-root-path drizzle-orm @electric-sql/pglite spacetime`,
+    projectWorkspaceName,
+  )
+  print.highlight(out)
+}
+async function addMonorepoDevDeps(projectWorkspaceName: string) {
+  const out = await exeCmdInDir(
+    `bun add -D @nx/node @nx/vitest vitest msw @biomejs/biome @nx/workspace typescript eslint-plugin-only-warn @types/node drizzle-kit @types/bun @typescript/native-preview oxfmt oxlint oxlint-tsgolint@latest`,
+    projectWorkspaceName,
+  )
+  print.highlight(out)
+}
+
 export async function makeDefaultMonoRepoWorkspace(
   projectWorkspaceName?: string,
 ) {
@@ -52,17 +67,8 @@ export async function makeDefaultMonoRepoWorkspace(
   out = await exeCmdInDir(initialBareBoneProject)
   print.highlight(out)
 
-  out = await exeCmdInDir(
-    `bun add -D @nx/node @nx/vitest vitest msw @biomejs/biome @nx/workspace typescript eslint-plugin-only-warn @types/node drizzle-kit @types/bun @typescript/native-preview oxfmt oxlint oxlint-tsgolint@latest`,
-    projectWorkspaceName,
-  )
-  print.highlight(out)
-
-  out = await exeCmdInDir(
-    `bun add zod neverthrow picocolors @logtape/file @logtape/logtape @logtape/pretty app-root-path drizzle-orm @electric-sql/pglite spacetime`,
-    projectWorkspaceName,
-  )
-  print.highlight(out)
+  await addMonorepoDevDeps(projectWorkspaceName)
+  await addMonorepoDeps(projectWorkspaceName)
 
   print.info('🖥️  Generating CLI Application...')
   const makeAppCmd = `nx g @nx/node:application ${appName} --directory=apps/${appName} --useProjectJson=false --framework=none --bundler=esbuild --e2eTestRunner=none --docker=false --linter=eslint --unitTestRunner=none`
