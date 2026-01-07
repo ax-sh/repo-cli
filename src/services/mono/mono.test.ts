@@ -12,7 +12,9 @@ describe('[mono] service test', () => {
     const mod = await import('./mono.service')
     expect(mod).toBeDefined()
 
-    const result = await runFromPromiseWithErrorHandlerWrapper(mod.makeDefaultMonoRepoWorkspace())
+    const result = await runFromPromiseWithErrorHandlerWrapper(
+      mod.makeDefaultMonoRepoWorkspace(),
+    )
     if (result.isErr()) {
       throw result.error
     }

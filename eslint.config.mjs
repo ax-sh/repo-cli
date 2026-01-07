@@ -1,4 +1,3 @@
-import * as path from 'node:path';
 import antfu from '@antfu/eslint-config';
 import 'eslint-plugin-only-warn';
 
@@ -34,7 +33,7 @@ const testLinterRules = {
       projectService: {
         allowDefaultProject: ['*.m?ts', '__tests__/cli-integration.test.ts'],
       },
-      project: path.resolve('tsconfig.tests.json'),
+      // project: path.resolve('tsconfig.tests.json'),
     },
   },
   rules: {
